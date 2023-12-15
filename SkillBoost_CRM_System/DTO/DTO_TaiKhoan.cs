@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DTO_TaiKhoan
+namespace DTO
 {
     public class TaiKhoan
     {
