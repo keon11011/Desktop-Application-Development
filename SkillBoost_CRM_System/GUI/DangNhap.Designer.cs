@@ -33,6 +33,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnDangNhap = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -49,7 +50,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(880, 397);
+            this.label2.Location = new System.Drawing.Point(874, 511);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 37);
             this.label2.TabIndex = 1;
@@ -58,7 +59,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(1068, 390);
+            this.textBox1.Location = new System.Drawing.Point(1062, 504);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(599, 44);
             this.textBox1.TabIndex = 2;
@@ -66,7 +67,7 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(1068, 507);
+            this.textBox2.Location = new System.Drawing.Point(1062, 621);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(599, 44);
@@ -76,17 +77,29 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(880, 514);
+            this.label3.Location = new System.Drawing.Point(874, 628);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(149, 37);
             this.label3.TabIndex = 3;
             this.label3.Text = "Mật khẩu";
+            // 
+            // btnDangNhap
+            // 
+            this.btnDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangNhap.Location = new System.Drawing.Point(1184, 819);
+            this.btnDangNhap.Name = "btnDangNhap";
+            this.btnDangNhap.Size = new System.Drawing.Size(253, 61);
+            this.btnDangNhap.TabIndex = 5;
+            this.btnDangNhap.Text = "Đăng nhập";
+            this.btnDangNhap.UseVisualStyleBackColor = true;
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
             // frmDangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2388, 1189);
+            this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox1);
@@ -108,6 +121,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnDangNhap;
     }
 }
 
