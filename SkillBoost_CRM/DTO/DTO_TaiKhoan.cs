@@ -11,7 +11,7 @@ namespace DTO
         private string _maTK;
         private string _emailTK;
         private string _matKhauTK;
-        private string _maHashTK;
+        private byte[] _maHashTK;
         private string _maSaltTK;
         private string _trangThaiTK;
         private string _maNV;
@@ -23,7 +23,7 @@ namespace DTO
         public string MaTK { get => _maTK; set => _maTK = value; }
         public string EmailTK { get => _emailTK; set => _emailTK = value; }
         public string MatKhauTK { get => _matKhauTK; set => _matKhauTK = value; }
-        public string MaHashTK { get => _maHashTK; set => _maHashTK = value; }
+        public byte[] MaHashTK { get => _maHashTK; set => _maHashTK = value; }
         public string MaSaltTK { get => _maSaltTK; set => _maSaltTK = value; }
         public string TrangThaiTK { get => _trangThaiTK; set => _trangThaiTK = value; }
         public string MaNV { get => _maNV; set => _maNV = value; }
@@ -36,7 +36,7 @@ namespace DTO
         {
 
         }
-        public DTO_TaiKhoan(string maTK, string emailTK, string matKhauTK, string maHashTK, string maSaltTK, string trangThaiTK, string maNV, DateTime taoVaoLuc, string taoBoi, DateTime chinhSuaLanCuoiVaoLuc, string chinhSuaLanCuoiBoi)
+        public DTO_TaiKhoan(string maTK, string emailTK, string matKhauTK, byte[] maHashTK, string maSaltTK, string trangThaiTK, string maNV, DateTime taoVaoLuc, string taoBoi, DateTime chinhSuaLanCuoiVaoLuc, string chinhSuaLanCuoiBoi)
         {
             MaTK = maTK;
             EmailTK = emailTK;

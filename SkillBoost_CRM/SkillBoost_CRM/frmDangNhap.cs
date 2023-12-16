@@ -22,7 +22,10 @@ namespace SkillBoost_CRM
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             BUS_TaiKhoan bUS_TaiKhoan = new BUS_TaiKhoan();
-            if (bUS_TaiKhoan.DangNhap(txtEmail.Text, txtMatKhau.Text))
+            DTO_TaiKhoan dTO_TaiKhoan = new DTO_TaiKhoan();
+            dTO_TaiKhoan.EmailTK = txtEmail.Text;
+            dTO_TaiKhoan.MatKhauTK = txtMatKhau.Text;
+            if (bUS_TaiKhoan.DangNhap(dTO_TaiKhoan))
             {
                 MessageBox.Show("Đăng nhập thành công");
             }
