@@ -22,12 +22,13 @@ CREATE TABLE NhanVien(
 	, ChinhSuaLanCuoiBoi		NVARCHAR(20) NOT NULL
 )
 
+
 /* TẠO TABLE TaiKhoan */
 CREATE TABLE TaiKhoan(
 	MaTK						VARCHAR(10) NOT NULL PRIMARY KEY
 	, EmailTK					VARCHAR(70) NOT NULL
 	, MatKhauTK					VARCHAR(50) NOT NULL
-	, MaHashTK					VARCHAR(100) 
+	, MaHashTK					BINARY(64) 
 	, MaSaltTK					UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID()
 	, TrangThaiTK				NVARCHAR(50) NOT NULL
 	, MaNV						VARCHAR(10) NOT NULL
@@ -119,8 +120,8 @@ CREATE TABLE BaoGia(
 	, TongTienTruocGiam			FLOAT NOT NULL
 	, MaGiamGia					VARCHAR(10) 
 	, PhanTramGiamGia			INT 
-	, TrangThaiBaoGia			NVARCHAR(30) NOT NULL
 	, TongTien					FLOAT NOT NULL
+	, TrangThaiBaoGia			NVARCHAR(30) NOT NULL
 	, TaoVaoLuc					DATETIME NOT NULL
 	, TaoBoi					NVARCHAR(20) NOT NULL
 	, ChinhSuaLanCuoiVaoLuc		DATETIME NOT NULL
@@ -148,7 +149,6 @@ CREATE TABLE QuyDinhGiamGia(
 	, TenNgheNghiep				NVARCHAR(100) 
 	, NgayBatDau				DATE
 	, NgayKetThuc				DATE
-	-- tnha đổi 2 cột PhanTramGiamGiaMacDinh, PhanTramGiamGiaToiDa từ INT thành VARCHAR để hiển thị
 	, PhanTramGiamGiaMacDinh	INT NOT NULL
 	, PhanTramGiamGiaToiDa		INT NOT NULL
 	, TaoVaoLuc					DATETIME NOT NULL
@@ -270,8 +270,8 @@ CREATE TABLE Email(
 CREATE TABLE EmailMau(
 	MaEmailMau					VARCHAR(10) NOT NULL PRIMARY KEY
 	, TieuDeEmailMau			NVARCHAR(200) NOT NULL
-	, NoiDungEmailMau			NTEXT NOT NULL
 	, MoTaEmailMau				NTEXT NOT NULL
+	, NoiDungEmailMau			NTEXT NOT NULL
 	, TrangThaiEmailMau			NVARCHAR(30) NOT NULL
 	, TaoVaoLuc					DATETIME NOT NULL
 	, TaoBoi					NVARCHAR(20) NOT NULL
@@ -302,18 +302,3 @@ CREATE TABLE ChiTietKhoaHocThuocHoaDon(
 
 	CONSTRAINT PKChiTietKhoaHocThuocHoaDon PRIMARY KEY (MaHoaDon, MaKhoaHoc)
 )
-
-GO
-
-CREATE TRIGGER TR_HASH_MK ON TaiKhoan
-AFTER INSERT
-AS
-DECLARE @mk_tmp VARCHAR(30), @salt UNIQUEIDENTIFIER;
-SELECT @mk_tmp = MatKhauTK, @salt = MaSaltTK
-FROM inserted
-UPDATE TaiKhoan 
-SET MaHashTK = (HASHBYTES('SHA2_512', @mk_tmp + CAST(@salt AS NVARCHAR(36)))),
-MatKhauTK = '###'
-WHERE MaSaltTK = @salt
-
-GO
