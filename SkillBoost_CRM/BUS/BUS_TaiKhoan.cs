@@ -22,9 +22,9 @@ namespace BUS
         //}
 
         DAL_TaiKhoan dal_TaiKhoan = new DAL_TaiKhoan();
-        public bool DangNhap(string email, string matKhau)
+        public bool DangNhap(DTO_TaiKhoan dTO_TaiKhoan)
         {
-            return dal_TaiKhoan.DangNhap(email, matKhau);
+            return dal_TaiKhoan.DangNhap(dTO_TaiKhoan);
         }
     }
 }

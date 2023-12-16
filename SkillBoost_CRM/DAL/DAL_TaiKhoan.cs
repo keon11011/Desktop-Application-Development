@@ -11,12 +11,12 @@ namespace DAL
 {
     public class DAL_TaiKhoan : DBConnect
     {
-        public bool DangNhap(string email, string matKhau)
+        public bool DangNhap(DTO_TaiKhoan dTO_TaiKhoan)
         {
             try
             {
                 conn.Open();
-                string cmdText = "SELECT * FROM TaiKhoan WHERE EmailTK = \'" + email + "\'";
+                string cmdText = "SELECT * FROM TaiKhoan WHERE EmailTK = \'" + dTO_TaiKhoan.EmailTK + "\'";
                 SqlDataAdapter da = new SqlDataAdapter(cmdText, conn);
 
                 DataTable dt = new DataTable();
@@ -24,7 +24,9 @@ namespace DAL
 
                 da.Dispose();
 
-                if (dt.Rows.Count == 0 || dt.Rows[0][5].ToString() == "Dừng hoạt động")
+                dTO_TaiKhoan.TrangThaiTK = dt.Rows[0][5].ToString();
+
+                if (dt.Rows.Count == 0 || dTO_TaiKhoan.TrangThaiTK == "Dừng hoạt động")
                 {
                     return false;
                 }
@@ -34,15 +36,18 @@ namespace DAL
 
                     SqlCommand cmd = new SqlCommand(cmdText, conn);
                     cmd.Parameters.Add("@MatKhauTK", SqlDbType.VarChar);
-                    cmd.Parameters["@MatKhauTK"].Value = dt.Rows[0][2];
+                    cmd.Parameters["@MatKhauTK"].Value = dTO_TaiKhoan.MatKhauTK;
+
+                    dTO_TaiKhoan.MaSaltTK = dt.Rows[0][4].ToString();
+
                     cmd.Parameters.Add("@MaSaltTK", SqlDbType.UniqueIdentifier);
                     cmd.Parameters["@MaSaltTK"].Value = dt.Rows[0][4];
 
-                    string HashCode = cmd.ExecuteScalar().ToString();
+                    dTO_TaiKhoan.MaHashTK = (byte[])cmd.ExecuteScalar();
 
-                    string MaHashTK = dt.Rows[0][3].ToString();
+                    var MaHashTK = dt.Rows[0][3];
 
-                    if (HashCode == MaHashTK)
+                    if (dTO_TaiKhoan.MaHashTK.SequenceEqual((IEnumerable<byte>)MaHashTK))
                     {
                         return true;
                     }
