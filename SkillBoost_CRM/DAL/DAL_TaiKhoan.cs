@@ -11,19 +11,58 @@ namespace DAL
 {
     public class DAL_TaiKhoan : DBConnect
     {
-        //private void AddParameter(SqlCommand cmd, SanPham sanPham)
-        //{
-        //    cmd.Parameters.Add("@MaSP", SqlDbType.VarChar);
-        //    cmd.Parameters["@MaSP"].Value = sanPham.MaSP;
-        //    cmd.Parameters.Add("@TenSP", SqlDbType.NVarChar);
-        //    cmd.Parameters["@TenSP"].Value = sanPham.TenSP;
-        //    cmd.Parameters.Add("@DvTinh", SqlDbType.NVarChar);
-        //    cmd.Parameters["@DvTinh"].Value = sanPham.DvTinh;
-        //    cmd.Parameters.Add("@DonGia", SqlDbType.Int);
-        //    cmd.Parameters["@DonGia"].Value = sanPham.DonGia;
-        //    cmd.Parameters.Add("@MaLoai", SqlDbType.VarChar);
-        //    cmd.Parameters["@MaLoai"].Value = sanPham.MaLoai;
-        //}
+        public bool DangNhap(string email, string matKhau)
+        {
+            try
+            {
+                conn.Open();
+                string cmdText = "SELECT * FROM TaiKhoan WHERE EmailTK = \'" + email + "\'";
+                SqlDataAdapter da = new SqlDataAdapter(cmdText, conn);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                da.Dispose();
+
+                if (dt.Rows.Count == 0 || dt.Rows[0][5].ToString() == "Dừng hoạt động")
+                {
+                    return false;
+                }
+                else
+                {
+                    cmdText = "SELECT HASHBYTES('SHA2_512', @MatKhauTK + CAST(@MaSaltTK AS NVARCHAR(36)))";
+
+                    SqlCommand cmd = new SqlCommand(cmdText, conn);
+                    cmd.Parameters.Add("@MatKhauTK", SqlDbType.VarChar);
+                    cmd.Parameters["@MatKhauTK"].Value = dt.Rows[0][2];
+                    cmd.Parameters.Add("@MaSaltTK", SqlDbType.UniqueIdentifier);
+                    cmd.Parameters["@MaSaltTK"].Value = dt.Rows[0][4];
+
+                    string HashCode = cmd.ExecuteScalar().ToString();
+
+                    string MaHashTK = dt.Rows[0][3].ToString();
+
+                    if (HashCode == MaHashTK)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+       
         //public DataTable SelectSanPham()
         //{
         //    try

@@ -27,8 +27,8 @@ CREATE TABLE TaiKhoan(
 	MaTK						VARCHAR(10) NOT NULL PRIMARY KEY
 	, EmailTK					VARCHAR(70) NOT NULL
 	, MatKhauTK					VARCHAR(50) NOT NULL
-	, MaHashTK					VARCHAR(100) NOT NULL
-	, MaSaltTK					VARCHAR(70) NOT NULL
+	, MaHashTK					VARCHAR(100) 
+	, MaSaltTK					UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID()
 	, TrangThaiTK				NVARCHAR(50) NOT NULL
 	, MaNV						VARCHAR(10) NOT NULL
 	, TaoVaoLuc					DATETIME NOT NULL
@@ -302,3 +302,18 @@ CREATE TABLE ChiTietKhoaHocThuocHoaDon(
 
 	CONSTRAINT PKChiTietKhoaHocThuocHoaDon PRIMARY KEY (MaHoaDon, MaKhoaHoc)
 )
+
+GO
+
+CREATE TRIGGER TR_HASH_MK ON TaiKhoan
+AFTER INSERT
+AS
+DECLARE @mk_tmp VARCHAR(30), @salt UNIQUEIDENTIFIER;
+SELECT @mk_tmp = MatKhauTK, @salt = MaSaltTK
+FROM inserted
+UPDATE TaiKhoan 
+SET MaHashTK = (HASHBYTES('SHA2_512', @mk_tmp + CAST(@salt AS NVARCHAR(36)))),
+MatKhauTK = '###'
+WHERE MaSaltTK = @salt
+
+GO
