@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using DTO;
 using BUS;
 
-namespace SkillBoost_CRM
+namespace GUI
 {
     public partial class frmDangNhap : Form
     {

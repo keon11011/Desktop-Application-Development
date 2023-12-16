@@ -1,4 +1,4 @@
-﻿namespace SkillBoost_CRM
+﻿namespace GUI
 {
     partial class frmDangNhap
     {
@@ -39,10 +39,10 @@
             // btnDangNhap
             // 
             this.btnDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangNhap.Location = new System.Drawing.Point(833, 885);
+            this.btnDangNhap.Location = new System.Drawing.Point(1151, 962);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(253, 61);
-            this.btnDangNhap.TabIndex = 11;
+            this.btnDangNhap.TabIndex = 17;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.UseVisualStyleBackColor = true;
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
@@ -50,55 +50,55 @@
             // txtMatKhau
             // 
             this.txtMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMatKhau.Location = new System.Drawing.Point(711, 687);
+            this.txtMatKhau.Location = new System.Drawing.Point(1029, 764);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(599, 44);
-            this.txtMatKhau.TabIndex = 10;
+            this.txtMatKhau.TabIndex = 16;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(523, 694);
+            this.label3.Location = new System.Drawing.Point(841, 771);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(149, 37);
-            this.label3.TabIndex = 9;
+            this.label3.TabIndex = 15;
             this.label3.Text = "Mật khẩu";
             // 
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(711, 570);
+            this.txtEmail.Location = new System.Drawing.Point(1029, 647);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(599, 44);
-            this.txtEmail.TabIndex = 8;
+            this.txtEmail.TabIndex = 14;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(523, 577);
+            this.label2.Location = new System.Drawing.Point(841, 654);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 37);
-            this.label2.TabIndex = 7;
+            this.label2.TabIndex = 13;
             this.label2.Text = "Email";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(734, 199);
+            this.label1.Location = new System.Drawing.Point(1052, 276);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(460, 46);
-            this.label1.TabIndex = 6;
+            this.label1.TabIndex = 12;
             this.label1.Text = "Skillboost CRM System";
             // 
             // frmDangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1832, 1144);
+            this.ClientSize = new System.Drawing.Size(2469, 1299);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.txtMatKhau);
             this.Controls.Add(this.label3);
@@ -106,7 +106,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmDangNhap";
-            this.Text = "Form1";
+            this.Text = "Đăng nhập";
+            this.TopMost = true;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 

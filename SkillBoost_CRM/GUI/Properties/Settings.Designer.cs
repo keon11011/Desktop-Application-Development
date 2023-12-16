@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SkillBoost_CRM.Properties
+namespace GUI.Properties
 {
 
 
