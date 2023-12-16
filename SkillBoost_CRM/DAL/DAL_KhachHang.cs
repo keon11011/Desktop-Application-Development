@@ -8,5 +8,6 @@ namespace DAL
 {
     internal class DAL_KhachHang : DBConnect
     {
+        
     }
 }

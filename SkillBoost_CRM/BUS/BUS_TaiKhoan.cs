@@ -20,5 +20,11 @@ namespace BUS
         //{
         //    return dalSanPham.UpdatetSanPham(sanPham);
         //}
+
+        DAL_TaiKhoan dal_TaiKhoan = new DAL_TaiKhoan();
+        public bool DangNhap(string email, string matKhau)
+        {
+            return dal_TaiKhoan.DangNhap(email, matKhau);
+        }
     }
 }
