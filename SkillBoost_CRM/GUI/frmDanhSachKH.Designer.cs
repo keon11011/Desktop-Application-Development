@@ -31,16 +31,16 @@
             this.txtTimKH = new System.Windows.Forms.TextBox();
             this.btnTimKH = new System.Windows.Forms.Button();
             this.btnThemKH = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtgvKhachHang = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLocKH = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvKhachHang)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTimKH
             // 
             this.txtTimKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKH.Location = new System.Drawing.Point(1339, 38);
+            this.txtTimKH.Location = new System.Drawing.Point(1328, 28);
             this.txtTimKH.Name = "txtTimKH";
             this.txtTimKH.Size = new System.Drawing.Size(613, 44);
             this.txtTimKH.TabIndex = 11;
@@ -49,9 +49,9 @@
             // btnTimKH
             // 
             this.btnTimKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimKH.Location = new System.Drawing.Point(1958, 37);
+            this.btnTimKH.Location = new System.Drawing.Point(1958, 21);
             this.btnTimKH.Name = "btnTimKH";
-            this.btnTimKH.Size = new System.Drawing.Size(101, 45);
+            this.btnTimKH.Size = new System.Drawing.Size(101, 55);
             this.btnTimKH.TabIndex = 10;
             this.btnTimKH.Text = "Tìm kiếm";
             this.btnTimKH.UseVisualStyleBackColor = true;
@@ -60,22 +60,23 @@
             // btnThemKH
             // 
             this.btnThemKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemKH.Location = new System.Drawing.Point(2255, 38);
+            this.btnThemKH.Location = new System.Drawing.Point(2255, 22);
             this.btnThemKH.Name = "btnThemKH";
-            this.btnThemKH.Size = new System.Drawing.Size(154, 44);
+            this.btnThemKH.Size = new System.Drawing.Size(154, 54);
             this.btnThemKH.TabIndex = 9;
             this.btnThemKH.Text = "Thêm Khách hàng";
             this.btnThemKH.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dtgvKhachHang
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(43, 98);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(2366, 1043);
-            this.dataGridView1.TabIndex = 8;
+            this.dtgvKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvKhachHang.Location = new System.Drawing.Point(43, 98);
+            this.dtgvKhachHang.Name = "dtgvKhachHang";
+            this.dtgvKhachHang.RowHeadersWidth = 62;
+            this.dtgvKhachHang.RowTemplate.Height = 28;
+            this.dtgvKhachHang.Size = new System.Drawing.Size(2366, 1057);
+            this.dtgvKhachHang.TabIndex = 8;
+            this.dtgvKhachHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label1
             // 
@@ -90,9 +91,9 @@
             // btnLocKH
             // 
             this.btnLocKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLocKH.Location = new System.Drawing.Point(2084, 38);
+            this.btnLocKH.Location = new System.Drawing.Point(2084, 22);
             this.btnLocKH.Name = "btnLocKH";
-            this.btnLocKH.Size = new System.Drawing.Size(154, 44);
+            this.btnLocKH.Size = new System.Drawing.Size(154, 54);
             this.btnLocKH.TabIndex = 12;
             this.btnLocKH.Text = "Lọc";
             this.btnLocKH.UseVisualStyleBackColor = true;
@@ -106,13 +107,13 @@
             this.Controls.Add(this.txtTimKH);
             this.Controls.Add(this.btnTimKH);
             this.Controls.Add(this.btnThemKH);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dtgvKhachHang);
             this.Controls.Add(this.label1);
             this.Name = "frmDanhSachKH";
             this.Text = "frmDanhSachKH";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmDanhSachKH_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvKhachHang)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,7 +124,7 @@
         private System.Windows.Forms.TextBox txtTimKH;
         private System.Windows.Forms.Button btnTimKH;
         private System.Windows.Forms.Button btnThemKH;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtgvKhachHang;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnLocKH;
     }

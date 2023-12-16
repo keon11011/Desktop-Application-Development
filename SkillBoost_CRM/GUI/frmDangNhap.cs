@@ -14,6 +14,7 @@ namespace GUI
 {
     public partial class frmDangNhap : Form
     {
+        public string maPIC;
         public frmDangNhap()
         {
             InitializeComponent();
@@ -25,14 +26,23 @@ namespace GUI
             DTO_TaiKhoan dTO_TaiKhoan = new DTO_TaiKhoan();
             dTO_TaiKhoan.EmailTK = txtEmail.Text;
             dTO_TaiKhoan.MatKhauTK = txtMatKhau.Text;
-            if (bUS_TaiKhoan.DangNhap(dTO_TaiKhoan))
+            if (bUS_TaiKhoan.DangNhap(dTO_TaiKhoan, ref maPIC))
             {
                 MessageBox.Show("Đăng nhập thành công");
+                SharedResources.MaPIC = maPIC;
+                Hide();
+                frmDanhSachKH FRMfrmDanhSachKH = new frmDanhSachKH();
+                FRMfrmDanhSachKH.Show();
             }
             else
             {
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng, hoặc tài khoản đã dừng hoạt động");
             }
+        }
+
+        private void frmDangNhap_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -11,7 +11,7 @@ namespace DAL
 {
     public class DAL_TaiKhoan : DBConnect
     {
-        public bool DangNhap(DTO_TaiKhoan dTO_TaiKhoan)
+        public bool DangNhap(DTO_TaiKhoan dTO_TaiKhoan, ref string maPIC)
         {
             try
             {
@@ -50,6 +50,7 @@ namespace DAL
                     if (dTO_TaiKhoan.MaHashTK.SequenceEqual((IEnumerable<byte>)MaHashTK))
                     {
                         return true;
+                        maPIC = dt.Rows[0][6].ToString();
                     }
                     else
                     {
