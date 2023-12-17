@@ -104,5 +104,7 @@ namespace DAL
             }
         }
 
+        public bool InsertYCTV()
+
     }
 }
