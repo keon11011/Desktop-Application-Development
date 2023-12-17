@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace GUI
 {
-    public class SharedResources
+    public static class SharedResources
     {
-        private static string _maPIC;
-        public SharedResources() 
-        {
-            
-        }
-
-        public static string MaPIC { get => _maPIC; set => _maPIC = value; }
+        public static string MaPIC;
     }
 }

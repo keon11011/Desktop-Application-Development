@@ -16,12 +16,15 @@ namespace DAL
             try
             {
                 conn.Open();
-                string cmdText = "SELECT MaKH as N'Mã Khách hàng', HoTenKH as N'Họ tên', ChinhSuaLanCuoiVaoLuc as N'Thời gian cập nhật gần nhất' FROM KhachHang" +
-                    "WHERE TrangThaiKH = N'Đang hoạt động' AND MaNVPhuTrachKH = @MaPIC";
-                SqlCommand cmd = new SqlCommand(cmdText, conn);
-                cmd.Parameters.Add("@MaPIC", SqlDbType.VarChar);
-                cmd.Parameters["@MaPIC"].Value = maPIC;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                string cmdText = "SELECT MaKH as N'Mã Khách hàng', HoTenKH as N'Họ tên', ChinhSuaLanCuoiVaoLuc as N'Thời gian cập nhật gần nhất' " +
+                    "FROM KhachHang " +
+                    "WHERE TrangThaiKH = N'Đang hoạt động' AND MaNVPhuTrachKH = \'" + maPIC + "\'";
+                
+                //SqlCommand cmd = new SqlCommand(cmdText, conn);
+                //cmd.Parameters.Add("@MaPIC", SqlDbType.Char);
+                //cmd.Parameters["@MaPIC"].Value = maPIC;
+                
+                SqlDataAdapter da = new SqlDataAdapter(cmdText,conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 

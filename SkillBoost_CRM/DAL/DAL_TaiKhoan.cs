@@ -49,8 +49,8 @@ namespace DAL
 
                     if (dTO_TaiKhoan.MaHashTK.SequenceEqual((IEnumerable<byte>)MaHashTK))
                     {
-                        return true;
                         maPIC = dt.Rows[0][6].ToString();
+                        return true;
                     }
                     else
                     {
