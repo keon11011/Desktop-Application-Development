@@ -89,7 +89,7 @@ namespace DAL
                 }
                 return "Fail";
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return "Exception";
             }

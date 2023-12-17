@@ -45,6 +45,7 @@
     <Compile Include="DTO_Lead.cs" />
     <Compile Include="DTO_TaiKhoan.cs" />
     <Compile Include="DTO_KhachHang.cs" />
+    <Compile Include="DTO_YeuCauTuVan.cs" />
     <Compile Include="DTO_MaGiamGia.cs" />
     <Compile Include="DTO_NgheNghiep.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
