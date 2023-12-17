@@ -204,7 +204,9 @@ VALUES
     ('CUS005', N'Bùi Xuân Vĩ ', N'Nam', '1982-01-12', '0444333222', 'vixuanbui@gmail.com', 'OCU008', N'Nhà báo', 'STA006', N'Bùi Thị Thúy', N'Đang hoạt động', NULL, NULL, 'LEA009', '2023-09-05 15:00:00', N'Hệ thống', '2023-09-05 20:05:00', 'STA006'),
     ('CUS006', N'Ngô Thị Kim Cương', N'Nữ', '1991-06-30', '0777007007', 'kimcuongngothi@gmail.com', 'OCU001', N'Nhiếp ảnh', 'STA007', N'Trần Thúy Hằng', N'Đang hoạt động', NULL, NULL, 'LEA001', '2023-09-06 17:15:00', N'Hệ thống', '2023-09-06 22:40:00', 'STA007'), 
     ('CUS007', N'Nguyễn Hoàng Minh', N'Nam', '1978-12-05', '0999888777', 'minhhoangnguyen@gmail.com', 'OCU002', N'Phân tích dữ liệu', 'STA004', N'Trương Minh Tiến', N'Đang hoạt động', NULL, NULL, 'LEA002', '2023-09-07 19:30:00', N'Hệ thống', '2023-09-07 9:25:00', 'STA004'),
-    ('CUS008', N'Dương Bích Tuyền', N'Nữ', '1983-08-08', '0111222333', 'tuyenbichduong@gmail.com', 'OCU009', N'Nhân viên bất động sản', 'STA003', N'Trần Mỹ Hạnh', N'Đang hoạt động', NULL, NULL, 'LEA010', '2023-09-08 21:45:00', N'Hệ thống', '2023-09-08 14:15:00', 'STA003');
+    ('CUS008', N'Dương Bích Tuyền', N'Nữ', '1983-08-08', '0111222333', 'tuyenbichduong@gmail.com', 'OCU009', N'Nhân viên bất động sản', 'STA003', N'Trần Mỹ Hạnh', N'Đang hoạt động', NULL, NULL, 'LEA010', '2023-09-08 21:45:00', N'Hệ thống', '2023-09-08 14:15:00', 'STA003'),
+	('CUS009', N'Nguyễn Hoàng Minh', N'Nam', '2003-02-24', '0909875081', 'minhcorgig@gmail.com', 'OCU009', N'Nhân viên bất động sản', 'STA003', N'Trần Mỹ Hạnh', N'Đang hoạt động', NULL, NULL, 'LEA002', '2023-09-08 21:45:00', N'Hệ thống', '2023-09-08 14:15:00', 'STA003');
+
 -- SELECT * FROM KhachHang
 
 /*USE CASE 8*/
