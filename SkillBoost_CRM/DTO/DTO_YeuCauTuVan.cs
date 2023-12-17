@@ -54,6 +54,7 @@ namespace DTO
             TrangThaiYCTV = trangThaiYCTV;
             TaoVaoLuc = taoVaoLuc;
             TaoBoiLead = taoBoiLead;
+
         }
     }
 }
