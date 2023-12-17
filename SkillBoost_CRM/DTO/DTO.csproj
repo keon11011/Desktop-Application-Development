@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO_QuyDinhGiamGia.cs" />
+    <Compile Include="DTO_Lead.cs" />
     <Compile Include="DTO_TaiKhoan.cs" />
     <Compile Include="DTO_KhachHang.cs" />
     <Compile Include="DTO_MaGiamGia.cs" />

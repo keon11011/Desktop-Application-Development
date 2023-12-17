@@ -14,6 +14,8 @@ namespace GUI
 {
     public partial class frmDanhSachKH : Form
     {
+        
+        BUS_KhachHang bUS_KhachHang = new BUS_KhachHang();
         public frmDanhSachKH()
         {
             InitializeComponent();
@@ -31,7 +33,21 @@ namespace GUI
 
         private void frmDanhSachKH_Load(object sender, EventArgs e)
         {
+            LoadDSKhachHang();
+        }
+        public void LoadDSKhachHang()
+        {
+            DataTable dt = bUS_KhachHang.SelectKhachHang(SharedResources.MaPIC);
+            dtgvKhachHang.DataSource = dt;
+        }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }
