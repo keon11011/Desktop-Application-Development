@@ -45,6 +45,7 @@
     <Compile Include="DAL_NgheNghiep.cs" />
     <Compile Include="DAL_QuyDinhGiamGia.cs" />
     <Compile Include="DAL_TaiKhoan.cs" />
+    <Compile Include="DAL_YeuCauTuVan.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
