@@ -29,7 +29,7 @@ namespace BUS
         {
             return dAL_YeuCauTuVan.LocYCTV(trangthailocYCTV);
         }
-        
+
         public bool InsertLeadcuaYCTV(DTO_YeuCauTuVan tt_yctv)
         {
             return dAL_YeuCauTuVan.InsertLeadcuaYCTV(tt_yctv);

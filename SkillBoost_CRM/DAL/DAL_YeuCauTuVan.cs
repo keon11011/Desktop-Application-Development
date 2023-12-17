@@ -54,6 +54,7 @@ namespace DAL
                 conn.Close();
             }
         }
+
         public DataTable TimYCTV(string s)
         {
             try
@@ -78,6 +79,7 @@ namespace DAL
                 conn.Close();
             }
         }
+
         public DataTable LocYCTV(string s)
         {
 
