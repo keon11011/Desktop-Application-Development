@@ -106,6 +106,18 @@
     <Compile Include="frmTaoQuyDinhGiamGia.Designer.cs">
       <DependentUpon>frmTaoQuyDinhGiamGia.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmThanhToan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThanhToan.Designer.cs">
+      <DependentUpon>frmThanhToan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmYCTV_KhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmYCTV_KhachHang.Designer.cs">
+      <DependentUpon>frmYCTV_KhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmYeuCauTuVan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +153,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTaoQuyDinhGiamGia.resx">
       <DependentUpon>frmTaoQuyDinhGiamGia.cs</DependentUpon>
+    <EmbeddedResource Include="frmThanhToan.resx">
+      <DependentUpon>frmThanhToan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmYCTV_KhachHang.resx">
+      <DependentUpon>frmYCTV_KhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmYeuCauTuVan.resx">
+      <DependentUpon>frmYeuCauTuVan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
