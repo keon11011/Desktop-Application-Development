@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.btnGuiYCTV = new System.Windows.Forms.Button();
+            this.txtNgaysinh = new System.Windows.Forms.TextBox();
             this.txtSdt = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtGhichu = new System.Windows.Forms.TextBox();
@@ -58,6 +58,14 @@
             this.btnGuiYCTV.Text = "Gửi yêu cầu tư vấn";
             this.btnGuiYCTV.UseVisualStyleBackColor = true;
             this.btnGuiYCTV.Click += new System.EventHandler(this.btnGuiYCTV_Click);
+            // 
+            // txtNgaysinh
+            // 
+            this.txtNgaysinh.Location = new System.Drawing.Point(515, 120);
+            this.txtNgaysinh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNgaysinh.Name = "txtNgaysinh";
+            this.txtNgaysinh.Size = new System.Drawing.Size(271, 22);
+            this.txtNgaysinh.TabIndex = 31;
             // 
             // txtSdt
             // 
@@ -191,6 +199,7 @@
             this.Controls.Add(this.cbKhoaHoc);
             this.Controls.Add(this.dtpNgaySinh);
             this.Controls.Add(this.btnGuiYCTV);
+            this.Controls.Add(this.txtNgaysinh);
             this.Controls.Add(this.txtSdt);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtGhichu);
@@ -213,7 +222,10 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button btnGuiYCTV;
+        private System.Windows.Forms.TextBox txtNgaysinh;
         private System.Windows.Forms.TextBox txtSdt;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtGhichu;

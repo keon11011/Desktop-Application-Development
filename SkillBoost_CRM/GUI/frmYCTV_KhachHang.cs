@@ -34,7 +34,7 @@ namespace GUI
             cbKhoaHoc.ValueMember = "MaKhoaHoc";
             cbKhoaHoc.DisplayMember = "TenKhoaHoc";
         }
-        
+
         private void frmYCTV_KhachHang_Load(object sender, EventArgs e)
         {
             SelectKhoaHoc();
