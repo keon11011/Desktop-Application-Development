@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL_KhachHang.cs" />
+    <Compile Include="DAL_NgheNghiep.cs" />
+    <Compile Include="DAL_QuyDinhGiamGia.cs" />
     <Compile Include="DAL_TaiKhoan.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
