@@ -77,7 +77,7 @@ namespace DTO
             ChinhSuaLanCuoiVaoLuc = chinhSuaLanCuoiVaoLuc;
             ChinhSuaLanCuoiBoi = chinhSuaLanCuoiBoi;
         }
-            /* Hello */ 
+            
     }
 
 }

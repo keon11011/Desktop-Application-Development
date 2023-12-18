@@ -5,14 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO;
 using DAL;
+using System.Data;
 
 namespace BUS
 {
     public class BUS_Lead
     {
-        public void SelectLead(ref DTO_Lead dTO_Lead)
+        DAL_Lead dAL_Lead = new DAL_Lead();
+        public DataSet SelectNgheNghiep()
         {
-            DAL_Lead dAL_Lead = new DAL_Lead();
+            return dAL_Lead.SelectNgheNghiep();
+        }
+
+        public void SelectLead(ref DTO_Lead dTO_Lead)
+        { 
 
             dAL_Lead.SelectLead(ref dTO_Lead);
         }

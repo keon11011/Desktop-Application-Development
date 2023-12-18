@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using DTO;
 using BUS;
 using System.Runtime.CompilerServices;
+using System.Data.SqlClient;
+   
 
 namespace GUI
 {
@@ -54,7 +56,30 @@ namespace GUI
             btnHuyChinhSua.Show();
             btnLuuThayDoi.Show();
             txtHoten.ReadOnly = false;
+            txtNgaySinh.ReadOnly = false;
+            txtEmail.ReadOnly = false;
+            txtSoDienThoai.ReadOnly = false;
+            txtPIC.ReadOnly = false;
+            cbNgheNghiep.Enabled = true;
+            cbNguonLead.Enabled = true;
+            txtPIC.ReadOnly = false;
+            txtGhiChu.ReadOnly = false;
+            dataGridViewKHquantam.ReadOnly = false;
+            LoadNgheNghiep();
+
+        
+         }
+
+        private void btnUnfollow_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void LoadNgheNghiep()
+        {
+            cbNgheNghiep.DataSource = bUS_Lead.SelectNgheNghiep().Tables["NgheNghiep"];
+            cbNgheNghiep.DisplayMember = "TenNgheNghiep";
+            cbNgheNghiep.ValueMember = "MaNgheNghiep";
         }
     }
 
-}
+    }
