@@ -9,7 +9,7 @@ using DTO;
 
 namespace DAL
 {
-    public class DAL_YeuCauTuVan: DBConnect
+    public class DAL_YeuCauTuVan : DBConnect
     {
         public DataTable SelectYCTV()
         {
@@ -104,7 +104,107 @@ namespace DAL
             }
         }
 
-        public bool InsertYCTV()
+        public bool InsertYCTVNew(DTO_YeuCauTuVan tt_yctv)
+        {
+
+            try
+            { 
+                conn.Open();
+                SqlCommand cmdYCTV = new SqlCommand("Insert into YeuCauTuVan (TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) " +
+                    "values " +
+                    "(@TenLeadYeuCau, @NgaySinhLeadYeuCau, @EmailLeadYeuCau, @SDTLeadYeuCau, @GhiChuYCTV, @TrangThaiYCTV, @TaoVaoLuc, @TaoBoiLead)", conn);
+
+                cmdYCTV.Parameters.Add("@TenLeadYeuCau", SqlDbType.NVarChar);
+                cmdYCTV.Parameters["@TenLeadYeuCau"].Value = tt_yctv.TenLeadYeuCau;
+
+                cmdYCTV.Parameters.Add("@NgaySinhLeadYeuCau", SqlDbType.DateTime);
+                cmdYCTV.Parameters["@NgaySinhLeadYeuCau"].Value = tt_yctv.NgaySinhLeadYeuCau;
+
+                cmdYCTV.Parameters.Add("@EmailLeadYeuCau", SqlDbType.NVarChar);
+                cmdYCTV.Parameters["@EmailLeadYeuCau"].Value = tt_yctv.EmailLeadYeuCau;
+
+                cmdYCTV.Parameters.Add("@SDTLeadYeuCau", SqlDbType.NVarChar);
+                cmdYCTV.Parameters["@SDTLeadYeuCau"].Value = tt_yctv.SDTLeadYeuCau;
+
+                cmdYCTV.Parameters.Add("@GhiChuYCTV", SqlDbType.NVarChar);
+                cmdYCTV.Parameters["@GhiChuYCTV"].Value = tt_yctv.GhiChuYCTV;
+
+                cmdYCTV.Parameters.Add("@TrangThaiYCTV", SqlDbType.NVarChar);
+                cmdYCTV.Parameters["@TrangThaiYCTV"].Value = tt_yctv.TrangThaiYCTV;
+
+                cmdYCTV.Parameters.Add("@TaoVaoLuc", SqlDbType.DateTime);
+                cmdYCTV.Parameters["@TaoVaoLuc"].Value = tt_yctv.TaoVaoLuc;
+
+                cmdYCTV.Parameters.Add("@TaoBoiLead", SqlDbType.NVarChar);
+                cmdYCTV.Parameters["@TaoBoiLead"].Value = tt_yctv.TaoBoiLead;
+
+                SqlCommand cmdChiTietKhoaHoc = new SqlCommand("Insert Into ChiTietKhoaHocThuocYeuCauTuVan values (@MaTuVan, @MaKhoaHoc, @TenKhoaHoc, @GiangVien,@GiaTien");
+                if (cmdYCTV.ExecuteNonQuery() > 0)
+                {
+                    return true;
+                }
+                return false;
+
+                
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public bool InsertYCTVOld(DTO_YeuCauTuVan tt_yctv)
+        {
+            try
+            {
+                conn.Open();
+                SqlCommand cmdYCTV = new SqlCommand("Insert into YeuCauTuVan (TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) " +
+                    "values " +
+                    "(@TenLeadYeuCau, @NgaySinhLeadYeuCau, @EmailLeadYeuCau, @SDTLeadYeuCau, @GhiChuYCTV, @TrangThaiYCTV, @TaoVaoLuc, @TaoBoiLead)", conn);
+
+                cmdYCTV.Parameters.Add("@TenLeadYeuCau", SqlDbType.NVarChar);
+                cmdYCTV.Parameters["@TenLeadYeuCau"].Value = tt_yctv.TenLeadYeuCau;
+
+                cmdYCTV.Parameters.Add("@NgaySinhLeadYeuCau", SqlDbType.DateTime);
+                cmdYCTV.Parameters["@NgaySinhLeadYeuCau"].Value = tt_yctv.NgaySinhLeadYeuCau;
+
+                cmdYCTV.Parameters.Add("@EmailLeadYeuCau", SqlDbType.NVarChar);
+                cmdYCTV.Parameters["@EmailLeadYeuCau"].Value = tt_yctv.EmailLeadYeuCau;
+
+                cmdYCTV.Parameters.Add("@SDTLeadYeuCau", SqlDbType.NVarChar);
+                cmdYCTV.Parameters["@SDTLeadYeuCau"].Value = tt_yctv.SDTLeadYeuCau;
+
+                cmdYCTV.Parameters.Add("@GhiChuYCTV", SqlDbType.NVarChar);
+                cmdYCTV.Parameters["@GhiChuYCTV"].Value = tt_yctv.GhiChuYCTV;
+
+                cmdYCTV.Parameters.Add("@TrangThaiYCTV", SqlDbType.NVarChar);
+                cmdYCTV.Parameters["@TrangThaiYCTV"].Value = tt_yctv.TrangThaiYCTV;
+
+                cmdYCTV.Parameters.Add("@TaoVaoLuc", SqlDbType.DateTime);
+                cmdYCTV.Parameters["@TaoVaoLuc"].Value = tt_yctv.TaoVaoLuc;
+
+                cmdYCTV.Parameters.Add("@TaoBoiLead", SqlDbType.NVarChar);
+                cmdYCTV.Parameters["@TaoBoiLead"].Value = tt_yctv.TaoBoiLead;
+
+                if (cmdYCTV.ExecuteNonQuery() > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
 
     }
 }

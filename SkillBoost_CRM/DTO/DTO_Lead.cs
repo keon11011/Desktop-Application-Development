@@ -24,11 +24,11 @@ namespace DTO
         private string _lyDoTrangThaiLead;
         private string _nguonLead;
         private string _ghiChuLead;
-        private string _leadTuKhachHangCu;
+        private string _leadTuKHCu;
         private DateTime _taoVaoLuc;
         private string _taoBoi;
         private DateTime _chinhSuaLanCuoiVaoLuc;
-        private string _chinhSuaBoi;
+        private string _chinhSuaLanCuoiBoi;
 
         public string MaLead { get => _maLead; set => _maLead = value; }
         public string HoTenLead { get => _hoTenLead; set => _hoTenLead = value; }
@@ -44,18 +44,18 @@ namespace DTO
         public string LyDoTrangThaiLead { get => _lyDoTrangThaiLead; set => _lyDoTrangThaiLead = value; }
         public string NguonLead { get => _nguonLead; set => _nguonLead = value; }
         public string GhiChuLead { get => _ghiChuLead; set => _ghiChuLead = value; }
-        public string LeadTuKhachHangCu { get => _leadTuKhachHangCu; set => _leadTuKhachHangCu = value; }
+        public string LeadTuKHCu { get => _leadTuKHCu; set => _leadTuKHCu = value; }
         public DateTime TaoVaoLuc { get => _taoVaoLuc; set => _taoVaoLuc = value; }
         public string TaoBoi { get => _taoBoi; set => _taoBoi = value; }
         public DateTime ChinhSuaLanCuoiVaoLuc { get => _chinhSuaLanCuoiVaoLuc; set => _chinhSuaLanCuoiVaoLuc = value; }
-        public string ChinhSuaBoi { get => _chinhSuaBoi; set => _chinhSuaBoi = value; }
+        public string ChinhSuaLanCuoiBoi { get => _chinhSuaLanCuoiBoi; set => _chinhSuaLanCuoiBoi = value; }
 
 
         public DTO_Lead()
         {
 
         }
-        public DTO_Lead( string maLead, string hoTenLead, string gioiTinhLead, DateTime ngaySinhLead, string soDienThoaiLead, string emailLead, string maNgheNghiep, string tenNgheNghiep, string maNVPhuTrachLead, string tenNVPhuTrachLead, string trangThaiLead, string lyDoTrangThaiLead, string nguonLead, string ghiChuLead, string leadTuKhachHangCu, DateTime taoVaoLuc, string taoBoi, DateTime chinhSuaLanCuoiVaoLuc, string chinhSuaBoi)
+        public DTO_Lead( string maLead, string hoTenLead, string gioiTinhLead, DateTime ngaySinhLead, string soDienThoaiLead, string emailLead, string maNgheNghiep, string tenNgheNghiep, string maNVPhuTrachLead, string tenNVPhuTrachLead, string trangThaiLead, string lyDoTrangThaiLead, string nguonLead, string ghiChuLead, string leadTuKHCu, DateTime taoVaoLuc, string taoBoi, DateTime chinhSuaLanCuoiVaoLuc, string chinhSuaLanCuoiBoi)
         { 
             MaLead = maLead;
             HoTenLead = hoTenLead;
@@ -71,11 +71,11 @@ namespace DTO
             LyDoTrangThaiLead = lyDoTrangThaiLead;
             NguonLead = nguonLead;
             GhiChuLead = ghiChuLead;
-            LeadTuKhachHangCu = leadTuKhachHangCu;
+            LeadTuKHCu = leadTuKHCu;
             TaoVaoLuc = taoVaoLuc;
             TaoBoi = taoBoi;
             ChinhSuaLanCuoiVaoLuc = chinhSuaLanCuoiVaoLuc;
-            ChinhSuaBoi = chinhSuaBoi;
+            ChinhSuaLanCuoiBoi = chinhSuaLanCuoiBoi;
         }
             /* Hello */ 
     }
