@@ -72,19 +72,19 @@ ADD CONSTRAINT ConstraintDOMTrangThaiTK CHECK (TrangThaiTK IN (N'Đang hoạt đ
 	RB16. Các thuộc tính TenLeadYeuCau, EmailLeadYeuCau, SDTLeadYeuCau, TrangThaiYCTV, TrangThaiTK, MaNV của bảng YeuCauTuVan không được để trống
 */
 -- RB17. Thuộc tính EmailLeadYeuCau của bảng YeuCauTuVan phải là duy nhất
-ALTER TABLE YeuCauTuVan
-ADD CONSTRAINT ConstraintUniqueEmailYCTV UNIQUE(EmailLeadYeuCau)
+--ALTER TABLE YeuCauTuVan
+--ADD CONSTRAINT ConstraintUniqueEmailYCTV UNIQUE(EmailLeadYeuCau)
 
 -- RB18. Thuộc tính SDTLeadYeuCau của bảng YeuCauTuVan phải là duy nhất
-ALTER TABLE YeuCauTuVan
-ADD CONSTRAINT ConstraintUniqueSDTYCTV UNIQUE(SDTLeadYeuCau)
+--ALTER TABLE YeuCauTuVan
+--ADD CONSTRAINT ConstraintUniqueSDTYCTV UNIQUE(SDTLeadYeuCau)
 
 
 -- RB19. Thuộc tính SDTLeadYeuCau của bảng YeuCauTuVan chỉ chứa các giá trị số
 ALTER TABLE YeuCauTuVan
 ADD CONSTRAINT ConstraintSDTYCTV CHECK (SDTLeadYeuCau NOT LIKE '%[^0-9]%')
 
--- RB20. Thuộc tính TrangThaiYCTV của bảng YeuCauTuVan chỉ luôn có 2 giá trị “Gửi thành công” và “Gửi không thành công”
+-- RB20. Thuộc tính TrangThaiYCTV của bảng YeuCauTuVan chỉ luôn có 2 giá trị “Đã tiếp nhận” và “Chờ tiếp nhận”
 ALTER TABLE YeuCauTuVan
 ADD CONSTRAINT ConstraintDOMTrangThaiYCTV CHECK (TrangThaiYCTV IN (N'Đã tiếp nhận', N'Chờ tiếp nhận'))
 
