@@ -142,6 +142,9 @@
     <EmbeddedResource Include="frmBaoCaoSoLieu.resx">
       <DependentUpon>frmBaoCaoSoLieu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmBaoCaoSoLieu.resx">
+      <DependentUpon>frmBaoCaoSoLieu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>

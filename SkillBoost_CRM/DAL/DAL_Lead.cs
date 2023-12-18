@@ -23,10 +23,10 @@ namespace DAL
                 DataSet ds = new DataSet();
                 da.Fill(ds, "NgheNghiep");
                 return ds;
-
-            }
+           
+        }
             catch (Exception )
-            {
+        {
                 return null;
             }
             finally
@@ -40,62 +40,62 @@ namespace DAL
             {
                 conn.Open();
                 SqlCommand cmdYCTVNewLead = new SqlCommand("Insert into Lead(HoTenLead,GioiTinhLead,NgaySinhLead,SoDienThoaiLead,EmailLead,MaNgheNghiep, TenNgheNghiep, MaNVPhuTrachLead, TenNVPhuTrachLead, TrangThaiLead, LyDoTrangThaiLead, NguonLead, GhiChuLead, LeadTuKHCu, TaoVaoLuc, TaoBoi, ChinhSuaLanCuoiVaoLuc,ChinhSuaLanCuoiBoi) " +
-                "values " +
-                "(@HoTenLead, @GioiTinhLead, @NgaySinhLead, @SoDienThoaiLead, @EmailLead, @MaNgheNghiep, @TenNgheNghiep, @MaNVPhuTrachLead,@TenNVPhuTrachLead,@TrangThaiLead,@LyDoTrangThaiLead,@NguonLead,@GhiChuLead,@LeadTuKHCu,@TaoVaoLuc,@TaoBoi,@ChinhSuaLanCuoiVaoLuc,@ChinhSuaLanCuoiBoi)", conn);
+                    "values " +
+                    "(@HoTenLead, @GioiTinhLead, @NgaySinhLead, @SoDienThoaiLead, @EmailLead, @MaNgheNghiep, @TenNgheNghiep, @MaNVPhuTrachLead,@TenNVPhuTrachLead,@TrangThaiLead,@LyDoTrangThaiLead,@NguonLead,@GhiChuLead,@LeadTuKHCu,@TaoVaoLuc,@TaoBoi,@ChinhSuaLanCuoiVaoLuc,@ChinhSuaLanCuoiBoi)", conn);
 
-                cmdYCTVNewLead.Parameters.Add("@HoTenLead", SqlDbType.NVarChar);
+                    cmdYCTVNewLead.Parameters.Add("@HoTenLead", SqlDbType.NVarChar);
                 cmdYCTVNewLead.Parameters["@HoTenLead"].Value = lead.HoTenLead;
 
-                cmdYCTVNewLead.Parameters.Add("@GioiTinhLead", SqlDbType.NVarChar);
+                    cmdYCTVNewLead.Parameters.Add("@GioiTinhLead", SqlDbType.NVarChar);
                 cmdYCTVNewLead.Parameters["@GioiTinhLead"].Value = lead.GioiTinhLead;
 
-                cmdYCTVNewLead.Parameters.Add("@NgaySinhLead", SqlDbType.DateTime);
+                    cmdYCTVNewLead.Parameters.Add("@NgaySinhLead", SqlDbType.DateTime);
                 cmdYCTVNewLead.Parameters["@NgaySinhLead"].Value = lead.NgaySinhLead;
 
-                cmdYCTVNewLead.Parameters.Add("@SoDienThoaiLead", SqlDbType.NVarChar);
+                    cmdYCTVNewLead.Parameters.Add("@SoDienThoaiLead", SqlDbType.NVarChar);
                 cmdYCTVNewLead.Parameters["@SoDienThoaiLead"].Value = lead.SoDienThoaiLead;
 
-                cmdYCTVNewLead.Parameters.Add("@EmailLead", SqlDbType.NVarChar);
+                    cmdYCTVNewLead.Parameters.Add("@EmailLead", SqlDbType.NVarChar);
                 cmdYCTVNewLead.Parameters["@EmailLead"].Value = lead.EmailLead;
 
                 cmdYCTVNewLead.Parameters.AddWithValue("@MaNgheNghiep", string.IsNullOrEmpty(lead.MaNgheNghiep) ? (object)DBNull.Value:lead.MaNgheNghiep);
 
                 cmdYCTVNewLead.Parameters.AddWithValue("@TenNgheNghiep", string.IsNullOrEmpty(lead.TenNgheNghiep) ? (object)DBNull.Value : lead.TenNgheNghiep);
 
-                cmdYCTVNewLead.Parameters.Add("@MaNVPhuTrachLead", SqlDbType.NVarChar);
+                    cmdYCTVNewLead.Parameters.Add("@MaNVPhuTrachLead", SqlDbType.NVarChar);
                 cmdYCTVNewLead.Parameters["@MaNVPhuTrachLead"].Value = lead.MaNVPhuTrachLead;
 
-                cmdYCTVNewLead.Parameters.Add("@TenNVPhuTrachLead", SqlDbType.NVarChar);
+                    cmdYCTVNewLead.Parameters.Add("@TenNVPhuTrachLead", SqlDbType.NVarChar);
                 cmdYCTVNewLead.Parameters["@TenNVPhuTrachLead"].Value = lead.TenNVPhuTrachLead;
 
-                cmdYCTVNewLead.Parameters.Add("@TrangThaiLead", SqlDbType.NVarChar);
+                    cmdYCTVNewLead.Parameters.Add("@TrangThaiLead", SqlDbType.NVarChar);
                 cmdYCTVNewLead.Parameters["@TrangThaiLead"].Value = "Chờ tư vấn";
 
-                cmdYCTVNewLead.Parameters.Add("@LyDoTrangThaiLead", SqlDbType.NVarChar);
+                    cmdYCTVNewLead.Parameters.Add("@LyDoTrangThaiLead", SqlDbType.NVarChar);
                 cmdYCTVNewLead.Parameters["@LyDoTrangThaiLead"].Value = lead.LyDoTrangThaiLead;
 
-                cmdYCTVNewLead.Parameters.Add("@NguonLead", SqlDbType.NVarChar);
+                    cmdYCTVNewLead.Parameters.Add("@NguonLead", SqlDbType.NVarChar);
                 cmdYCTVNewLead.Parameters["@NguonLead"].Value = lead.NguonLead;
 
-                cmdYCTVNewLead.Parameters.Add("@GhiChuLead", SqlDbType.NVarChar);
+                    cmdYCTVNewLead.Parameters.Add("@GhiChuLead", SqlDbType.NVarChar);
                 cmdYCTVNewLead.Parameters["@GhiChuLead"].Value = lead.GhiChuLead;
 
                 cmdYCTVNewLead.Parameters.AddWithValue("@LeadTuKHCu", string.IsNullOrEmpty(lead.LeadTuKHCu) ? (object)DBNull.Value : lead.LeadTuKHCu);
 
-                cmdYCTVNewLead.Parameters.Add("@TaoVaoLuc", SqlDbType.DateTime);
+                    cmdYCTVNewLead.Parameters.Add("@TaoVaoLuc", SqlDbType.DateTime);
                 cmdYCTVNewLead.Parameters["@TaoVaoLuc"].Value = lead.TaoVaoLuc;
 
-                cmdYCTVNewLead.Parameters.Add("@TaoBoi", SqlDbType.NVarChar);
+                    cmdYCTVNewLead.Parameters.Add("@TaoBoi", SqlDbType.NVarChar);
                 cmdYCTVNewLead.Parameters["@TaoBoi"].Value = lead.TaoBoi;
 
-                cmdYCTVNewLead.Parameters.Add("@ChinhSuaLanCuoiVaoLuc", SqlDbType.DateTime);
+                    cmdYCTVNewLead.Parameters.Add("@ChinhSuaLanCuoiVaoLuc", SqlDbType.DateTime);
                 cmdYCTVNewLead.Parameters["@ChinhSuaLanCuoiVaoLuc"].Value = lead.ChinhSuaLanCuoiVaoLuc;
 
-                cmdYCTVNewLead.Parameters.Add("@ChinhSuaLanCuoiBoi", SqlDbType.NVarChar);
+                    cmdYCTVNewLead.Parameters.Add("@ChinhSuaLanCuoiBoi", SqlDbType.NVarChar);
                 cmdYCTVNewLead.Parameters["@ChinhSuaLanCuoiBoi"].Value = lead.ChinhSuaLanCuoiBoi;
 
-                if (cmdYCTVNewLead.ExecuteNonQuery() > 0)
-                {
+                    if (cmdYCTVNewLead.ExecuteNonQuery() > 0)
+                    {
                     return true;
                 }
                 return false;
@@ -245,10 +245,10 @@ namespace DAL
                 cmdNewHDLead.Parameters["@TaoVaoLuc"].Value = DateTime.Now;
                 if (cmdNewHDLead.ExecuteNonQuery() > 0)
                 {
-                    return true;
-                }
-                return false;
-
+                        return true;
+                    }
+                    return false;
+                
             }
             catch (Exception)
             {
@@ -260,5 +260,5 @@ namespace DAL
             }
         }
 
-    } 
+    }
 }

@@ -25,11 +25,21 @@ namespace BUS
         {
             return dAL_YeuCauTuVan.TimYCTV(tenYCTV);
         }
-
         public DataTable LocYCTV(string trangthailocYCTV)
         {
             return dAL_YeuCauTuVan.LocYCTV(trangthailocYCTV);
         }
+        public bool InsertYCTVNew(DTO_YeuCauTuVan tt_yctv)
+        {
+            return dAL_YeuCauTuVan.InsertYCTVNew(tt_yctv);
+        }
+        public bool InsertYCTVOld(DTO_YeuCauTuVan tt_yctv)
+        {
+            return dAL_YeuCauTuVan.InsertYCTVOld(tt_yctv);
+        } 
+
+        
+
 
         public bool InsertLeadcuaYCTV(DTO_YeuCauTuVan tt_yctv)
         {

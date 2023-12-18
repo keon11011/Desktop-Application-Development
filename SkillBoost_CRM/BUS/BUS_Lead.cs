@@ -11,7 +11,7 @@ namespace BUS
 {
     public class BUS_Lead
     {
-        DAL_Lead dAL_Lead = new DAL_Lead();
+        DAL_Lead dAL_Lead = new DAL_Lead(); 
         public DataSet SelectNgheNghiep()
         {
             return dAL_Lead.SelectNgheNghiep();

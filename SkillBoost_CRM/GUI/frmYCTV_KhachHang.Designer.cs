@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.btnGuiYCTV = new System.Windows.Forms.Button();
-            this.txtNgaysinh = new System.Windows.Forms.TextBox();
             this.txtSdt = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtGhichu = new System.Windows.Forms.TextBox();
@@ -199,7 +198,6 @@
             this.Controls.Add(this.cbKhoaHoc);
             this.Controls.Add(this.dtpNgaySinh);
             this.Controls.Add(this.btnGuiYCTV);
-            this.Controls.Add(this.txtNgaysinh);
             this.Controls.Add(this.txtSdt);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtGhichu);
@@ -225,7 +223,6 @@
 
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button btnGuiYCTV;
-        private System.Windows.Forms.TextBox txtNgaysinh;
         private System.Windows.Forms.TextBox txtSdt;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtGhichu;
