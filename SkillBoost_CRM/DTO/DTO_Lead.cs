@@ -24,7 +24,7 @@ namespace DTO
         private string _lyDoTrangThaiLead;
         private string _nguonLead;
         private string _ghiChuLead;
-        private string _leadTuKhachHangCu;
+        private string _leadTuKHCu;
         private DateTime _taoVaoLuc;
         private string _taoBoi;
         private DateTime _chinhSuaLanCuoiVaoLuc;
@@ -44,7 +44,7 @@ namespace DTO
         public string LyDoTrangThaiLead { get => _lyDoTrangThaiLead; set => _lyDoTrangThaiLead = value; }
         public string NguonLead { get => _nguonLead; set => _nguonLead = value; }
         public string GhiChuLead { get => _ghiChuLead; set => _ghiChuLead = value; }
-        public string LeadTuKhachHangCu { get => _leadTuKhachHangCu; set => _leadTuKhachHangCu = value; }
+        public string LeadTuKHCu { get => _leadTuKHCu; set => _leadTuKHCu = value; }
         public DateTime TaoVaoLuc { get => _taoVaoLuc; set => _taoVaoLuc = value; }
         public string TaoBoi { get => _taoBoi; set => _taoBoi = value; }
         public DateTime ChinhSuaLanCuoiVaoLuc { get => _chinhSuaLanCuoiVaoLuc; set => _chinhSuaLanCuoiVaoLuc = value; }
@@ -71,7 +71,7 @@ namespace DTO
             LyDoTrangThaiLead = lyDoTrangThaiLead;
             NguonLead = nguonLead;
             GhiChuLead = ghiChuLead;
-            LeadTuKhachHangCu = leadTuKhachHangCu;
+            LeadTuKHCu = leadTuKHCu;
             TaoVaoLuc = taoVaoLuc;
             TaoBoi = taoBoi;
             ChinhSuaLanCuoiVaoLuc = chinhSuaLanCuoiVaoLuc;

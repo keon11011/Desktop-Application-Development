@@ -31,8 +31,8 @@ namespace GUI
                 MessageBox.Show("Đăng nhập thành công");
                 SharedResources.MaPIC = maPIC;
                 Hide();
-                frmDanhSachKH FRMfrmDanhSachKH = new frmDanhSachKH();
-                FRMfrmDanhSachKH.Show();
+                frmYCTV_KhachHang FRMfrmYCTV_KhachHang = new frmYCTV_KhachHang();
+                FRMfrmYCTV_KhachHang.Show();
             }
             else
             {
