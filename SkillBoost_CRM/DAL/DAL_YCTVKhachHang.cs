@@ -5,40 +5,46 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DTO;
 
 namespace DAL
 {
     public class DAL_YCTVKhachHang:DBConnect
     {
-        //public bool InsertSanPham(DTOSanPham sp)
-        //{
-        //    try
-        //    {
-        //        conn.Open();
+        public bool InsertYCTVKhachHang(DTO_YCTVKhachHang kh)
+        {
+            try
+            {
+                conn.Open();
 
-        //        SqlCommand cmd = new SqlCommand("Insert into SanPham(MaSP, TenSP, MaLoai) values (@MaSP, @TenSP, @MaLoai)", conn);
+                SqlCommand cmd = new SqlCommand("Insert into YeuCauTuVan(TenLeadYeuCau,NgaySinhLeadYeuCau , SDTLeadYeuCau, EmailLeadYeuCau, GhiChuYCTV) " +
+                                                    "values (@TenLeadYeuCau,@NgaySinhLeadYeuCau , @SDTLeadYeuCau,@EmailLeadYeuCau, @GhiChuYCTV)", conn);
 
-        //        cmd.Parameters.Add("@MaSP", SqlDbType.NVarChar);
-        //        cmd.Parameters["@MaSP"].Value = sp.MaSP;
-        //        cmd.Parameters.Add("@TenSP", SqlDbType.NVarChar);
-        //        cmd.Parameters["@TenSP"].Value = sp.TenSP;
-        //        cmd.Parameters.Add("@MaLoai", SqlDbType.NVarChar);
-        //        cmd.Parameters["@MaLoai"].Value = sp.MaLoai;
+                cmd.Parameters.Add("@TenLeadYeuCau", SqlDbType.NVarChar);
+                cmd.Parameters["@TenLeadYeuCau"].Value = kh.TenLeadYeuCau;
+                cmd.Parameters.Add("@NgaySinhLeadYeuCau", SqlDbType.DateTime);
+                cmd.Parameters["@NgaySinhLeadYeuCau"].Value = kh.NgaySinhLeadYeuCau;
+                cmd.Parameters.Add("@SDTLeadYeuCau", SqlDbType.NVarChar);
+                cmd.Parameters["@SDTLeadYeuCau"].Value = kh.SdtLeadYeuCau;
+                cmd.Parameters.Add("@EmailLeadYeuCau", SqlDbType.NVarChar);
+                cmd.Parameters["@EmailLeadYeuCau"].Value = kh.EmailLeadYeuCau;
+                cmd.Parameters.Add("@GhiChuYCTV", SqlDbType.NVarChar);
+                cmd.Parameters["@GhiChuYCTV"].Value = kh.GhiChuYCTV;
 
-        //        if (cmd.ExecuteNonQuery() > 0)
-        //        {
-        //            return true;
-        //        }
-        //        return false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return false;
-        //    }
-        //    finally
-        //    {
-        //        conn.Close();
-        //    }
-        //}
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }
