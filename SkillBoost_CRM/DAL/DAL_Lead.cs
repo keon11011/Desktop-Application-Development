@@ -208,57 +208,6 @@ namespace DAL
                 conn.Close();
             }
         }
-        public bool InsertHDLead (DTO_Lead lead)
-        {
-            try
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("select HoTenNV from NhanVien where MaNV=@MaNV", conn);
-                cmd.Parameters.Add("@MaNV", SqlDbType.VarChar).Value = lead.MaNVPhuTrachLead;
-                lead.TenNVPhuTrachLead = cmd.ExecuteScalar().ToString();
-
-                SqlCommand cmdNewHDLead = new SqlCommand("Insert into HoatDongLead(MaLead,TenHDLead,LoaiHDLead,HDLeadDuocTaoBoi, MaNVPhuTrachHDLead, TenNVPhuTrachHDLead, MaEmailDenLead, TaoVaoLuc) " +
-                "values " +
-                "(@MaLead, @TenHDLead, @LoaiHDLead, @HDLeadDuocTaoBoi, @MaNVPhuTrachHDLead, @TenNVPhuTrachHDLead, @MaEmailDenLead, @TaoVaoLuc)", conn);
-
-                cmdNewHDLead.Parameters.Add("@MaLead", SqlDbType.VarChar);
-                cmdNewHDLead.Parameters["@MaLead"].Value = lead.MaLead;
-
-                cmdNewHDLead.Parameters.Add("@TenHDLead", SqlDbType.NVarChar);
-                cmdNewHDLead.Parameters["@TenHDLead"].Value = "Yêu cầu tư vấn đến " + lead.HoTenLead;
-
-                cmdNewHDLead.Parameters.Add("@LoaiHDLead", SqlDbType.NVarChar);
-                cmdNewHDLead.Parameters["@LoaiHDLead"].Value = "Yêu cầu";
-
-                cmdNewHDLead.Parameters.Add("@HDLeadDuocTaoBoi", SqlDbType.NVarChar);
-                cmdNewHDLead.Parameters["@HDLeadDuocTaoBoi"].Value = lead.HoTenLead;
-
-                cmdNewHDLead.Parameters.Add("@MaNVPhuTrachHDLead ", SqlDbType.VarChar);
-                cmdNewHDLead.Parameters["@MaNVPhuTrachHDLead"].Value = lead.MaNVPhuTrachLead;
-
-                cmdNewHDLead.Parameters.Add("@TenNVPhuTrachHDLead", SqlDbType.NVarChar);
-                cmdNewHDLead.Parameters["@TenNVPhuTrachHDLead"].Value = lead.TenNVPhuTrachLead;
-
-                cmdNewHDLead.Parameters.AddWithValue("@MaEmailDenLead", string.IsNullOrEmpty("") ? (object)DBNull.Value : "");
-
-                cmdNewHDLead.Parameters.Add("@TaoVaoLuc", SqlDbType.DateTime);
-                cmdNewHDLead.Parameters["@TaoVaoLuc"].Value = DateTime.Now;
-                if (cmdNewHDLead.ExecuteNonQuery() > 0)
-                {
-                        return true;
-                    }
-                    return false;
-                
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
         public bool InsertYCTVcuaLeadNew(DTO_Lead tt_yctv)
         {
             try

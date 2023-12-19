@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnGuiYCTV = new System.Windows.Forms.Button();
             this.txtSdt = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -41,9 +42,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.cbKhoaHoc = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnGuiYCTV
@@ -57,14 +58,6 @@
             this.btnGuiYCTV.Text = "Gửi yêu cầu tư vấn";
             this.btnGuiYCTV.UseVisualStyleBackColor = true;
             this.btnGuiYCTV.Click += new System.EventHandler(this.btnGuiYCTV_Click);
-            // 
-            // txtNgaysinh
-            // 
-            this.txtNgaysinh.Location = new System.Drawing.Point(515, 120);
-            this.txtNgaysinh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtNgaysinh.Name = "txtNgaysinh";
-            this.txtNgaysinh.Size = new System.Drawing.Size(271, 22);
-            this.txtNgaysinh.TabIndex = 31;
             // 
             // txtSdt
             // 
@@ -178,10 +171,6 @@
             this.dtpNgaySinh.Size = new System.Drawing.Size(269, 22);
             this.dtpNgaySinh.TabIndex = 34;
             // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
             // cbKhoaHoc
             // 
             this.cbKhoaHoc.FormattingEnabled = true;
@@ -189,6 +178,10 @@
             this.cbKhoaHoc.Name = "cbKhoaHoc";
             this.cbKhoaHoc.Size = new System.Drawing.Size(271, 24);
             this.cbKhoaHoc.TabIndex = 35;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
             // 
             // frmYCTV_KhachHang
             // 
@@ -213,7 +206,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmYCTV_KhachHang";
             this.Load += new System.EventHandler(this.frmYCTV_KhachHang_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,7 +214,7 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        
         private System.Windows.Forms.Button btnGuiYCTV;
         private System.Windows.Forms.TextBox txtSdt;
         private System.Windows.Forms.TextBox txtEmail;
@@ -237,5 +230,6 @@
         private System.Windows.Forms.DateTimePicker dtpNgaySinh;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ComboBox cbKhoaHoc;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }

@@ -180,6 +180,7 @@ namespace DAL
                 else
                 {
                     DTO_Lead lead = new DTO_Lead();
+                    DAL_Lead dAL_Lead = new DAL_Lead();
                     lead.HoTenLead = yctv.TenLeadYeuCau;
                     lead.GioiTinhLead = "";
                     lead.NgaySinhLead = yctv.NgaySinhLeadYeuCau;
@@ -199,13 +200,15 @@ namespace DAL
                     lead.ChinhSuaLanCuoiVaoLuc = yctv.TaoVaoLuc;
                     lead.ChinhSuaLanCuoiBoi = "Hệ thống";
                     reader.Close();
-                    DAL_Lead dAL_Lead = new DAL_Lead();
-
+                    
+                    
+                    
+                    DAL_HoatDongLead dAL_HDLead = new DAL_HoatDongLead();
                     if (dAL_Lead.InsertLead(lead))
                     {
                         SqlCommand cmdmalead = new SqlCommand("select top 1 MaLead from Lead order by STT DESC", conn);
-                        lead.MaLead = cmdmalead.ExecuteScalar().ToString();
-                        if (dAL_Lead.InsertHDLead(lead))
+                        dAL_HDLead.MaLead = cmdmalead.ExecuteScalar().ToString();
+                        if (dAL_HDLead.ThemHoatDongLead())
                         {
                             return true;
                         }
