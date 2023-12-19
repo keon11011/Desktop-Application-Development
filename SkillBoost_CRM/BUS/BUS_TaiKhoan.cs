@@ -26,5 +26,9 @@ namespace BUS
         {
             return dal_TaiKhoan.DangNhap(dTO_TaiKhoan, ref maPIC);
         }
+        public bool TimChucVu(ref string chucVu, string  maPIC)
+        {
+            return dal_TaiKhoan.TimChucVu(ref chucVu, maPIC);
+        }
     }
 }
