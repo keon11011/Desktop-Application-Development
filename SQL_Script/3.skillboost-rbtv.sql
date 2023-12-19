@@ -264,6 +264,11 @@ ADD CONSTRAINT ConstraintDOMTrangThaiEmailMau CHECK (TrangThaiEmailMau IN (N'Đa
 */
 GO
 
+ALTER TABLE QuyDinhGiamGia
+ADD CONSTRAINT ConstraintDOMTrangThaiQLQDGG CHECK (TrangThaiQuyDinhGiamGia IN (N'Đang hoạt động', N'Vô hiệu hóa',  N'Xóa mềm'))
+
+GO
+
 CREATE TRIGGER TR_HASH_MK ON TaiKhoan
 AFTER INSERT
 AS
