@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.components = new System.ComponentModel.Container();
             this.btnGuiYCTV = new System.Windows.Forms.Button();
             this.txtSdt = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -42,18 +42,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cbKhoaHoc = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.CheckOnClick = true;
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(189, 223);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(271, 140);
-            this.checkedListBox1.TabIndex = 33;
-            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // btnGuiYCTV
             // 
@@ -179,13 +171,25 @@
             this.dtpNgaySinh.Size = new System.Drawing.Size(269, 22);
             this.dtpNgaySinh.TabIndex = 34;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // cbKhoaHoc
+            // 
+            this.cbKhoaHoc.FormattingEnabled = true;
+            this.cbKhoaHoc.Location = new System.Drawing.Point(189, 230);
+            this.cbKhoaHoc.Name = "cbKhoaHoc";
+            this.cbKhoaHoc.Size = new System.Drawing.Size(271, 24);
+            this.cbKhoaHoc.TabIndex = 35;
+            // 
             // frmYCTV_KhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(971, 520);
+            this.Controls.Add(this.cbKhoaHoc);
             this.Controls.Add(this.dtpNgaySinh);
-            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.btnGuiYCTV);
             this.Controls.Add(this.txtSdt);
             this.Controls.Add(this.txtEmail);
@@ -202,14 +206,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmYCTV_KhachHang";
             this.Load += new System.EventHandler(this.frmYCTV_KhachHang_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button btnGuiYCTV;
         private System.Windows.Forms.TextBox txtSdt;
         private System.Windows.Forms.TextBox txtEmail;
@@ -223,5 +226,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpNgaySinh;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ComboBox cbKhoaHoc;
     }
 }

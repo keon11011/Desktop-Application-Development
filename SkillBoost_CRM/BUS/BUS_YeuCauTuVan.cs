@@ -17,6 +17,10 @@ namespace BUS
         {
             return dAL_YeuCauTuVan.SelectYCTV();
         }
+        public DataTable SelecKhoaHoc()
+        {
+            return dAL_YeuCauTuVan.SelectKhoaHoc();
+        }
         public DataTable TimYCTV(string tenYCTV)
         {
             return dAL_YeuCauTuVan.TimYCTV(tenYCTV);
@@ -25,18 +29,15 @@ namespace BUS
         {
             return dAL_YeuCauTuVan.LocYCTV(trangthailocYCTV);
         }
-        public bool InsertYCTVNew(DTO_YeuCauTuVan tt_yctv)
-        {
-            return dAL_YeuCauTuVan.InsertYCTVNew(tt_yctv);
-        }
-        public bool InsertYCTVOld(DTO_YeuCauTuVan tt_yctv)
-        {
-            return dAL_YeuCauTuVan.InsertYCTVOld(tt_yctv);
-        } 
-
         
-
-
+        public bool InsertLeadcuaYCTV(DTO_YeuCauTuVan tt_yctv)
+        {
+            return dAL_YeuCauTuVan.InsertLeadcuaYCTV(tt_yctv);
+        }
+        public bool InsertChiTietKhoaHoc(DTO_YeuCauTuVan khoahoc_yctv)
+        {
+            return dAL_YeuCauTuVan.InsertChiTietKhoaHoc(khoahoc_yctv);
+        }
     }
 
 }
