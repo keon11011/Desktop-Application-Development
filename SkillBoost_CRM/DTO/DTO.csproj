@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO_HoatDongLead.cs" />
+    <Compile Include="DTO_KhoaHoc.cs" />
     <Compile Include="DTO_QuyDinhGiamGia.cs" />
     <Compile Include="DTO_Lead.cs" />
     <Compile Include="DTO_TaiKhoan.cs" />

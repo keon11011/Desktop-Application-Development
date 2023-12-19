@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL_HoatDongLead.cs" />
     <Compile Include="DAL_KhachHang.cs" />
+    <Compile Include="DAL_KhoaHoc.cs" />
     <Compile Include="DAL_Lead.cs" />
     <Compile Include="DAL_NgheNghiep.cs" />
     <Compile Include="DAL_QuyDinhGiamGia.cs" />
