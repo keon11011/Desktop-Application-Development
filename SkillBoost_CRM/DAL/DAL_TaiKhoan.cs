@@ -68,6 +68,7 @@ namespace DAL
                 conn.Close();
             }
         }
+        public string ChonChucVu()
        
         //public DataTable SelectSanPham()
         //{

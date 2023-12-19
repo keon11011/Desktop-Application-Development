@@ -82,7 +82,7 @@ CREATE TABLE Lead(
 	, TenNVPhuTrachLead			NVARCHAR(50) NOT NULL
 	, TrangThaiLead				NVARCHAR(30) NOT NULL
 	, LyDoTrangThaiLead			NVARCHAR(100)
-	, NguonLead					VARCHAR(20) NOT NULL
+	, NguonLead					NVARCHAR(20) NOT NULL
 	, GhiChuLead				NVARCHAR(100)
 	, LeadTuKHCu				VARCHAR(13)
 	, TaoVaoLuc					DATETIME NOT NULL
