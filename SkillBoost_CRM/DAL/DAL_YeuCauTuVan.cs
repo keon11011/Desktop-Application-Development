@@ -138,7 +138,23 @@ namespace DAL
                 cmdYCTV.Parameters.Add("@TaoBoiLead", SqlDbType.NVarChar);
                 cmdYCTV.Parameters["@TaoBoiLead"].Value = tt_yctv.TaoBoiLead;
 
-                SqlCommand cmdChiTietKhoaHoc = new SqlCommand("Insert Into ChiTietKhoaHocThuocYeuCauTuVan values (@MaTuVan, @MaKhoaHoc, @TenKhoaHoc, @GiangVien,@GiaTien");
+                //SqlCommand cmdChiTietKhoaHoc = new SqlCommand("Insert Into ChiTietKhoaHocThuocYeuCauTuVan values (@MaTuVan, @MaKhoaHoc, @TenKhoaHoc, @GiangVien,@GiaTien");
+
+                //cmdYCTV.Parameters.Add("@MaTuVan", SqlDbType.NVarChar);
+                //cmdYCTV.Parameters["@MaTuVan"].Value = tt_yctv.MaTuVan;
+
+                //cmdYCTV.Parameters.Add("@MaKhoaHoc", SqlDbType.NVarChar);
+                //cmdYCTV.Parameters["@MaKhoaHoc"].Value = tt_yctv.MaKhoaHoc;
+
+                //cmdYCTV.Parameters.Add("@TenKhoaHoc", SqlDbType.NVarChar);
+                //cmdYCTV.Parameters["@TenKhoaHoc"].Value = tt_yctv.TenKhoaHoc;
+
+                //cmdYCTV.Parameters.Add("@GiangVien", SqlDbType.NVarChar);
+                //cmdYCTV.Parameters["@GiangVien"].Value = tt_yctv.GiangVien;
+
+                //cmdYCTV.Parameters.Add("@GiaTien", SqlDbType.NVarChar);
+                //cmdYCTV.Parameters["@GiaTien"].Value = tt_yctv.GiaTien;
+
                 if (cmdYCTV.ExecuteNonQuery() > 0)
                 {
                     return true;
