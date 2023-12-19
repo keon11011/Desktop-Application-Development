@@ -18,7 +18,10 @@ namespace DTO
         private string _trangThaiYCTV;
         private DateTime _taoVaoLuc;
         private string _taoBoiLead;
-
+        private string _maKhoaHoc;
+        private string _tenKhoaHoc;
+        private string _giangVien;
+        private string _giaTien;
 
         public string MaTuVan { get => _maTuVan; set => _maTuVan = value; }
         public string TenLeadYeuCau { get => _tenLeadYeuCau; set => _tenLeadYeuCau = value; }
@@ -29,13 +32,16 @@ namespace DTO
         public string TrangThaiYCTV { get => _trangThaiYCTV; set => _trangThaiYCTV = value; }
         public DateTime TaoVaoLuc { get => _taoVaoLuc; set => _taoVaoLuc = value; }
         public string TaoBoiLead { get => _taoBoiLead; set => _taoBoiLead = value; }
-
+        public string MaKhoaHoc { get => _maKhoaHoc; set => _maKhoaHoc = value; }
+        public string TenKhoaHoc { get => _tenKhoaHoc; set => _tenKhoaHoc = value; }
+        public string GiangVien { get => _giangVien; set => _giangVien = value; }
+        public string GiaTien { get => _giaTien; set => _giaTien = value; }
 
         public DTO_YeuCauTuVan()
         {
 
         }
-        public DTO_YeuCauTuVan(string maTuVan, string tenLeadYeuCau, DateTime ngaySinhLeadYeuCau, string emailLeadYeuCau, string sDTLeadYeuCau, string ghiChuYCTV, string trangThaiYCTV, DateTime taoVaoLuc, string taoBoiLead)
+        public DTO_YeuCauTuVan(string maTuVan, string tenLeadYeuCau, DateTime ngaySinhLeadYeuCau, string emailLeadYeuCau, string sDTLeadYeuCau, string ghiChuYCTV, string trangThaiYCTV, DateTime taoVaoLuc, string taoBoiLead, string maKhoaHoc, string tenKhoaHoc, string giangVien, string giaTien)
         {
             MaTuVan = maTuVan;
             TenLeadYeuCau = tenLeadYeuCau;
@@ -55,7 +61,14 @@ namespace DTO
             TrangThaiYCTV = trangThaiYCTV;
             TaoVaoLuc = taoVaoLuc;
             TaoBoiLead = taoBoiLead;
-
+            _maKhoaHoc = maKhoaHoc;
+            _tenKhoaHoc = tenKhoaHoc;
+            _giangVien = giangVien;
+            _giaTien = giaTien;
+            MaKhoaHoc = maKhoaHoc;
+            TenKhoaHoc = tenKhoaHoc;
+            GiangVien = giangVien;
+            GiaTien = giaTien;
         }
     }
 }
