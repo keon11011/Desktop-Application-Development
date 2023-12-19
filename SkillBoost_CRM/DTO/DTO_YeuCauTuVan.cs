@@ -23,7 +23,6 @@ namespace DTO
         private string _giangVien;
         private string _giaTien;
 
-
         public string MaTuVan { get => _maTuVan; set => _maTuVan = value; }
         public string TenLeadYeuCau { get => _tenLeadYeuCau; set => _tenLeadYeuCau = value; }
         public DateTime NgaySinhLeadYeuCau { get => _ngaySinhLeadYeuCau; set => _ngaySinhLeadYeuCau = value; }
@@ -37,7 +36,6 @@ namespace DTO
         public string TenKhoaHoc { get => _tenKhoaHoc; set => _tenKhoaHoc = value; }
         public string GiangVien { get => _giangVien; set => _giangVien = value; }
         public string GiaTien { get => _giaTien; set => _giaTien = value; }
-
 
         public DTO_YeuCauTuVan()
         {

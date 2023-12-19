@@ -143,6 +143,7 @@ namespace DAL
                 cmdYCTV.Parameters.Add("@TaoBoiLead", SqlDbType.NVarChar);
                 cmdYCTV.Parameters["@TaoBoiLead"].Value = tt_yctv.TaoBoiLead;
 
+                SqlCommand cmdChiTietKhoaHoc = new SqlCommand("Insert Into ChiTietKhoaHocThuocYeuCauTuVan values (@MaTuVan, @MaKhoaHoc, @TenKhoaHoc, @GiangVien,@GiaTien");
                 if (cmdYCTV.ExecuteNonQuery() > 0)
                 {
                     
