@@ -116,7 +116,7 @@ ADD CONSTRAINT ConstraintUniqueEmailLead UNIQUE(EmailLead)
 
 -- RB28. Thuộc tính TrangThaiLead của bảng KhachHang chỉ luôn có 4 giá trị “Chờ tư vấn”, “Đang tư vấn”, “Ngừng theo dõi” và “Đã thanh toán”
 ALTER TABLE Lead
-ADD CONSTRAINT ConstraintDOMTrangThaiLead CHECK (TrangThaiLead IN (N'Chờ tư vấn', N'Đang tư vấn', N'Ngừng theo dõi', N'Đã thanh toán'))
+ADD CONSTRAINT ConstraintDOMTrangThaiLead CHECK (TrangThaiLead IN (N'Chờ tư vấn', N'Đang tư vấn', N'Ngừng theo dõi', N'Đã thanh toán', N'Xóa mềm'))
 
 /* Bảng HoatDongLead : Từ RB29 đến RB32 */
 /* Các RB đã có
@@ -140,7 +140,7 @@ ADD CONSTRAINT ConstraintDOMHDLeadDuocTaoBoi CHECK (LoaiHDLead IN (N'Hệ thốn
 */
 -- RB35. Thuộc tính TrangThaiBaoGia của bảng BaoGia chỉ luôn có 3 giá trị “Đã thanh toán”, “Chưa thanh toán” và “Đã hết hạn”
 ALTER TABLE BaoGia
-ADD CONSTRAINT ConstraintDOMTrangThaiBaoGia CHECK (TrangThaiBaoGia IN (N'Đã thanh toán', N'Chưa thanh toán', N'Đã hết hạn'))
+ADD CONSTRAINT ConstraintDOMTrangThaiBaoGia CHECK (TrangThaiBaoGia IN (N'Đã thanh toán', N'Chưa thanh toán', N'Đã hết hạn', N'Xóa mềm'))
 
 /* Use case 4*/
 /* Bảng QuyDinhGiamGia : Từ RB36 đến RB38 */

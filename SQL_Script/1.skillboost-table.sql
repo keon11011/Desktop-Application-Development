@@ -164,6 +164,7 @@ CREATE TABLE QuyDinhGiamGia(
 	, TaoBoiNV					NVARCHAR(50) NOT NULL
 	, ChinhSuaLanCuoiVaoLuc		DATETIME NOT NULL
 	, ChinhSuaLanCuoiBoi		NVARCHAR(20) NOT NULL
+	, ThaiQuyDinhGiamGia		NVARCHAR(30) DEFAULT N'Đang hoạt động' NOT NULL
 )
 
 /* TẠO TABLE MaGiamGia */
