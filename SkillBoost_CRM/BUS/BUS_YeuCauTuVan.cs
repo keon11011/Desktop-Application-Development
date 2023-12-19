@@ -37,7 +37,11 @@ namespace BUS
         public bool InsertChiTietKhoaHoc(DTO_YeuCauTuVan khoahoc_yctv)
         {
             return dAL_YeuCauTuVan.InsertChiTietKhoaHoc(khoahoc_yctv);
+        } 
+
+        
+
+
     }
-}
 
 }

@@ -107,8 +107,9 @@ namespace DAL
         }
         public bool InsertYCTV(DTO_YeuCauTuVan tt_yctv)
         {
+
             try
-            {
+            { 
                 DAL_YeuCauTuVan dAL_YeuCauTuVan = new DAL_YeuCauTuVan();
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("Select MaLead from Lead where SoDienThoaiLead = @SDT", conn);
@@ -146,7 +147,7 @@ namespace DAL
                 SqlCommand cmdChiTietKhoaHoc = new SqlCommand("Insert Into ChiTietKhoaHocThuocYeuCauTuVan values (@MaTuVan, @MaKhoaHoc, @TenKhoaHoc, @GiangVien,@GiaTien");
                 if (cmdYCTV.ExecuteNonQuery() > 0)
                 {
-                    
+
                     dAL_YeuCauTuVan.InsertChiTietKhoaHoc(tt_yctv);
                     return true;
                 }
@@ -200,7 +201,8 @@ namespace DAL
                     lead.ChinhSuaLanCuoiVaoLuc = yctv.TaoVaoLuc;
                     lead.ChinhSuaLanCuoiBoi = "Hệ thống";
                     reader.Close();
-                    
+                    DAL_Lead dAL_Lead = new DAL_Lead();
+
                     
                     
                     DAL_HoatDongLead dAL_HDLead = new DAL_HoatDongLead();
@@ -209,13 +211,13 @@ namespace DAL
                         SqlCommand cmdmalead = new SqlCommand("select top 1 MaLead from Lead order by STT DESC", conn);
                         dAL_HDLead.MaLead = cmdmalead.ExecuteScalar().ToString();
                         if (dAL_HDLead.ThemHoatDongLead())
-                        {
-                            return true;
-                        }
+                {
+                    return true;
+                }
                         else return false; 
 
                     }
-
+                
                     return false;
                 }
             }
@@ -297,5 +299,6 @@ namespace DAL
                 conn.Close();
             }
         }
+
     }
 }

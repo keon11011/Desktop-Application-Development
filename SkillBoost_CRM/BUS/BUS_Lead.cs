@@ -25,7 +25,10 @@ namespace BUS
         {
             dAL_Lead.SelectLead(ref dTO_Lead);
         }
-        
+        public bool InsertHDLead(DTO_Lead lead)
+        {
+            return dAL_Lead.InsertHDLead(lead);
+        }
 
 
     }

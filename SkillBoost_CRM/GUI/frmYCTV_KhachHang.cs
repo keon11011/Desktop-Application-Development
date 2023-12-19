@@ -50,18 +50,18 @@ namespace GUI
             }
 
             if (DateTime.Now.Year - dtpNgaySinh.Value.Year < 15)
-            {
+                        {
                 errorProvider2.SetError(dtpNgaySinh, "Bạn phải trên 15 tuổi"); return;
-
-            }
+                
+                        }
             if (txtEmail.Text == "")
             {
                 errorProvider2.SetError(txtEmail, "Bạn chưa nhập Email"); return;
-            }
+                    }
             if (txtSdt.Text == "")
             {
                 errorProvider2.SetError(txtSdt, "Bạn chưa nhập Số điện thoại"); return;
-            }
+                }
             if (txtSdt.ToString().Length < 10 || txtSdt.ToString().Substring(0) != "0")
             {
                 errorProvider2.SetError(txtSdt, "Số điện thoại bạn nhập không hợp lệ"); return;
@@ -75,10 +75,10 @@ namespace GUI
             yctv.GhiChuYCTV = txtGhichu.Text;
             yctv.TrangThaiYCTV = "Chờ tiếp nhận";
             yctv.TaoVaoLuc = DateTime.Now;
-            yctv.TaoBoiLead = "";
+            yctv.TaoBoiLead = "";   
             yctv.MaKhoaHoc = cbKhoaHoc.SelectedValue.ToString();
             if (bUS_YeuCauTuVan.InsertLeadcuaYCTV(yctv))
-            {
+                {
                 if (bUS_YeuCauTuVan.InsertChiTietKhoaHoc(yctv))
                 {
                     MessageBox.Show($"Gửi Yêu cầu tư vấn thành công!");
@@ -91,7 +91,7 @@ namespace GUI
                 else MessageBox.Show($"Gửi yêu cầu tư vấn thất bại");
             }
             else MessageBox.Show($"Gửi Yêu cầu tư vấn thất bại!");
-
+            
         }
 
         //private void btnGuiYCTV_Click(object sender, EventArgs e)
