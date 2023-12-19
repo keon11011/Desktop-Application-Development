@@ -64,6 +64,11 @@ namespace GUI
             LoadNgheNghiep();
 
         }
+
+        private void cbNgheNghiep_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

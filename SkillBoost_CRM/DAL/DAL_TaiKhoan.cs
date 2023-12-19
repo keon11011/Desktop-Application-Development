@@ -24,7 +24,7 @@ namespace DAL
 
                 da.Dispose();
 
-                dTO_TaiKhoan.TrangThaiTK = dt.Rows[0][5].ToString();
+                dTO_TaiKhoan.TrangThaiTK = dt.Rows[0][6].ToString();
 
                 if (dt.Rows.Count == 0 || dTO_TaiKhoan.TrangThaiTK == "Dừng hoạt động")
                 {
@@ -38,18 +38,21 @@ namespace DAL
                     cmd.Parameters.Add("@MatKhauTK", SqlDbType.VarChar);
                     cmd.Parameters["@MatKhauTK"].Value = dTO_TaiKhoan.MatKhauTK;
 
-                    dTO_TaiKhoan.MaSaltTK = dt.Rows[0][4].ToString();
+                    dTO_TaiKhoan.MaSaltTK = dt.Rows[0][5].ToString();
 
                     cmd.Parameters.Add("@MaSaltTK", SqlDbType.UniqueIdentifier);
-                    cmd.Parameters["@MaSaltTK"].Value = dt.Rows[0][4];
+                    cmd.Parameters["@MaSaltTK"].Value = dt.Rows[0][5];
+
+                    //cmd.Parameters.Add("@GuidParameter", SqlDbType.UniqueIdentifier).Value = new System.Data.SqlTypes.SqlGuid(dt.Rows[0][4]); //The value of @ID
+
 
                     dTO_TaiKhoan.MaHashTK = (byte[])cmd.ExecuteScalar();
 
-                    var MaHashTK = dt.Rows[0][3];
+                    var MaHashTK = dt.Rows[0][4];
 
-                    if (dTO_TaiKhoan.MaHashTK.SequenceEqual((IEnumerable<byte>)MaHashTK))
+                    if (dTO_TaiKhoan.MaHashTK.SequenceEqual((byte[])MaHashTK))
                     {
-                        maPIC = dt.Rows[0][6].ToString();
+                        maPIC = dt.Rows[0][7].ToString();
                         return true;
                     }
                     else
@@ -67,6 +70,27 @@ namespace DAL
             {
                 conn.Close();
             }
+        }
+        public bool TimChucVu(ref string chucVu, string maPIC)
+        {
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT ChucVu FROM NhanVien WHERE MaNV = @MaPIC", conn);
+                cmd.Parameters.Add("@MaPIC", SqlDbType.VarChar);
+                cmd.Parameters["@MaPIC"].Value = maPIC;
+                chucVu = (string)cmd.ExecuteScalar();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+            finally 
+            { 
+                conn.Close(); 
+            }   
         }
        
         //public DataTable SelectSanPham()

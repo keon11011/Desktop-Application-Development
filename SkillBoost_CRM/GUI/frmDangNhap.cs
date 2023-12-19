@@ -30,9 +30,17 @@ namespace GUI
             {
                 MessageBox.Show("Đăng nhập thành công");
                 SharedResources.MaPIC = maPIC;
-                Hide();
-                frmDanhSachKH FRMfrmDanhSachKH = new frmDanhSachKH();
-                FRMfrmDanhSachKH.Show();
+                if (bUS_TaiKhoan.TimChucVu(ref SharedResources.ChucVu, SharedResources.MaPIC))
+                {
+                    this.Hide();
+                    frmDanhSachKH FRMfrmDanhSachKH = new frmDanhSachKH();
+                    FRMfrmDanhSachKH.Closed += (s, args) => this.Close();
+                    FRMfrmDanhSachKH.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi khi tìm chức vụ");
+                }
             }
             else
             {
