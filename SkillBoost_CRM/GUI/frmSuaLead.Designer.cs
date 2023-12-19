@@ -28,16 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnXoaKhoaHoc = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnUnfollow = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.btnLuuThayDoi = new System.Windows.Forms.Button();
             this.btnHuyChinhSua = new System.Windows.Forms.Button();
-            this.cbThemKhoaHoc = new System.Windows.Forms.ComboBox();
-            this.btnThemKhoaHoc = new System.Windows.Forms.Button();
-            this.dataGridViewKhoaHocKHQuanTam = new System.Windows.Forms.DataGridView();
+            this.cbKhoaHoc = new System.Windows.Forms.ComboBox();
             this.cbNguonLead = new System.Windows.Forms.ComboBox();
             this.cbNgheNghiep = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -45,7 +42,6 @@
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtPIC = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -56,8 +52,6 @@
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtNgaySinh = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.yêuCầuTưVấnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label9 = new System.Windows.Forms.Label();
@@ -72,20 +66,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.thôngTinKhóaHọcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKhoaHocKHQuanTam)).BeginInit();
+            this.dateTimePickerNgaySinh = new System.Windows.Forms.DateTimePicker();
+            this.txtTrangThaiLead = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.btnXoaKhoaHoc = new System.Windows.Forms.Button();
+            this.btnThemKhoaHoc = new System.Windows.Forms.Button();
+            this.dataGridViewKhoaHocKHQuanTam = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKhoaHocKHQuanTam)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnXoaKhoaHoc
-            // 
-            this.btnXoaKhoaHoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoaKhoaHoc.Location = new System.Drawing.Point(1125, 1409);
-            this.btnXoaKhoaHoc.Margin = new System.Windows.Forms.Padding(6);
-            this.btnXoaKhoaHoc.Name = "btnXoaKhoaHoc";
-            this.btnXoaKhoaHoc.Size = new System.Drawing.Size(270, 73);
-            this.btnXoaKhoaHoc.TabIndex = 80;
-            this.btnXoaKhoaHoc.Text = "Xóa khóa học ";
-            this.btnXoaKhoaHoc.UseVisualStyleBackColor = true;
             // 
             // btnXoa
             // 
@@ -110,6 +99,7 @@
             this.btnUnfollow.TabIndex = 78;
             this.btnUnfollow.Text = "⛔";
             this.btnUnfollow.UseVisualStyleBackColor = false;
+            this.btnUnfollow.Click += new System.EventHandler(this.btnUnfollow_Click);
             // 
             // btnSua
             // 
@@ -146,6 +136,7 @@
             this.btnLuuThayDoi.TabIndex = 75;
             this.btnLuuThayDoi.Text = "Lưu thay đổi";
             this.btnLuuThayDoi.UseVisualStyleBackColor = true;
+            this.btnLuuThayDoi.Click += new System.EventHandler(this.btnLuuThayDoi_Click);
             // 
             // btnHuyChinhSua
             // 
@@ -159,37 +150,15 @@
             this.btnHuyChinhSua.Text = "Hủy chỉnh sửa";
             this.btnHuyChinhSua.UseVisualStyleBackColor = true;
             // 
-            // cbThemKhoaHoc
+            // cbKhoaHoc
             // 
-            this.cbThemKhoaHoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbThemKhoaHoc.FormattingEnabled = true;
-            this.cbThemKhoaHoc.Location = new System.Drawing.Point(45, 1417);
-            this.cbThemKhoaHoc.Margin = new System.Windows.Forms.Padding(6);
-            this.cbThemKhoaHoc.Name = "cbThemKhoaHoc";
-            this.cbThemKhoaHoc.Size = new System.Drawing.Size(726, 50);
-            this.cbThemKhoaHoc.TabIndex = 73;
-            // 
-            // btnThemKhoaHoc
-            // 
-            this.btnThemKhoaHoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemKhoaHoc.Location = new System.Drawing.Point(821, 1409);
-            this.btnThemKhoaHoc.Margin = new System.Windows.Forms.Padding(6);
-            this.btnThemKhoaHoc.Name = "btnThemKhoaHoc";
-            this.btnThemKhoaHoc.Size = new System.Drawing.Size(270, 73);
-            this.btnThemKhoaHoc.TabIndex = 72;
-            this.btnThemKhoaHoc.Text = "Thêm khóa học ";
-            this.btnThemKhoaHoc.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewKhoaHocKHQuanTam
-            // 
-            this.dataGridViewKhoaHocKHQuanTam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewKhoaHocKHQuanTam.Location = new System.Drawing.Point(45, 1173);
-            this.dataGridViewKhoaHocKHQuanTam.Margin = new System.Windows.Forms.Padding(6);
-            this.dataGridViewKhoaHocKHQuanTam.Name = "dataGridViewKhoaHocKHQuanTam";
-            this.dataGridViewKhoaHocKHQuanTam.ReadOnly = true;
-            this.dataGridViewKhoaHocKHQuanTam.RowHeadersWidth = 82;
-            this.dataGridViewKhoaHocKHQuanTam.Size = new System.Drawing.Size(2508, 215);
-            this.dataGridViewKhoaHocKHQuanTam.TabIndex = 71;
+            this.cbKhoaHoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbKhoaHoc.FormattingEnabled = true;
+            this.cbKhoaHoc.Location = new System.Drawing.Point(45, 1417);
+            this.cbKhoaHoc.Margin = new System.Windows.Forms.Padding(6);
+            this.cbKhoaHoc.Name = "cbKhoaHoc";
+            this.cbKhoaHoc.Size = new System.Drawing.Size(726, 50);
+            this.cbKhoaHoc.TabIndex = 73;
             // 
             // cbNguonLead
             // 
@@ -217,7 +186,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(35, 1100);
+            this.label15.Location = new System.Drawing.Point(37, 1018);
             this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(377, 46);
@@ -229,7 +198,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(2011, 188);
+            this.label17.Location = new System.Drawing.Point(1167, 578);
             this.label17.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(36, 46);
@@ -244,7 +213,7 @@
             this.txtGhiChu.Multiline = true;
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.ReadOnly = true;
-            this.txtGhiChu.Size = new System.Drawing.Size(2504, 189);
+            this.txtGhiChu.Size = new System.Drawing.Size(2504, 129);
             this.txtGhiChu.TabIndex = 66;
             // 
             // label16
@@ -261,30 +230,18 @@
             // txtPIC
             // 
             this.txtPIC.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPIC.Location = new System.Drawing.Point(1211, 661);
+            this.txtPIC.Location = new System.Drawing.Point(1843, 658);
             this.txtPIC.Margin = new System.Windows.Forms.Padding(6);
             this.txtPIC.Name = "txtPIC";
             this.txtPIC.ReadOnly = true;
-            this.txtPIC.Size = new System.Drawing.Size(1344, 53);
+            this.txtPIC.Size = new System.Drawing.Size(706, 53);
             this.txtPIC.TabIndex = 64;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(2065, 386);
-            this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(36, 46);
-            this.label13.TabIndex = 63;
-            this.label13.Text = "*";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(1201, 580);
+            this.label14.Location = new System.Drawing.Point(1839, 596);
             this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(395, 46);
@@ -393,33 +350,11 @@
             this.label7.TabIndex = 52;
             this.label7.Text = "Số điện thoại";
             // 
-            // txtNgaySinh
-            // 
-            this.txtNgaySinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNgaySinh.Location = new System.Drawing.Point(1837, 271);
-            this.txtNgaySinh.Margin = new System.Windows.Forms.Padding(6);
-            this.txtNgaySinh.Name = "txtNgaySinh";
-            this.txtNgaySinh.ReadOnly = true;
-            this.txtNgaySinh.Size = new System.Drawing.Size(706, 53);
-            this.txtNgaySinh.TabIndex = 51;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(3023, 230);
-            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 46);
-            this.label5.TabIndex = 50;
-            this.label5.Text = "*";
-            // 
             // label
             // 
             this.label.AutoSize = true;
             this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label.Location = new System.Drawing.Point(1827, 188);
+            this.label.Location = new System.Drawing.Point(983, 578);
             this.label.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(197, 46);
@@ -541,15 +476,84 @@
             this.báoCáoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(2620, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(2720, 40);
             this.menuStrip1.TabIndex = 43;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // dateTimePickerNgaySinh
+            // 
+            this.dateTimePickerNgaySinh.Enabled = false;
+            this.dateTimePickerNgaySinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerNgaySinh.Location = new System.Drawing.Point(1003, 661);
+            this.dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
+            this.dateTimePickerNgaySinh.Size = new System.Drawing.Size(706, 53);
+            this.dateTimePickerNgaySinh.TabIndex = 82;
+            // 
+            // txtTrangThaiLead
+            // 
+            this.txtTrangThaiLead.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTrangThaiLead.Location = new System.Drawing.Point(1843, 271);
+            this.txtTrangThaiLead.Margin = new System.Windows.Forms.Padding(6);
+            this.txtTrangThaiLead.Name = "txtTrangThaiLead";
+            this.txtTrangThaiLead.ReadOnly = true;
+            this.txtTrangThaiLead.ShortcutsEnabled = false;
+            this.txtTrangThaiLead.Size = new System.Drawing.Size(706, 53);
+            this.txtTrangThaiLead.TabIndex = 85;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(1833, 188);
+            this.label19.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(297, 46);
+            this.label19.TabIndex = 83;
+            this.label19.Text = "Trạng thái Lead";
+            // 
+            // btnXoaKhoaHoc
+            // 
+            this.btnXoaKhoaHoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoaKhoaHoc.Location = new System.Drawing.Point(1125, 1409);
+            this.btnXoaKhoaHoc.Margin = new System.Windows.Forms.Padding(6);
+            this.btnXoaKhoaHoc.Name = "btnXoaKhoaHoc";
+            this.btnXoaKhoaHoc.Size = new System.Drawing.Size(270, 73);
+            this.btnXoaKhoaHoc.TabIndex = 80;
+            this.btnXoaKhoaHoc.Text = "Xóa khóa học ";
+            this.btnXoaKhoaHoc.UseVisualStyleBackColor = true;
+            // 
+            // btnThemKhoaHoc
+            // 
+            this.btnThemKhoaHoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemKhoaHoc.Location = new System.Drawing.Point(821, 1409);
+            this.btnThemKhoaHoc.Margin = new System.Windows.Forms.Padding(6);
+            this.btnThemKhoaHoc.Name = "btnThemKhoaHoc";
+            this.btnThemKhoaHoc.Size = new System.Drawing.Size(270, 73);
+            this.btnThemKhoaHoc.TabIndex = 72;
+            this.btnThemKhoaHoc.Text = "Thêm khóa học ";
+            this.btnThemKhoaHoc.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewKhoaHocKHQuanTam
+            // 
+            this.dataGridViewKhoaHocKHQuanTam.AllowUserToOrderColumns = true;
+            this.dataGridViewKhoaHocKHQuanTam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewKhoaHocKHQuanTam.Enabled = false;
+            this.dataGridViewKhoaHocKHQuanTam.Location = new System.Drawing.Point(45, 1070);
+            this.dataGridViewKhoaHocKHQuanTam.Margin = new System.Windows.Forms.Padding(6);
+            this.dataGridViewKhoaHocKHQuanTam.Name = "dataGridViewKhoaHocKHQuanTam";
+            this.dataGridViewKhoaHocKHQuanTam.ReadOnly = true;
+            this.dataGridViewKhoaHocKHQuanTam.RowHeadersWidth = 82;
+            this.dataGridViewKhoaHocKHQuanTam.Size = new System.Drawing.Size(2508, 318);
+            this.dataGridViewKhoaHocKHQuanTam.TabIndex = 71;
             // 
             // frmThongTinLead
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2620, 1643);
+            this.ClientSize = new System.Drawing.Size(2720, 1643);
+            this.Controls.Add(this.txtTrangThaiLead);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.dateTimePickerNgaySinh);
             this.Controls.Add(this.btnXoaKhoaHoc);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnUnfollow);
@@ -557,7 +561,7 @@
             this.Controls.Add(this.label18);
             this.Controls.Add(this.btnLuuThayDoi);
             this.Controls.Add(this.btnHuyChinhSua);
-            this.Controls.Add(this.cbThemKhoaHoc);
+            this.Controls.Add(this.cbKhoaHoc);
             this.Controls.Add(this.btnThemKhoaHoc);
             this.Controls.Add(this.dataGridViewKhoaHocKHQuanTam);
             this.Controls.Add(this.cbNguonLead);
@@ -567,7 +571,6 @@
             this.Controls.Add(this.txtGhiChu);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtPIC);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label12);
@@ -578,8 +581,6 @@
             this.Controls.Add(this.txtSoDienThoai);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtNgaySinh);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtHoten);
@@ -592,26 +593,22 @@
             this.Text = "SuaLead";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmThongTinLead_Load_1);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKhoaHocKHQuanTam)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKhoaHocKHQuanTam)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnXoaKhoaHoc;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnUnfollow;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btnLuuThayDoi;
         private System.Windows.Forms.Button btnHuyChinhSua;
-        private System.Windows.Forms.ComboBox cbThemKhoaHoc;
-        private System.Windows.Forms.Button btnThemKhoaHoc;
-        private System.Windows.Forms.DataGridView dataGridViewKhoaHocKHQuanTam;
+        private System.Windows.Forms.ComboBox cbKhoaHoc;
         private System.Windows.Forms.ComboBox cbNguonLead;
         private System.Windows.Forms.ComboBox cbNgheNghiep;
         private System.Windows.Forms.Label label15;
@@ -619,7 +616,6 @@
         private System.Windows.Forms.TextBox txtGhiChu;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtPIC;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label12;
@@ -630,8 +626,6 @@
         private System.Windows.Forms.TextBox txtSoDienThoai;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtNgaySinh;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.ToolStripMenuItem yêuCầuTưVấnToolStripMenuItem;
         private System.Windows.Forms.Label label9;
@@ -646,5 +640,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem thôngTinKhóaHọcToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerNgaySinh;
+        private System.Windows.Forms.TextBox txtTrangThaiLead;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button btnXoaKhoaHoc;
+        private System.Windows.Forms.Button btnThemKhoaHoc;
+        private System.Windows.Forms.DataGridView dataGridViewKhoaHocKHQuanTam;
     }
 }
