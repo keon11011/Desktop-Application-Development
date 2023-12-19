@@ -11,12 +11,16 @@ namespace BUS
 {
     public class BUS_Lead
     {
-        DAL_Lead dAL_Lead = new DAL_Lead();
+        DAL_Lead dAL_Lead = new DAL_Lead(); 
+        public bool InsertYCTVcuaLeadNew(DTO_Lead tt_yctv)
         public DataSet SelectNgheNghiep()
         {
+            
+            return dAL_Lead.InsertYCTVcuaLeadNew(tt_yctv);
             return dAL_Lead.SelectNgheNghiep();
         }
 
+        public void InsertYCTVcuaLeadOld()
         public void SelectLead(ref DTO_Lead dTO_Lead)
         {
 

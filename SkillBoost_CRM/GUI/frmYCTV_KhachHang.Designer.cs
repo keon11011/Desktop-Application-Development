@@ -47,6 +47,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.CheckOnClick = true;
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(189, 223);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(271, 140);
+            this.checkedListBox1.TabIndex = 33;
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            // 
             // btnGuiYCTV
             // 
             this.btnGuiYCTV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -190,6 +201,7 @@
             this.ClientSize = new System.Drawing.Size(971, 520);
             this.Controls.Add(this.cbKhoaHoc);
             this.Controls.Add(this.dtpNgaySinh);
+            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.btnGuiYCTV);
             this.Controls.Add(this.txtSdt);
             this.Controls.Add(this.txtEmail);
@@ -213,6 +225,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button btnGuiYCTV;
         private System.Windows.Forms.TextBox txtSdt;
         private System.Windows.Forms.TextBox txtEmail;

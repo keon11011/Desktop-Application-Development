@@ -54,6 +54,7 @@ namespace DAL
                 conn.Close();
             }
         }
+
         public DataTable TimYCTV(string s)
         {
             try
@@ -78,6 +79,7 @@ namespace DAL
                 conn.Close();
             }
         }
+
         public DataTable LocYCTV(string s)
         {
 
@@ -105,8 +107,9 @@ namespace DAL
         }
         public bool InsertYCTV(DTO_YeuCauTuVan tt_yctv)
         {
+
             try
-            {
+            { 
                 DAL_YeuCauTuVan dAL_YeuCauTuVan = new DAL_YeuCauTuVan();
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("Select MaLead from Lead where SoDienThoaiLead = @SDT", conn);
@@ -143,7 +146,7 @@ namespace DAL
 
                 if (cmdYCTV.ExecuteNonQuery() > 0)
                 {
-                    
+
                     dAL_YeuCauTuVan.InsertChiTietKhoaHoc(tt_yctv);
                     return true;
                 }
@@ -203,13 +206,13 @@ namespace DAL
                         SqlCommand cmdmalead = new SqlCommand("select top 1 MaLead from Lead order by STT DESC", conn);
                         lead.MaLead = cmdmalead.ExecuteScalar().ToString();
                         if (dAL_Lead.InsertHDLead(lead))
-                        {
-                            return true;
-                        }
+                {
+                    return true;
+                }
                         else return false; 
 
                     }
-
+                
                     return false;
                 }
             }
@@ -291,5 +294,6 @@ namespace DAL
                 conn.Close();
             }
         }
+
     }
 }
