@@ -17,7 +17,7 @@ namespace GUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmDangNhap());
-            Application.Run(new frmDanhSachKhoaHoc());
+            Application.Run(new frmDangNhap());
         }
     }
 }
