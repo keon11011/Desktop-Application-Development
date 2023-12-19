@@ -25,5 +25,13 @@ namespace BUS
         {   
             return dalQuyDinhGiamGia.ThemQuyDinhGiamGia(qdGiamGia);
         }
+        public string SuaQuyDinhGiamGia(DTO_QuyDinhGiamGia qdGiamGia)
+        {
+            return dalQuyDinhGiamGia.SuaQuyDinhGiamGia(qdGiamGia);
+        }
+        public string XoaQuyDinhGiamGia(DTO_QuyDinhGiamGia qdGiamGia)
+        {
+            return dalQuyDinhGiamGia.XoaQuyDinhGiamGia(qdGiamGia);
+        }
     }
 }
