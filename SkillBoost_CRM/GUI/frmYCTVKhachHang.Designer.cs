@@ -30,7 +30,6 @@
         {
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.btnGuiYCTV = new System.Windows.Forms.Button();
-            this.txtNgaysinh = new System.Windows.Forms.TextBox();
             this.txtSdt = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtGhichu = new System.Windows.Forms.TextBox();
@@ -42,6 +41,7 @@
             this.txtHoten = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.datetimeNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // checkedListBox1
@@ -62,13 +62,7 @@
             this.btnGuiYCTV.TabIndex = 32;
             this.btnGuiYCTV.Text = "Gửi yêu cầu tư vấn";
             this.btnGuiYCTV.UseVisualStyleBackColor = true;
-            // 
-            // txtNgaysinh
-            // 
-            this.txtNgaysinh.Location = new System.Drawing.Point(583, 93);
-            this.txtNgaysinh.Name = "txtNgaysinh";
-            this.txtNgaysinh.Size = new System.Drawing.Size(304, 26);
-            this.txtNgaysinh.TabIndex = 31;
+            this.btnGuiYCTV.Click += new System.EventHandler(this.btnGuiYCTV_Click);
             // 
             // txtSdt
             // 
@@ -169,14 +163,21 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "Thông tin nhận tư vấn";
             // 
+            // datetimeNgaySinh
+            // 
+            this.datetimeNgaySinh.Location = new System.Drawing.Point(583, 93);
+            this.datetimeNgaySinh.Name = "datetimeNgaySinh";
+            this.datetimeNgaySinh.Size = new System.Drawing.Size(304, 26);
+            this.datetimeNgaySinh.TabIndex = 34;
+            // 
             // frmYCTVKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1125, 539);
+            this.Controls.Add(this.datetimeNgaySinh);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.btnGuiYCTV);
-            this.Controls.Add(this.txtNgaysinh);
             this.Controls.Add(this.txtSdt);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtGhichu);
@@ -200,7 +201,6 @@
 
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button btnGuiYCTV;
-        private System.Windows.Forms.TextBox txtNgaysinh;
         private System.Windows.Forms.TextBox txtSdt;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtGhichu;
@@ -212,5 +212,6 @@
         private System.Windows.Forms.TextBox txtHoten;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker datetimeNgaySinh;
     }
 }
