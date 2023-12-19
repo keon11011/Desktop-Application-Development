@@ -55,7 +55,7 @@ namespace DTO
         {
 
         }
-        public DTO_Lead( string maLead, string hoTenLead, string gioiTinhLead, DateTime ngaySinhLead, string soDienThoaiLead, string emailLead, string maNgheNghiep, string tenNgheNghiep, string maNVPhuTrachLead, string tenNVPhuTrachLead, string trangThaiLead, string lyDoTrangThaiLead, string nguonLead, string ghiChuLead, string leadTuKhachHangCu, DateTime taoVaoLuc, string taoBoi, DateTime chinhSuaLanCuoiVaoLuc, string chinhSuaLanCuoiBoi)
+        public DTO_Lead( string maLead, string hoTenLead, string gioiTinhLead, DateTime ngaySinhLead, string soDienThoaiLead, string emailLead, string maNgheNghiep, string tenNgheNghiep, string maNVPhuTrachLead, string tenNVPhuTrachLead, string trangThaiLead, string lyDoTrangThaiLead, string nguonLead, string ghiChuLead, string leadTuKHCu, DateTime taoVaoLuc, string taoBoi, DateTime chinhSuaLanCuoiVaoLuc, string chinhSuaLanCuoiBoi)
         { 
             MaLead = maLead;
             HoTenLead = hoTenLead;

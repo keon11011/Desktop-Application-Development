@@ -41,18 +41,31 @@ namespace GUI
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //string n = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString();
-            //frmThongTinLead frm = new frmThongTinLead(n);
-            //frm.valuelbl = n;
-            //frm.Show();
+            frmThongTinLead frm = new frmThongTinLead();
+            frm.Show();
         }
 
         private void yêuCầuTưVấnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmYeuCauTuVan.Open();
+            
         }
 
         private void báoCáoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdbXoaLoc_CheckedChanged(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = bUS_YeuCauTuVan.SelectYCTV();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
