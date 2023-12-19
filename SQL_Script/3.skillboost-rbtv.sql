@@ -125,7 +125,7 @@ ADD CONSTRAINT ConstraintDOMTrangThaiLead CHECK (TrangThaiLead IN (N'Chờ tư v
 */
 -- RB31. Thuộc tính LoaiHDLead của bảng HoatDongLead chỉ luôn có các giá trị sau đây: “Yêu cầu”, “Điều chỉnh trạng thái” , “Email”, “Tư vấn”,  “Báo giá”, “Mã giảm giá”, “Thông tin Lead”
 ALTER TABLE HoatDongLead
-ADD CONSTRAINT ConstraintDOMLoaiHDLead CHECK (LoaiHDLead IN (N'Yêu cầu', N'Điều chỉnh trạng thái', N'Email', N'Tư vấn', N'Báo giá', N'Mã giảm giá', N'Thông tin Lead'))
+ADD CONSTRAINT ConstraintDOMLoaiHDLead CHECK (LoaiHDLead IN (N'Yêu cầu', N'Điều chỉnh trạng thái', N'Email', N'Tư vấn', N'Báo giá', N'Mã giảm giá', N'Thông tin Lead', N'Thanh toán'))
 
 -- RB32. Thuộc tính HDLeadDuocTaoBoi của bảng HoatDongLead chỉ luôn có các giá trị sau đây: “Hệ thống”, “Lead”, Nhân viên (gồm MaNV của người phụ trách hoạt động Lead và MaNV của quản lý)
 /*

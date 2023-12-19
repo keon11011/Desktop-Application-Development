@@ -71,16 +71,26 @@ GO
 /* Bảng HoatDongLead */
 INSERT INTO HoatDongLead(MaLead, TenHDLead, LoaiHDLead, HDLeadDuocTaoBoi, MaNVPhuTrachHDLead, TenNVPhuTrachHDLead, MaEmailDenLead, TaoVaoLuc)
 VALUES 
-('LEA1', N'Yêu cầu tư vấn đến Bùi Thị Thúy', N'Tư vấn', N'Lead', 'STA7', N'Bùi Thị Thúy', NULL, '2023-08-12 08:00:00'),
-('LEA2', N'Yêu cầu tư vấn đến Trần Mỹ Hạnh', N'Tư vấn', N'Lead', 'STA4', N'Trần Mỹ Hạnh', NULL, '2023-11-01 08:00:00'),
-('LEA3', N'Yêu cầu tư vấn đến Nguyễn Ngọc Hoàng', N'Tư vấn', N'Lead', 'STA2', N'Nguyễn Ngọc Hoàng', NULL, '2023-09-11 08:00:00'),
-('LEA4', N'Yêu cầu tư vấn đến Bùi Bích Trâm', N'Tư vấn', N'Lead', 'STA9', N'Bùi Bích Trâm', NULL, '2023-09-12 08:00:00'),
-('LEA5', N'Yêu cầu tư vấn đến Trần Thanh Mai', N'Tư vấn', N'Lead', 'STA10', N'Trần Thanh Mai', NULL, '2023-10-12 08:00:00'),
-('LEA6', N'Yêu cầu báo giá khóa học đến Trương Minh Tiến', N'Yêu cầu', N'Lead', 'STA5', N'Trương Minh Tiến', NULL, '2023-04-22 08:00:00'),
-('LEA7', N'Yêu cầu tư vấn đến Huỳnh Nhã Thy', N'Tư vấn', N'Lead', 'STA11', N'Huỳnh Nhã Thy', NULL, '2023-12-15 08:00:00'),
-('LEA8', N'Yêu cầu báo giá khóa học đến Trần Thúy Hằng', N'Yêu cầu', N'Lead', 'STA8', N'Trần Thúy Hằng', NULL, '2023-12-17 08:00:00'),
-('LEA9', N'Yêu cầu báo giá khóa học đến Nguyễn Đức Trung', N'Yêu cầu', N'Lead', 'STA6', N'Nguyễn Đức Trung', NULL, '2023-02-27 08:00:00'),
-('LEA10', N'Yêu cầu tư vấn đến Võ Anh Thư', N'Tư vấn', N'Lead', 'STA3', N'Võ Anh Thư', NULL, '2023-12-24 08:00:00');
+('LEA1', N'Tạo yêu cầu tư vấn', N'Tư vấn', N'Lead', 'STA7', N'Bùi Thị Thúy', NULL, '2023-08-12 08:00:00'),
+('LEA1', N'Trả lời tư vấn', N'Tư vấn', N'Lead', 'STA7', N'Bùi Thị Thúy', NULL, '2023-08-12 09:00:00'),
+('LEA1', N'Gửi báo giá thành công', N'Báo giá', N'Hệ thống', 'STA7', N'Bùi Thị Thúy', NULL, '2023-08-12 10:00:00'),
+('LEA1', N'Thanh toán thành công', N'Thanh toán', N'Hệ thống', 'STA7', N'Bùi Thị Thúy', NULL, '2023-08-12 10:01:00'),
+('LEA1', N'Gửi email xác nhận thanh toán thành công', N'Email', N'Hệ thống', 'STA7', N'Bùi Thị Thúy', NULL, '2023-08-12 10:02:00'),
+('LEA1', N'Chuyển đổi thành khách hàng thành công', N'Điều chỉnh trạng thái', N'Hệ thống', 'STA7', N'Bùi Thị Thúy', NULL, '2023-08-12 10:03:00'),
+('LEA2', N'Tạo yêu cầu tư vấn', N'Tư vấn', N'Lead', 'STA4', N'Trần Mỹ Hạnh', NULL, '2023-11-01 08:00:00'),
+('LEA3', N'Tạo yêu cầu tư vấn', N'Tư vấn', N'Lead', 'STA2', N'Nguyễn Ngọc Hoàng', NULL, '2023-09-11 08:00:00'),
+('LEA4', N'Tạo yêu cầu tư vấn', N'Tư vấn', N'Lead', 'STA9', N'Bùi Bích Trâm', NULL, '2023-09-12 08:00:00'),
+('LEA5', N'Tạo yêu cầu tư vấn', N'Tư vấn', N'Lead', 'STA10', N'Trần Thanh Mai', NULL, '2023-10-12 08:00:00'),
+('LEA6', N'Tạo yêu cầu tư vấn', N'Yêu cầu', N'Lead', 'STA5', N'Trương Minh Tiến', NULL, '2023-04-22 08:00:00'),
+('LEA7', N'Tạo yêu cầu tư vấn', N'Tư vấn', N'Lead', 'STA1', N'Nguyễn Phương Thanh', NULL, '2023-12-15 08:00:00'),
+('LEA8', N'Tạo yêu cầu tư vấn', N'Yêu cầu', N'Lead', 'STA8', N'Trần Thúy Hằng', NULL, '2023-12-17 08:00:00'),
+('LEA9', N'Tạo yêu cầu tư vấn', N'Yêu cầu', N'Lead', 'STA6', N'Nguyễn Đức Trung', NULL, '2023-02-27 08:00:00'),
+('LEA10', N'Tạo yêu cầu tư vấn', N'Tư vấn', N'Lead', 'STA3', N'Võ Anh Thư', NULL, '2023-12-24 08:00:00'),
+('LEA3', N'Gửi báo giá thành công', N'Báo giá', N'Hệ thống', 'STA2', N'Nguyễn Ngọc Hoàng', NULL, '2023-09-12 08:00:00'),
+('LEA4', N'Gửi báo giá thành công', N'Báo giá', N'Hệ thống', 'STA9', N'Bùi Bích Trâm', NULL, '2023-09-13 08:00:00'),
+('LEA5', N'Gửi báo giá thành công', N'Báo giá', N'Hệ thống', 'STA10', N'Trần Thanh Mai', NULL, '2023-10-13 08:00:00'),
+('LEA4', N'Chuyển đổi thành khách hàng thành công', N'Điều chỉnh trạng thái', N'Hệ thống', 'STA9', N'Bùi Bích Trâm', NULL, '2023-09-14 08:00:00'),
+('LEA5', N'Chuyển đổi thành khách hàng thành công', N'Điều chỉnh trạng thái', N'Hệ thống', 'STA10', N'Trần Thanh Mai', NULL, '2023-10-13 08:00:00');
 GO
 -- SELECT * FROM HoatDongLead
 
