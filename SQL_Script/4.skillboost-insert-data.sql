@@ -47,7 +47,9 @@ VALUES
 (N'Mua bán', N'Đang được đưa vào sử dụng', '2023-01-07 19:30:00', N'Hệ thống', '2023-01-07 19:30:00', N'Hệ thống'),
 (N'Nhà báo', N'Đang được đưa vào sử dụng', '2023-12-08 21:45:00', N'Hệ thống', '2023-12-08 21:45:00', N'Hệ thống'),
 (N'Nhân viên bất động sản', N'Đang được đưa vào sử dụng', '2023-11-09 23:59:00', N'Hệ thống', '2023-11-09 23:59:00', N'Hệ thống'),
-(N'Người kinh doanh', N'Đang được đưa vào sử dụng', '2023-10-10 02:30:00', N'Hệ thống', '2023-10-10 02:30:00', N'Hệ thống');
+(N'Người kinh doanh', N'Đang được đưa vào sử dụng', '2023-10-10 02:30:00', N'Hệ thống', '2023-10-10 02:30:00', N'Hệ thống'),
+(N'', N'Đang được đưa vào sử dụng', '2023-12-10 02:30:00', N'Hệ thống', '2023-12-10 02:30:00', N'Hệ thống');
+
 GO
 -- SELECT * FROM NgheNghiep
 
