@@ -105,7 +105,7 @@ namespace DAL
                 conn.Close();
             }
         }
-        public bool InsertYCTV(DTO_YeuCauTuVan tt_yctv)
+        public bool InsertYCTV(ref DTO_YeuCauTuVan tt_yctv)
         {
 
             try
@@ -162,21 +162,23 @@ namespace DAL
                 conn.Close();
             }
         }
-        public bool InsertLeadcuaYCTV(DTO_YeuCauTuVan yctv)
+        public bool InsertLeadcuaYCTV(ref DTO_YeuCauTuVan yctv)
         {
             try
             {
                 DAL_YeuCauTuVan dAL_YeuCauTuVan = new DAL_YeuCauTuVan();
+                DAL_HoatDongLead dAL_HDLead = new DAL_HoatDongLead();
+                
                 //Check if a new or already had a Lead code or not ?
                 conn.Open();
                 SqlCommand cmdCheckLead = new SqlCommand("Select MaLead from Lead where SoDienThoaiLead = @SoDienThoaiLead", conn);
                 cmdCheckLead.Parameters.Add("@SoDienThoaiLead", SqlDbType.NVarChar).Value = yctv.SDTLeadYeuCau;
                 SqlDataReader reader = cmdCheckLead.ExecuteReader();
-
+                
                 if (reader.HasRows)
                 {
-                    return dAL_YeuCauTuVan.InsertYCTV(yctv);
-
+                   
+                    return dAL_YeuCauTuVan.InsertYCTV(ref yctv);
                 }
                 else
                 {
@@ -200,26 +202,17 @@ namespace DAL
                     lead.TaoBoi = "Hệ thống";
                     lead.ChinhSuaLanCuoiVaoLuc = yctv.TaoVaoLuc;
                     lead.ChinhSuaLanCuoiBoi = "Hệ thống";
+                    
                     reader.Close();
-                    DAL_Lead dAL_Lead = new DAL_Lead();
 
-                    
-                    
-                    DAL_HoatDongLead dAL_HDLead = new DAL_HoatDongLead();
                     if (dAL_Lead.InsertLead(lead))
                     {
-                        SqlCommand cmdmalead = new SqlCommand("select top 1 MaLead from Lead order by STT DESC", conn);
-                        dAL_HDLead.MaLead = cmdmalead.ExecuteScalar().ToString();
-                        if (dAL_HDLead.ThemHoatDongLead())
-                {
-                    return true;
-                }
-                        else return false; 
-
+                       
+                        dAL_YeuCauTuVan.InsertYCTV(ref yctv);
+                        return true; 
                     }
-                
-                    return false;
-                }
+                    else return false;
+                } 
             }
             catch (Exception)
             {

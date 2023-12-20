@@ -45,9 +45,9 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.cbKhoaHoc = new System.Windows.Forms.ComboBox();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
-           
             // 
             // btnGuiYCTV
             // 
@@ -210,8 +210,9 @@
             this.Controls.Add(this.label1);
             this.Name = "frmYCTV_KhachHang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmYCTV_KhachHang";
+            this.Text = "Thông tin nhận tư vấn";
             this.Load += new System.EventHandler(this.frmYCTV_KhachHang_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

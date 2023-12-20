@@ -39,6 +39,7 @@
             this.rbtnDaTiepNhan = new System.Windows.Forms.RadioButton();
             this.rdnChuaTiepNhan = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdbXoaLoc = new System.Windows.Forms.RadioButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.yêuCầuTưVấnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.leadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +47,6 @@
             this.quyĐịnhGiảmGiáToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinKhóaHọcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.báoCáoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rdbXoaLoc = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -175,6 +175,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lọc Trạng Thái";
             // 
+            // rdbXoaLoc
+            // 
+            this.rdbXoaLoc.AutoSize = true;
+            this.rdbXoaLoc.Location = new System.Drawing.Point(258, 23);
+            this.rdbXoaLoc.Name = "rdbXoaLoc";
+            this.rdbXoaLoc.Size = new System.Drawing.Size(73, 20);
+            this.rdbXoaLoc.TabIndex = 16;
+            this.rdbXoaLoc.TabStop = true;
+            this.rdbXoaLoc.Text = "Xóa lọc";
+            this.rdbXoaLoc.UseVisualStyleBackColor = true;
+            this.rdbXoaLoc.CheckedChanged += new System.EventHandler(this.rdbXoaLoc_CheckedChanged);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -229,18 +241,6 @@
             this.báoCáoToolStripMenuItem.Text = "Báo cáo";
             this.báoCáoToolStripMenuItem.Click += new System.EventHandler(this.báoCáoToolStripMenuItem_Click);
             // 
-            // rdbXoaLoc
-            // 
-            this.rdbXoaLoc.AutoSize = true;
-            this.rdbXoaLoc.Location = new System.Drawing.Point(258, 23);
-            this.rdbXoaLoc.Name = "rdbXoaLoc";
-            this.rdbXoaLoc.Size = new System.Drawing.Size(73, 20);
-            this.rdbXoaLoc.TabIndex = 16;
-            this.rdbXoaLoc.TabStop = true;
-            this.rdbXoaLoc.Text = "Xóa lọc";
-            this.rdbXoaLoc.UseVisualStyleBackColor = true;
-            this.rdbXoaLoc.CheckedChanged += new System.EventHandler(this.rdbXoaLoc_CheckedChanged);
-            // 
             // frmYeuCauTuVan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -256,7 +256,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmYeuCauTuVan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmYeuCauTuVan";
+            this.Text = "Yêu Cầu Tư Vấn";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmYeuCauTuVan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
