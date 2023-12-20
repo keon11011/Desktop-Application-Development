@@ -208,5 +208,49 @@ namespace DAL
                 conn.Close();
             }
         }
+        public string LayMaPIC(string MaLead)
+        {
+            try
+            {
+                conn.Open();
+                string cmdText = "select MaNVPhuTrachLead from Lead where MaLead = @MaLead";
+
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+
+                cmd.Parameters.AddWithValue("@MaLead", MaLead);
+                return cmd.ExecuteScalar().ToString();
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public string LayTenPIC(string MaLead)
+        {
+            try
+            {
+                conn.Open();
+                string cmdText = "select TenNVPhuTrachLead from Lead where MaLead = @MaLead";
+
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+
+                cmd.Parameters.AddWithValue("@MaLead", MaLead);
+                return cmd.ExecuteScalar().ToString();
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }

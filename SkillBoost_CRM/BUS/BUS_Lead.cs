@@ -28,5 +28,14 @@ namespace BUS
         
 
 
+        public string LayMaPIC(string MaLead)
+        {
+            return dAL_Lead.LayMaPIC(MaLead);
+        }
+
+        public string LayTenPIC(string MaLead)
+        {
+            return dAL_Lead.LayTenPIC(MaLead);
+        }
     }
 }
