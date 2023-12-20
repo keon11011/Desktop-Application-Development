@@ -1,11 +1,13 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DTO;
+using System.ComponentModel.Design;
+using System.Linq.Expressions;
 
 namespace DAL
 {
@@ -21,11 +23,87 @@ namespace DAL
                 DataSet ds = new DataSet();
                 da.Fill(ds, "NgheNghiep");
                 return ds;
+           
+        }
+            catch (Exception )
+        {
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public bool InsertLead(DTO_Lead lead)
+        {
+            try
+            {
+                conn.Open();
+                SqlCommand cmdYCTVNewLead = new SqlCommand("Insert into Lead(HoTenLead,GioiTinhLead,NgaySinhLead,SoDienThoaiLead,EmailLead,MaNgheNghiep, TenNgheNghiep, MaNVPhuTrachLead, TenNVPhuTrachLead, TrangThaiLead, LyDoTrangThaiLead, NguonLead, GhiChuLead, LeadTuKHCu, TaoVaoLuc, TaoBoi, ChinhSuaLanCuoiVaoLuc,ChinhSuaLanCuoiBoi) " +
+                    "values " +
+                    "(@HoTenLead, @GioiTinhLead, @NgaySinhLead, @SoDienThoaiLead, @EmailLead, @MaNgheNghiep, @TenNgheNghiep, @MaNVPhuTrachLead,@TenNVPhuTrachLead,@TrangThaiLead,@LyDoTrangThaiLead,@NguonLead,@GhiChuLead,@LeadTuKHCu,@TaoVaoLuc,@TaoBoi,@ChinhSuaLanCuoiVaoLuc,@ChinhSuaLanCuoiBoi)", conn);
+
+                    cmdYCTVNewLead.Parameters.Add("@HoTenLead", SqlDbType.NVarChar);
+                cmdYCTVNewLead.Parameters["@HoTenLead"].Value = lead.HoTenLead;
+
+                    cmdYCTVNewLead.Parameters.Add("@GioiTinhLead", SqlDbType.NVarChar);
+                cmdYCTVNewLead.Parameters["@GioiTinhLead"].Value = lead.GioiTinhLead;
+
+                    cmdYCTVNewLead.Parameters.Add("@NgaySinhLead", SqlDbType.DateTime);
+                cmdYCTVNewLead.Parameters["@NgaySinhLead"].Value = lead.NgaySinhLead;
+
+                    cmdYCTVNewLead.Parameters.Add("@SoDienThoaiLead", SqlDbType.NVarChar);
+                cmdYCTVNewLead.Parameters["@SoDienThoaiLead"].Value = lead.SoDienThoaiLead;
+
+                    cmdYCTVNewLead.Parameters.Add("@EmailLead", SqlDbType.NVarChar);
+                cmdYCTVNewLead.Parameters["@EmailLead"].Value = lead.EmailLead;
+
+                cmdYCTVNewLead.Parameters.AddWithValue("@MaNgheNghiep", string.IsNullOrEmpty(lead.MaNgheNghiep) ? (object)DBNull.Value:lead.MaNgheNghiep);
+
+                cmdYCTVNewLead.Parameters.AddWithValue("@TenNgheNghiep", string.IsNullOrEmpty(lead.TenNgheNghiep) ? (object)DBNull.Value : lead.TenNgheNghiep);
+
+                    cmdYCTVNewLead.Parameters.Add("@MaNVPhuTrachLead", SqlDbType.NVarChar);
+                cmdYCTVNewLead.Parameters["@MaNVPhuTrachLead"].Value = lead.MaNVPhuTrachLead;
+
+                    cmdYCTVNewLead.Parameters.Add("@TenNVPhuTrachLead", SqlDbType.NVarChar);
+                cmdYCTVNewLead.Parameters["@TenNVPhuTrachLead"].Value = lead.TenNVPhuTrachLead;
+
+                    cmdYCTVNewLead.Parameters.Add("@TrangThaiLead", SqlDbType.NVarChar);
+                cmdYCTVNewLead.Parameters["@TrangThaiLead"].Value = "Chờ tư vấn";
+
+                    cmdYCTVNewLead.Parameters.Add("@LyDoTrangThaiLead", SqlDbType.NVarChar);
+                cmdYCTVNewLead.Parameters["@LyDoTrangThaiLead"].Value = lead.LyDoTrangThaiLead;
+
+                    cmdYCTVNewLead.Parameters.Add("@NguonLead", SqlDbType.NVarChar);
+                cmdYCTVNewLead.Parameters["@NguonLead"].Value = lead.NguonLead;
+
+                    cmdYCTVNewLead.Parameters.Add("@GhiChuLead", SqlDbType.NVarChar);
+                cmdYCTVNewLead.Parameters["@GhiChuLead"].Value = lead.GhiChuLead;
+
+                cmdYCTVNewLead.Parameters.AddWithValue("@LeadTuKHCu", string.IsNullOrEmpty(lead.LeadTuKHCu) ? (object)DBNull.Value : lead.LeadTuKHCu);
+
+                    cmdYCTVNewLead.Parameters.Add("@TaoVaoLuc", SqlDbType.DateTime);
+                cmdYCTVNewLead.Parameters["@TaoVaoLuc"].Value = lead.TaoVaoLuc;
+
+                    cmdYCTVNewLead.Parameters.Add("@TaoBoi", SqlDbType.NVarChar);
+                cmdYCTVNewLead.Parameters["@TaoBoi"].Value = lead.TaoBoi;
+
+                    cmdYCTVNewLead.Parameters.Add("@ChinhSuaLanCuoiVaoLuc", SqlDbType.DateTime);
+                cmdYCTVNewLead.Parameters["@ChinhSuaLanCuoiVaoLuc"].Value = lead.ChinhSuaLanCuoiVaoLuc;
+
+                    cmdYCTVNewLead.Parameters.Add("@ChinhSuaLanCuoiBoi", SqlDbType.NVarChar);
+                cmdYCTVNewLead.Parameters["@ChinhSuaLanCuoiBoi"].Value = lead.ChinhSuaLanCuoiBoi;
+
+                    if (cmdYCTVNewLead.ExecuteNonQuery() > 0)
+                    {
+                    return true;
+                }
+                return false;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return null;
+                return false;
             }
             finally
             {
@@ -57,7 +135,7 @@ namespace DAL
                 dTO_Lead.LyDoTrangThaiLead = dt.Rows[0][11].ToString();
                 dTO_Lead.NguonLead = dt.Rows[0][12].ToString();
                 dTO_Lead.GhiChuLead = dt.Rows[0][13].ToString();
-                dTO_Lead.LeadTuKhachHangCu = dt.Rows[0][14].ToString();
+                dTO_Lead.LeadTuKHCu = dt.Rows[0][14].ToString();
                 dTO_Lead.TaoVaoLuc = (DateTime)dt.Rows[0][15];
                 dTO_Lead.TaoBoi = dt.Rows[0][16].ToString();
                 dTO_Lead.ChinhSuaLanCuoiVaoLuc = (DateTime)dt.Rows[0][17];
@@ -65,7 +143,7 @@ namespace DAL
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 /* return null; */
             }
@@ -112,8 +190,8 @@ namespace DAL
                 cmd.Parameters.Add("@ChinhSuaLanCuoiVaoLuc", SqlDbType.DateTime);
                 cmd.Parameters["@ChinhSuaLanCuoiVaoLuc"].Value = dTO_Lead.ChinhSuaLanCuoiVaoLuc;
 
-                cmd.Parameters.Add("@ChinhSuaLanCuoiBoi", SqlDbType.NVarChar);
-                cmd.Parameters["@ChinhSuaLanCuoiBoi"].Value = dTO_Lead.MaLead;
+                cmd.Parameters.Add("@MaPIC", SqlDbType.NVarChar);
+                cmd.Parameters["@MaPIC"].Value =  "STA0";
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
@@ -121,7 +199,7 @@ namespace DAL
                 }
                 return "Fail";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return "Exception";
             }

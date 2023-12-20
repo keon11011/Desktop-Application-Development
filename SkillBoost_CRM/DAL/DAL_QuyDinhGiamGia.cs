@@ -192,7 +192,6 @@ namespace DAL
 
             }
             catch (Exception ex)
-            {
                 return "Exception";
             }
             finally
