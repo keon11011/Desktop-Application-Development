@@ -45,6 +45,7 @@
     <Compile Include="DTO_KhoaHoc.cs" />
     <Compile Include="DTO_QuyDinhGiamGia.cs" />
     <Compile Include="DTO_Lead.cs" />
+    <Compile Include="DTO_SoLieu.cs" />
     <Compile Include="DTO_TaiKhoan.cs" />
     <Compile Include="DTO_KhachHang.cs" />
     <Compile Include="DTO_YeuCauTuVan.cs" />

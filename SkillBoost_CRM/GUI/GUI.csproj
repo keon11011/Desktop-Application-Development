@@ -191,6 +191,7 @@
     <EmbeddedResource Include="frmThongTinLead.resx">
       <DependentUpon>frmThongTinLead.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\DTO.DTO_SoLieu.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
