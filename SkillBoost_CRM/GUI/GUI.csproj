@@ -88,6 +88,12 @@
     <Compile Include="frmTaoQuyDinhGiamGia.Designer.cs">
       <DependentUpon>frmTaoQuyDinhGiamGia.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmXacNhanHuyTheoDoics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmXacNhanHuyTheoDoics.Designer.cs">
+      <DependentUpon>frmXacNhanHuyTheoDoics.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedResources.cs" />
@@ -96,6 +102,12 @@
     </Compile>
     <Compile Include="frmSuaLead.Designer.cs">
       <DependentUpon>frmSuaLead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmXacNhanXoaLead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmXacNhanXoaLead.Designer.cs">
+      <DependentUpon>frmXacNhanXoaLead.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
@@ -109,6 +121,9 @@
     <EmbeddedResource Include="frmTaoQuyDinhGiamGia.resx">
       <DependentUpon>frmTaoQuyDinhGiamGia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmXacNhanHuyTheoDoics.resx">
+      <DependentUpon>frmXacNhanHuyTheoDoics.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -120,6 +135,9 @@
     </Compile>
     <EmbeddedResource Include="frmSuaLead.resx">
       <DependentUpon>frmSuaLead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmXacNhanXoaLead.resx">
+      <DependentUpon>frmXacNhanXoaLead.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

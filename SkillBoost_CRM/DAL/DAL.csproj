@@ -33,6 +33,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL_KhachHang.cs" />
+    <Compile Include="DAL_KhoaHoc.cs" />
     <Compile Include="DAL_Lead.cs" />
     <Compile Include="DAL_NgheNghiep.cs" />
     <Compile Include="DAL_QuyDinhGiamGia.cs" />

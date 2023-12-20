@@ -26,7 +26,7 @@ GO
 
 -- RB3. Thuộc tính GioiTinhNV của bảng NhanVien chỉ luôn có 2 giá trị “Nữ” và “Nam”
 ALTER TABLE NhanVien
-ADD CONSTRAINT ConstraintDOMGioiTinhNV CHECK (GioiTinhNV IN (N'Nam', N'Nữ'))
+ADD CONSTRAINT ConstraintDOMGioiTinhNV CHECK (GioiTinhNV IN (N'Nam', N'Nữ', NULL))
 
 -- RB4. Thuộc tính ChucVu của bảng NhanVien chỉ luôn có 2 giá trị “Nhân viên” và “Quản lý”
 ALTER TABLE NhanVien
@@ -72,19 +72,19 @@ ADD CONSTRAINT ConstraintDOMTrangThaiTK CHECK (TrangThaiTK IN (N'Đang hoạt đ
 	RB16. Các thuộc tính TenLeadYeuCau, EmailLeadYeuCau, SDTLeadYeuCau, TrangThaiYCTV, TrangThaiTK, MaNV của bảng YeuCauTuVan không được để trống
 */
 -- RB17. Thuộc tính EmailLeadYeuCau của bảng YeuCauTuVan phải là duy nhất
-ALTER TABLE YeuCauTuVan
-ADD CONSTRAINT ConstraintUniqueEmailYCTV UNIQUE(EmailLeadYeuCau)
+--ALTER TABLE YeuCauTuVan
+--ADD CONSTRAINT ConstraintUniqueEmailYCTV UNIQUE(EmailLeadYeuCau)
 
 -- RB18. Thuộc tính SDTLeadYeuCau của bảng YeuCauTuVan phải là duy nhất
-ALTER TABLE YeuCauTuVan
-ADD CONSTRAINT ConstraintUniqueSDTYCTV UNIQUE(SDTLeadYeuCau)
+--ALTER TABLE YeuCauTuVan
+--ADD CONSTRAINT ConstraintUniqueSDTYCTV UNIQUE(SDTLeadYeuCau)
 
 
 -- RB19. Thuộc tính SDTLeadYeuCau của bảng YeuCauTuVan chỉ chứa các giá trị số
 ALTER TABLE YeuCauTuVan
 ADD CONSTRAINT ConstraintSDTYCTV CHECK (SDTLeadYeuCau NOT LIKE '%[^0-9]%')
 
--- RB20. Thuộc tính TrangThaiYCTV của bảng YeuCauTuVan chỉ luôn có 2 giá trị “Gửi thành công” và “Gửi không thành công”
+-- RB20. Thuộc tính TrangThaiYCTV của bảng YeuCauTuVan chỉ luôn có 2 giá trị “Đã tiếp nhận” và “Chờ tiếp nhận”
 ALTER TABLE YeuCauTuVan
 ADD CONSTRAINT ConstraintDOMTrangThaiYCTV CHECK (TrangThaiYCTV IN (N'Đã tiếp nhận', N'Chờ tiếp nhận'))
 
@@ -96,7 +96,7 @@ ADD CONSTRAINT ConstraintDOMTrangThaiYCTV CHECK (TrangThaiYCTV IN (N'Đã tiếp
 */
 -- R23. Thuộc tính GioiTinhLead của bảng Lead chỉ luôn có 2 giá trị “Nữ” và “Nam”
 ALTER TABLE Lead
-ADD CONSTRAINT ConstraintDOMGioiTinhLead CHECK (GioiTinhLead IN (N'Nam', N'Nữ'))
+ADD CONSTRAINT ConstraintDOMGioiTinhLead CHECK (GioiTinhLead IN (N'Nam', N'Nữ', NULL))
 
 -- RB24. Tuổi của Lead phải lớn hơn hoặc bằng 15 
 ALTER TABLE Lead
@@ -116,7 +116,7 @@ ADD CONSTRAINT ConstraintUniqueEmailLead UNIQUE(EmailLead)
 
 -- RB28. Thuộc tính TrangThaiLead của bảng KhachHang chỉ luôn có 4 giá trị “Chờ tư vấn”, “Đang tư vấn”, “Ngừng theo dõi” và “Đã thanh toán”
 ALTER TABLE Lead
-ADD CONSTRAINT ConstraintDOMTrangThaiLead CHECK (TrangThaiLead IN (N'Chờ tư vấn', N'Đang tư vấn', N'Ngừng theo dõi', N'Đã thanh toán'))
+ADD CONSTRAINT ConstraintDOMTrangThaiLead CHECK (TrangThaiLead IN (N'Chờ tư vấn', N'Đang tư vấn', N'Ngừng theo dõi', N'Đã thanh toán', N'Xóa mềm'))
 
 /* Bảng HoatDongLead : Từ RB29 đến RB32 */
 /* Các RB đã có
@@ -125,7 +125,7 @@ ADD CONSTRAINT ConstraintDOMTrangThaiLead CHECK (TrangThaiLead IN (N'Chờ tư v
 */
 -- RB31. Thuộc tính LoaiHDLead của bảng HoatDongLead chỉ luôn có các giá trị sau đây: “Yêu cầu”, “Điều chỉnh trạng thái” , “Email”, “Tư vấn”,  “Báo giá”, “Mã giảm giá”, “Thông tin Lead”
 ALTER TABLE HoatDongLead
-ADD CONSTRAINT ConstraintDOMLoaiHDLead CHECK (LoaiHDLead IN (N'Yêu cầu', N'Điều chỉnh trạng thái', N'Email', N'Tư vấn', N'Báo giá', N'Mã giảm giá', N'Thông tin Lead'))
+ADD CONSTRAINT ConstraintDOMLoaiHDLead CHECK (LoaiHDLead IN (N'Yêu cầu', N'Điều chỉnh trạng thái', N'Email', N'Tư vấn', N'Báo giá', N'Mã giảm giá', N'Thông tin Lead', N'Thanh toán'))
 
 -- RB32. Thuộc tính HDLeadDuocTaoBoi của bảng HoatDongLead chỉ luôn có các giá trị sau đây: “Hệ thống”, “Lead”, Nhân viên (gồm MaNV của người phụ trách hoạt động Lead và MaNV của quản lý)
 /*
@@ -140,7 +140,7 @@ ADD CONSTRAINT ConstraintDOMHDLeadDuocTaoBoi CHECK (LoaiHDLead IN (N'Hệ thốn
 */
 -- RB35. Thuộc tính TrangThaiBaoGia của bảng BaoGia chỉ luôn có 3 giá trị “Đã thanh toán”, “Chưa thanh toán” và “Đã hết hạn”
 ALTER TABLE BaoGia
-ADD CONSTRAINT ConstraintDOMTrangThaiBaoGia CHECK (TrangThaiBaoGia IN (N'Đã thanh toán', N'Chưa thanh toán', N'Đã hết hạn'))
+ADD CONSTRAINT ConstraintDOMTrangThaiBaoGia CHECK (TrangThaiBaoGia IN (N'Đã thanh toán', N'Chưa thanh toán', N'Đã hết hạn', N'Xóa mềm'))
 
 /* Use case 4*/
 /* Bảng QuyDinhGiamGia : Từ RB36 đến RB38 */
@@ -262,6 +262,11 @@ ADD CONSTRAINT ConstraintDOMTrangThaiEmailMau CHECK (TrangThaiEmailMau IN (N'Đa
 	RB69. Thuộc tính MaHoaDon của bảng HoaDon phải là duy nhất
 	RB70. Thuộc tính MaBaoGia, TenKH, ThoiDiemThanhToan, MoTaHoaDon và TongHoaDon của bảng HoaDon luôn có giá trị khác rỗng
 */
+GO
+
+ALTER TABLE QuyDinhGiamGia
+ADD CONSTRAINT ConstraintDOMTrangThaiQLQDGG CHECK (TrangThaiQuyDinhGiamGia IN (N'Đang hoạt động', N'Vô hiệu hóa',  N'Xóa mềm'))
+
 GO
 
 CREATE TRIGGER TR_HASH_MK ON TaiKhoan

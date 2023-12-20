@@ -58,7 +58,8 @@ namespace DAL
               try
               {
                   conn.Open();
-                  string cmdText = "Select * from KhoaHoc where MaKhoaHoc in (select MaKhoaHoc from ChiTietKhoaHocThuocYeuCauTuVan where MaTuVan in (Select MaTuVan from YeuCauTuVan where TaoBoiLead = @MaLead))";
+                  string cmdText = "Select * from KhoaHoc where MaKhoaHoc in (select MaKhoaHoc from " +
+                    "ChiTietKhoaHocThuocYeuCauTuVan where MaTuVan in (Select MaTuVan from YeuCauTuVan where TaoBoiLead = @MaLead))";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
 
                 cmd.Parameters.Add("@MaLead", SqlDbType.VarChar);
@@ -95,24 +96,24 @@ namespace DAL
                 da.Fill(dt);
 
                 da.Dispose();
-                dTO_Lead.HoTenLead = dt.Rows[0][1].ToString();
-                dTO_Lead.GioiTinhLead = dt.Rows[0][2].ToString();
-                dTO_Lead.NgaySinhLead = (DateTime)dt.Rows[0][3];
-                dTO_Lead.SoDienThoaiLead = dt.Rows[0][4].ToString();
-                dTO_Lead.EmailLead = dt.Rows[0][5].ToString();
-                dTO_Lead.MaNgheNghiep = dt.Rows[0][6].ToString();
-                dTO_Lead.TenNgheNghiep = dt.Rows[0][7].ToString();
-                dTO_Lead.MaNVPhuTrachLead = dt.Rows[0][8].ToString();
-                dTO_Lead.TenNVPhuTrachLead = dt.Rows[0][9].ToString();
-                dTO_Lead.TrangThaiLead = dt.Rows[0][10].ToString();
-                dTO_Lead.LyDoTrangThaiLead = dt.Rows[0][11].ToString();
-                dTO_Lead.NguonLead = dt.Rows[0][12].ToString();
-                dTO_Lead.GhiChuLead = dt.Rows[0][13].ToString();
-                dTO_Lead.LeadTuKhachHangCu = dt.Rows[0][14].ToString();
-                dTO_Lead.TaoVaoLuc = (DateTime)dt.Rows[0][15];
-                dTO_Lead.TaoBoi = dt.Rows[0][16].ToString();
-                dTO_Lead.ChinhSuaLanCuoiVaoLuc = (DateTime)dt.Rows[0][17];
-                dTO_Lead.ChinhSuaLanCuoiBoi = dt.Rows[0][18].ToString();
+                dTO_Lead.HoTenLead = dt.Rows[0][2].ToString();
+                dTO_Lead.GioiTinhLead = dt.Rows[0][3].ToString();
+                dTO_Lead.NgaySinhLead = (DateTime)dt.Rows[0][4];
+                dTO_Lead.SoDienThoaiLead = dt.Rows[0][5].ToString();
+                dTO_Lead.EmailLead = dt.Rows[0][6].ToString();
+                dTO_Lead.MaNgheNghiep = dt.Rows[0][7].ToString();
+                dTO_Lead.TenNgheNghiep = dt.Rows[0][8].ToString();
+                dTO_Lead.MaNVPhuTrachLead = dt.Rows[0][9].ToString();
+                dTO_Lead.TenNVPhuTrachLead = dt.Rows[0][10].ToString();
+                dTO_Lead.TrangThaiLead = dt.Rows[0][11].ToString();
+                dTO_Lead.LyDoTrangThaiLead = dt.Rows[0][12].ToString();
+                dTO_Lead.NguonLead = dt.Rows[0][13].ToString();
+                dTO_Lead.GhiChuLead = dt.Rows[0][14].ToString();
+                dTO_Lead.LeadTuKhachHangCu = dt.Rows[0][15].ToString();
+                dTO_Lead.TaoVaoLuc = (DateTime)dt.Rows[0][16];
+                dTO_Lead.TaoBoi = dt.Rows[0][17].ToString();
+                dTO_Lead.ChinhSuaLanCuoiVaoLuc = (DateTime)dt.Rows[0][18];
+                dTO_Lead.ChinhSuaLanCuoiBoi = dt.Rows[0][19].ToString();
 
 
             }
@@ -131,9 +132,12 @@ namespace DAL
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("Update Lead set TrangThaiLead = N'Ngừng theo dõi' where MaLead = @MaLead", conn);
+                SqlCommand cmd = new SqlCommand("Update Lead set TrangThaiLead = N'Ngừng theo dõi', LyDoTrangThaiLead = @LyDoTrangThaiLead where MaLead = @MaLead", conn);
                 cmd.Parameters.Add("@MaLead", SqlDbType.VarChar);
                 cmd.Parameters["@MaLead"].Value = dTO_Lead.MaLead;
+
+                cmd.Parameters.Add("@LyDoTrangThaiLead", SqlDbType.NVarChar);
+                cmd.Parameters["@LyDoTrangThaiLead"].Value = dTO_Lead.LyDoTrangThaiLead;
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
@@ -150,9 +154,40 @@ namespace DAL
                 conn.Close();
             }
         }
-        public string SuaThongTinLead(DTO_Lead dTO_Lead)
+        public string XoaMemLead(DTO_Lead dTO_Lead)
         {
             try
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("Update Lead set TrangThaiLead = N'Xóa mềm', LyDoTrangThaiLead = @LyDoTrangThaiLead  where MaLead = @MaLead", conn);
+                cmd.Parameters.Add("@MaLead", SqlDbType.VarChar);
+                cmd.Parameters["@MaLead"].Value = dTO_Lead.MaLead;
+
+                cmd.Parameters.Add("@LyDoTrangThaiLead", SqlDbType.NVarChar);                         
+                cmd.Parameters["@LyDoTrangThaiLead"].Value = dTO_Lead.LyDoTrangThaiLead;
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    return "Success";
+                }
+                return "Fail";
+            }
+            catch (Exception ex)
+            {
+                return "Exception";
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+       
+
+                
+         public string SuaThongTinLead(DTO_Lead dTO_Lead)
+        {
+               try
             {
                 conn.Open();
 
@@ -206,5 +241,5 @@ namespace DAL
                 conn.Close();
             }
         }
-    }
+     }
 }

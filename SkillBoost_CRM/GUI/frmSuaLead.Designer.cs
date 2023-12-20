@@ -87,6 +87,7 @@
             this.btnXoa.TabIndex = 79;
             this.btnXoa.Text = "🗑️";
             this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnUnfollow
             // 
@@ -149,6 +150,7 @@
             this.btnHuyChinhSua.TabIndex = 74;
             this.btnHuyChinhSua.Text = "Hủy chỉnh sửa";
             this.btnHuyChinhSua.UseVisualStyleBackColor = true;
+            this.btnHuyChinhSua.Click += new System.EventHandler(this.btnHuyChinhSua_Click);
             // 
             // cbKhoaHoc
             // 
@@ -521,6 +523,7 @@
             this.btnXoaKhoaHoc.TabIndex = 80;
             this.btnXoaKhoaHoc.Text = "Xóa khóa học ";
             this.btnXoaKhoaHoc.UseVisualStyleBackColor = true;
+            this.btnXoaKhoaHoc.Click += new System.EventHandler(this.btnXoaKhoaHoc_Click);
             // 
             // btnThemKhoaHoc
             // 
@@ -532,6 +535,7 @@
             this.btnThemKhoaHoc.TabIndex = 72;
             this.btnThemKhoaHoc.Text = "Thêm khóa học ";
             this.btnThemKhoaHoc.UseVisualStyleBackColor = true;
+            this.btnThemKhoaHoc.Click += new System.EventHandler(this.btnThemKhoaHoc_Click);
             // 
             // dataGridViewKhoaHocKHQuanTam
             // 

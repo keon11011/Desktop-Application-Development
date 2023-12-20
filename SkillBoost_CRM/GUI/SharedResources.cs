@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace GUI
 {
+
     public static class SharedResources
     {
         public static string MaPIC;
+        public static string MaLead;
     }
 }
