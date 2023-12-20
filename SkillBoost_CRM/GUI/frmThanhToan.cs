@@ -80,6 +80,21 @@ namespace GUI
                 else
                 {
                     MessageBox.Show("Tạo hoạt động thanh toán thất bại");
+
+                }
+                hoatDongLead.MaLead = tt.MaLead;
+                hoatDongLead.TenHDLead = "Gửi email xác nhận thanh toán thành công";
+                hoatDongLead.LoaiHDLead = "Email";
+                hoatDongLead.HDLeadDuocTaoBoi = "Hệ thống";
+                hoatDongLead.MaEmailDenLead = null;//sửa null
+                if (bUS_HoatDongLead.ThemHoatDongLead(hoatDongLead))
+                {
+                    MessageBox.Show("Gửi email thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Gửi email thất bại");
+
                 }
 
             }
