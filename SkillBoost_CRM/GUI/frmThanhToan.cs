@@ -51,7 +51,10 @@ namespace GUI
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            
+            DTO_ThanhToan t = new DTO_ThanhToan();
+            t.MaBaoGia = txtMadonhang.Text;
+            t.TrangThaiBaoGia = "Đã thanh toán";
+
             tt.MaBaoGia = txtMadonhang.Text;
             tt.TrangThaiBaoGia = "Đã thanh toán";
 
