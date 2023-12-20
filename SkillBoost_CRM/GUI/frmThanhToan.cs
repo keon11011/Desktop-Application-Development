@@ -16,6 +16,8 @@ namespace GUI
     public partial class frmThanhToan : Form
     {
         BUS_ThanhToan bUS_ThanhToan = new BUS_ThanhToan();
+        BUS_HoatDongLead bUS_HoatDongLead = new BUS_HoatDongLead();
+        DTO_ThanhToan tt = new DTO_ThanhToan();
         public frmThanhToan()
         {
             InitializeComponent();
@@ -29,7 +31,7 @@ namespace GUI
         }
         private void btnTim_Click(object sender, EventArgs e)
         {
-            DTO_ThanhToan tt = new DTO_ThanhToan();
+            
             tt.MaBaoGia = txtMadonhang.Text;
             if (bUS_ThanhToan.TimThongTinThanhToan(ref tt))
             {
@@ -49,14 +51,23 @@ namespace GUI
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            DTO_ThanhToan t = new DTO_ThanhToan();
-            t.MaBaoGia = txtMadonhang.Text;
-            t.TrangThaiBaoGia = "Đã thanh toán";
+            
+            tt.MaBaoGia = txtMadonhang.Text;
+            tt.TrangThaiBaoGia = "Đã thanh toán";
 
-            if (bUS_ThanhToan.UpdateThanhToan(t))
+            if (bUS_ThanhToan.UpdateThanhToan(tt))
             {
                 MessageBox.Show("Thanh toán thành công");
-                bUS_ThanhToan.UpdateTrangThaiLead(t);
+                bUS_ThanhToan.UpdateTrangThaiLead(tt);
+                HoatDongLead hoatDongLead = new HoatDongLead();
+
+                hoatDongLead.MaLead = tt.MaLead;
+                hoatDongLead.TenHDLead = "Thanh toán thành công các khóa học";
+                hoatDongLead.LoaiHDLead = "Thanh toán";
+                hoatDongLead.HDLeadDuocTaoBoi = "Lead";
+                hoatDongLead.MaNVPhuTrachHDLead = 
+                bUS_HoatDongLead.ThemHoatDongLead
+
             }
             else
             {

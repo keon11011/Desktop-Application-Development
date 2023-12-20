@@ -130,5 +130,26 @@ namespace DAL
                 conn.Close();
             }
         }
+        public string LayMaPIC(string MaLead)
+        {
+            try
+            {
+                conn.Open();
+                string cmdText = "select MaNVPhuTrachLead from Lead where MaLead = @MaLead";
+                SqlDataAdapter da = new SqlDataAdapter(cmdText, conn);
+                DataSet ds = new DataSet();
+                da.Fill(ds, "NgheNghiep");
+                return ds;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }

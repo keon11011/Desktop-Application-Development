@@ -136,7 +136,7 @@ namespace DAL
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("Select MaGiamGia, TongTien from BaoGia where MaBaoGia = @MaBaoGia", conn);
+                SqlCommand cmd = new SqlCommand("Select MaGiamGia, TongTien,MaLead from BaoGia where MaBaoGia = @MaBaoGia", conn);
                 cmd.Parameters.AddWithValue("@MaBaoGia", tt.MaBaoGia);
                 SqlDataReader reader;
                 reader = cmd.ExecuteReader();
@@ -144,6 +144,8 @@ namespace DAL
                 {
                     tt.MaGiamGia = reader["MaGiamGia"].ToString();
                     tt.TongTien = reader["TongTien"].ToString();
+                    tt.MaLead = reader["MaLead"].ToString() ;
+
                     return true;
                 }
                 else
@@ -161,5 +163,7 @@ namespace DAL
                 conn.Close();
             }
         }
+        
+        
     }
 }
