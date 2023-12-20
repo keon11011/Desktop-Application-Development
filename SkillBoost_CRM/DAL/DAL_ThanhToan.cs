@@ -62,8 +62,10 @@ namespace DAL
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
+                    cmd.Dispose();
                     return true;
                 }
+                cmd.Dispose();
                 return false;
             }
             catch (Exception)
@@ -91,8 +93,10 @@ namespace DAL
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
+                    cmd.Dispose();
                     return true;
                 }
+                cmd.Dispose();
                 return false;
             }
             catch (Exception)
@@ -118,8 +122,10 @@ namespace DAL
               
                 if (cmd.ExecuteNonQuery() > 0)
                 {
+                    cmd.Dispose();
                     return true;
                 }
+                cmd.Dispose();
                 return false;
             }
             catch (Exception)
@@ -145,11 +151,12 @@ namespace DAL
                     tt.MaGiamGia = reader["MaGiamGia"].ToString();
                     tt.TongTien = reader["TongTien"].ToString();
                     tt.MaLead = reader["MaLead"].ToString() ;
-
+                    cmd.Dispose();
                     return true;
                 }
                 else
                 {
+                    cmd.Dispose();
                     return false;
                 }
             }

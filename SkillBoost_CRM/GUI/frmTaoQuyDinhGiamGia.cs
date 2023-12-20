@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -64,7 +64,7 @@ namespace GUI
                     case "Success":
                         MessageBox.Show("Thêm Quy định giảm giá thành công");
                         this.Hide();
-                        frmDSQuyDinhGiamGia frmDSqdGiamGia = new frmDSQuyDinhGiamGia();
+                        frmChiTietQuyDinhGiamGia frmDSqdGiamGia = new frmChiTietQuyDinhGiamGia();
                         frmDSqdGiamGia.Closed += (s, args) => this.Close();
                         frmDSqdGiamGia.Show();
                         break;
@@ -95,7 +95,7 @@ namespace GUI
                     case "Success":
                         MessageBox.Show("Tạo Quy định giảm giá mới thành công");
                         this.Hide();
-                        frmDSQuyDinhGiamGia frmDSqdGiamGia = new frmDSQuyDinhGiamGia();
+                        frmChiTietQuyDinhGiamGia frmDSqdGiamGia = new frmChiTietQuyDinhGiamGia();
                         frmDSqdGiamGia.Closed += (s, args) => this.Close();
                         frmDSqdGiamGia.Show();
                         break;

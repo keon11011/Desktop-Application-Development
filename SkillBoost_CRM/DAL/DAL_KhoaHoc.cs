@@ -55,6 +55,7 @@ namespace DAL
                 SqlDataAdapter da = new SqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
+                da.Dispose();
                 return dt;
 
             }
@@ -79,6 +80,7 @@ namespace DAL
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(sqlCommand, conn);
                 da.Fill(dt);
+                da.Dispose();
                 return dt;
             }
             catch (SqlException)

@@ -14,11 +14,11 @@ using System.Data.Common;
 
 namespace GUI
 {
-    public partial class frmDanhSachHoatDongLead : Form
+    public partial class frmDSHoatDongLead : Form
     {
 
         BUS_HoatDongLead bUSHoatDongLead = new BUS_HoatDongLead();
-        public frmDanhSachHoatDongLead()
+        public frmDSHoatDongLead()
         {
             InitializeComponent();
         }
@@ -93,6 +93,7 @@ namespace GUI
             LoadDataHoatDongLead();
 
             LoadDataCombobox();
+            lb_LeadName.Text = "Lê Minh Quân";
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -133,6 +134,44 @@ namespace GUI
             frmTaoHoatDongLead taoHoatDongLead = new frmTaoHoatDongLead();
             taoHoatDongLead.Closed += (s, args) => this.Close();
             taoHoatDongLead.Show();
+        }
+
+        private void yêuCầuTưVấnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new frmDSYeuCauTuVan();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
+        private void ThongTinChungToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBackDSLead_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbDuocTaoBoi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -22,6 +22,7 @@ namespace DAL
                 SqlDataAdapter da = new SqlDataAdapter(cmdText, conn);
                 DataSet ds = new DataSet();
                 da.Fill(ds, "NgheNghiep");
+                da.Dispose();
                 return ds;
            
         }
@@ -94,10 +95,12 @@ namespace DAL
                     cmdYCTVNewLead.Parameters.Add("@ChinhSuaLanCuoiBoi", SqlDbType.NVarChar);
                 cmdYCTVNewLead.Parameters["@ChinhSuaLanCuoiBoi"].Value = lead.ChinhSuaLanCuoiBoi;
 
-                    if (cmdYCTVNewLead.ExecuteNonQuery() > 0)
-                    {
+                if (cmdYCTVNewLead.ExecuteNonQuery() > 0)
+                {
+                    cmdYCTVNewLead.Dispose();
                     return true;
                 }
+                cmdYCTVNewLead.Dispose();
                 return false;
 
             }
@@ -115,7 +118,7 @@ namespace DAL
             try
             {
                 conn.Open();
-                string cmdText = "select * from Lead where MaLead = 'LEA001'";
+                string cmdText = "select * from Lead where MaLead = 'LEA3'";
                 SqlDataAdapter da = new SqlDataAdapter(cmdText, conn);
 
                 DataTable dt = new DataTable();
@@ -140,8 +143,6 @@ namespace DAL
                 dTO_Lead.TaoBoi = dt.Rows[0][16].ToString();
                 dTO_Lead.ChinhSuaLanCuoiVaoLuc = (DateTime)dt.Rows[0][17];
                 dTO_Lead.ChinhSuaLanCuoiBoi = dt.Rows[0][18].ToString();
-
-
             }
             catch (Exception)
             {
@@ -195,8 +196,10 @@ namespace DAL
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
+                    cmd.Dispose();
                     return "Success";
                 }
+                cmd.Dispose();
                 return "Fail";
             }
             catch (Exception)
@@ -218,7 +221,9 @@ namespace DAL
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
 
                 cmd.Parameters.AddWithValue("@MaLead", MaLead);
-                return cmd.ExecuteScalar().ToString();
+                string s = cmd.ExecuteScalar().ToString();
+                cmd.Dispose();
+                return s;
 
             }
             catch (Exception ex)
@@ -240,12 +245,92 @@ namespace DAL
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
 
                 cmd.Parameters.AddWithValue("@MaLead", MaLead);
-                return cmd.ExecuteScalar().ToString();
+                string s = cmd.ExecuteScalar().ToString();
+                cmd.Dispose();
+                return s;
 
             }
             catch (Exception ex)
             {
                 return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public DataSet SelectKhoaHoc()
+        {
+            try
+            {
+                conn.Open();
+                string cmdText = "select * from KhoaHoc";
+                SqlDataAdapter da = new SqlDataAdapter(cmdText, conn);
+                DataSet ds = new DataSet();
+                da.Fill(ds, "KhoaHoc");
+                da.Dispose();
+                return ds;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public DataSet DanhSachKhoaHoc(DTO_Lead dTO_Lead)
+        {
+            try
+            {
+                conn.Open();
+                string cmdText = "Select * from KhoaHoc where MaKhoaHoc in (select MaKhoaHoc from ChiTietKhoaHocThuocYeuCauTuVan where MaTuVan in (Select MaTuVan from YeuCauTuVan where TaoBoiLead = @MaLead))";
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+
+                cmd.Parameters.Add("@MaLead", SqlDbType.VarChar);
+                cmd.Parameters["@MaLead"].Value = dTO_Lead.MaLead;
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet db = new DataSet();
+                da.Fill(db, "KhoaHoc");
+                da.Dispose();
+                cmd.Dispose();
+                return db;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        
+        public string HuyTheoDoiTuVan(DTO_Lead dTO_Lead)
+        {
+            try
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("Update Lead set TrangThaiLead = N'Ngừng theo dõi' where MaLead = @MaLead", conn);
+                cmd.Parameters.Add("@MaLead", SqlDbType.VarChar);
+                cmd.Parameters["@MaLead"].Value = dTO_Lead.MaLead;
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    cmd.Dispose();
+                    return "Success";
+                }
+                cmd.Dispose();
+                return "Fail";
+            }
+            catch (Exception ex)
+            {
+                return "Exception";
             }
             finally
             {

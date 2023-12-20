@@ -26,7 +26,7 @@ GO
 
 -- RB3. Thuộc tính GioiTinhNV của bảng NhanVien chỉ luôn có 2 giá trị “Nữ” và “Nam”
 ALTER TABLE NhanVien
-ADD CONSTRAINT ConstraintDOMGioiTinhNV CHECK (GioiTinhNV IN (N'Nam', N'Nữ'))
+ADD CONSTRAINT ConstraintDOMGioiTinhNV CHECK (GioiTinhNV IN (N'Nam', N'Nữ', NULL))
 
 -- RB4. Thuộc tính ChucVu của bảng NhanVien chỉ luôn có 2 giá trị “Nhân viên” và “Quản lý”
 ALTER TABLE NhanVien
@@ -96,7 +96,7 @@ ADD CONSTRAINT ConstraintDOMTrangThaiYCTV CHECK (TrangThaiYCTV IN (N'Đã tiếp
 */
 -- R23. Thuộc tính GioiTinhLead của bảng Lead chỉ luôn có 2 giá trị “Nữ” và “Nam”
 ALTER TABLE Lead
-ADD CONSTRAINT ConstraintDOMGioiTinhLead CHECK (GioiTinhLead IN (N'Nam', N'Nữ'))
+ADD CONSTRAINT ConstraintDOMGioiTinhLead CHECK (GioiTinhLead IN (N'Nam', N'Nữ', NULL))
 
 -- RB24. Tuổi của Lead phải lớn hơn hoặc bằng 15 
 ALTER TABLE Lead

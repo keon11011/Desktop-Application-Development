@@ -6,7 +6,7 @@ USE SkillBoost
 /* Bảng NhanVien */
 INSERT INTO NhanVien(HoTenNV, GioiTinhNV, NgaySinhNV, ChucVu, SoDienThoaiNV, EmailNV, TrangThaiNV, TaoVaoLuc, TaoBoi, ChinhSuaLanCuoiVaoLuc, ChinhSuaLanCuoiBoi)
 VALUES 
-(N'Chưa tiếp nhận', N'Nam', NULL, N'Nhân viên', '0000000000', 'xxxxxxxxx@gmail.com', N'Đang hoạt động', '2021-12-31 08:00:00', N'Hệ thống', '2021-12-31 08:00:00', N'Hệ thống'),
+(N'Chưa tiếp nhận', NULL, NULL, N'Nhân viên', '0000000000', 'xxxxxxxxx@gmail.com', N'Đang hoạt động', '2021-12-31 08:00:00', N'Hệ thống', '2021-12-31 08:00:00', N'Hệ thống'),
 (N'Nguyễn Phương Thanh', N'Nữ', '1956-10-13', N'Quản lý', '0797979797', 'ngphthanh@gmail.com', N'Đang hoạt động', '2021-12-31 08:00:00', N'Hệ thống', '2021-12-31 09:00:00', 'STA1'),
 (N'Nguyễn Ngọc Hoàng', N'Nam', '1990-05-15', N'Nhân viên', '0987123456', 'hoangnguyenngoc@gmail.com', N'Đang hoạt động', '2022-01-01 08:00:00', 'STA1', '2022-01-01 10:30:00', 'STA1'),
 (N'Võ Anh Thư', N'Nữ', '1988-09-25', N'Nhân viên', '0908123456', 'anhthuvo@gmail.com', N'Đang hoạt động', '2022-01-02 09:15:00', 'STA1', '2022-01-02 14:45:00', 'STA1'),

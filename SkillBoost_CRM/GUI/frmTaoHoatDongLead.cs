@@ -93,7 +93,7 @@ namespace GUI
                 if (result == DialogResult.OK)
                 {
                     this.Hide();
-                    frmDanhSachHoatDongLead danhSachHoatDongLead = new frmDanhSachHoatDongLead();
+                    frmDSHoatDongLead danhSachHoatDongLead = new frmDSHoatDongLead();
                     danhSachHoatDongLead.Closed += (s, args) => this.Close();
                     danhSachHoatDongLead.Show();
                 }
@@ -109,6 +109,35 @@ namespace GUI
             frmTaoHoatDongLead taoHoatDongLead = new frmTaoHoatDongLead();
 
             this.Close();
+        }
+
+        private void yêuCầuTưVấnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new frmDSYeuCauTuVan();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
+        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new frmDSKhachHang();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
+        private void thôngTinKhóaHọcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new frmDSKhoaHoc();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
+        private void quyĐịnhGiảmGiáToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

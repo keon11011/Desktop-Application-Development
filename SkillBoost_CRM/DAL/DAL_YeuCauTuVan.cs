@@ -25,6 +25,7 @@ namespace DAL
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 da.Dispose();
+                cmd.Dispose();
                 dt.Columns.Add("Tên Khóa Học");
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
@@ -34,6 +35,7 @@ namespace DAL
                     SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
                     da1.Fill(dt2);
                     da1.Dispose();
+                    cmd1.Dispose(); 
                     string s = dt2.Rows[0][2].ToString();
                     for (int j = 1; j < dt2.Rows.Count; j++)
                     {
@@ -42,6 +44,7 @@ namespace DAL
                     }
                     dt.Rows[i][4] = s;
                 }
+
 
                 return dt;
             }
@@ -177,13 +180,10 @@ namespace DAL
                 cmdCheckLead.Dispose();
                 if (reader.HasRows)
                 {
-                    
-                    cmdCheckLead.Dispose();
                     return dAL_YeuCauTuVan.InsertYCTV(ref yctv);
                 }
                 else
                 {
-                    
                     DTO_Lead lead = new DTO_Lead();
                     DAL_Lead dAL_Lead = new DAL_Lead();
                     lead.HoTenLead = yctv.TenLeadYeuCau;

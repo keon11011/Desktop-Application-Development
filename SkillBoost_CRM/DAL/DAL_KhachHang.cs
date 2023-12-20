@@ -11,19 +11,32 @@ namespace DAL
 {
     public class DAL_KhachHang : DBConnect
     {
-        public DataTable SelectKhachHang(string maPIC)
+        public DataTable SelectKhachHang(string maPIC, string ChucVu)
         {
             try
             {
                 conn.Open();
-                string cmdText = "SELECT MaKH as N'Mã Khách hàng', HoTenKH as N'Họ tên', ChinhSuaLanCuoiVaoLuc as N'Thời gian cập nhật gần nhất' " +
-                    "FROM KhachHang " +
-                    "WHERE TrangThaiKH = N'Đang hoạt động' AND MaNVPhuTrachKH = \'" + maPIC + "\'";
-                
-                //SqlCommand cmd = new SqlCommand(cmdText, conn);
-                //cmd.Parameters.Add("@MaPIC", SqlDbType.Char);
-                //cmd.Parameters["@MaPIC"].Value = maPIC;
-                
+                string cmdText;
+                if (ChucVu == "Nhân viên")
+                {
+                    cmdText = "SELECT MaKH as N'Mã Khách hàng', HoTenKH as N'Họ tên', GioiTinhKH as N'Giới tính', " +
+                        "SoDienThoaiKH as N'Số điện thoại', EmailKH as 'Email', TenNgheNghiep as N'Nghề nghiệp', " +
+                        "TenNVPhuTrachKH as N'Nhân viên phụ trách', TrangThaiKH as N'Trạng thái', " +
+                        "LyDoTrangThaiKH as N'Lý do trạng thái', GhiChuKH as N'Ghi chú', ChuyenDoiTuMaLead As N'Chuyển từ Lead' , " +
+                        "TaoVaoLuc as 'Tạo lúc', TaoBoi as N'Tạo bởi' ,  ChinhSuaLanCuoiVaoLuc as N'Chỉnh sửa lần cuối lúc', " +
+                        "ChinhSuaLanCuoiBoi as N'Chỉnh sửa lần cuối bởi' FROM KhachHang WHERE TrangThaiKH = N'Đang hoạt động' " +
+                        "AND MaNVPhuTrachKH = \'" + maPIC + "\'";                
+                }
+                else
+                {
+                    cmdText = "SELECT MaKH as N'Mã Khách hàng', HoTenKH as N'Họ tên', GioiTinhKH as N'Giới tính', " +
+                        "SoDienThoaiKH as N'Số điện thoại', EmailKH as 'Email', TenNgheNghiep as N'Nghề nghiệp', " +
+                        "TenNVPhuTrachKH as N'Nhân viên phụ trách', TrangThaiKH as N'Trạng thái', " +
+                        "LyDoTrangThaiKH as N'Lý do trạng thái', GhiChuKH as N'Ghi chú', ChuyenDoiTuMaLead As N'Chuyển từ Lead' , " +
+                        "TaoVaoLuc as 'Tạo lúc', TaoBoi as N'Tạo bởi' ,  ChinhSuaLanCuoiVaoLuc as N'Chỉnh sửa lần cuối lúc', " +
+                        "ChinhSuaLanCuoiBoi as N'Chỉnh sửa lần cuối bởi' FROM KhachHang WHERE TrangThaiKH = N'Đang hoạt động' ";
+                }
+                                
                 SqlDataAdapter da = new SqlDataAdapter(cmdText,conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);

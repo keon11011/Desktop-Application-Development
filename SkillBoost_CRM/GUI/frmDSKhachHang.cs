@@ -12,11 +12,11 @@ using BUS;
 
 namespace GUI
 {
-    public partial class frmDanhSachKH : Form
+    public partial class frmDSKhachHang : Form
     {
         
         BUS_KhachHang bUS_KhachHang = new BUS_KhachHang();
-        public frmDanhSachKH()
+        public frmDSKhachHang()
         {
             InitializeComponent();
         }
@@ -37,7 +37,7 @@ namespace GUI
         }
         public void LoadDSKhachHang()
         {
-            DataTable dt = bUS_KhachHang.SelectKhachHang(SharedResources.MaPIC);
+            DataTable dt = bUS_KhachHang.SelectKhachHang(SharedResources.MaPIC,SharedResources.ChucVu);
             dtgvKhachHang.DataSource = dt;
         }
 
@@ -48,6 +48,30 @@ namespace GUI
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        private void yêuCầuTưVấnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new frmDSYeuCauTuVan();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
+        private void thôngTinKhóaHọcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new frmDSKhoaHoc();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
+        private void quyĐịnhGiảmGiáToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new frmDSQuyDinhGiamGia();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
         }
     }
 }

@@ -13,9 +13,9 @@ namespace BUS
     public class BUS_KhachHang
     {
         DAL_KhachHang dAL_KhachHang = new DAL_KhachHang();
-        public DataTable SelectKhachHang(string maPIC) 
+        public DataTable SelectKhachHang(string maPIC, string ChucVu) 
         {
-            return dAL_KhachHang.SelectKhachHang(maPIC);
+            return dAL_KhachHang.SelectKhachHang(maPIC, ChucVu);
         }
     }
 }

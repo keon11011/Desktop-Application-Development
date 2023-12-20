@@ -30,5 +30,9 @@ namespace BUS
         {
             return dal_TaiKhoan.TimChucVu(ref chucVu, maPIC);
         }
+        public bool TimTenPIC(ref string tenPIC, string maPIC)
+        {
+            return dal_TaiKhoan.TimTenPIC(ref tenPIC, maPIC);
+        }
     }
 }

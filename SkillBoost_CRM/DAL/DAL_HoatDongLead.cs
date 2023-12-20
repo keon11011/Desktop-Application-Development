@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Sql;
 using System.Data.SqlClient;
-
+using DTO;
 using System.Data;
 using System.Data.Common;
 using System.Security.Cryptography;
@@ -31,7 +31,7 @@ namespace DAL
                 da.Fill(dt);
 
                 da.Dispose();
-
+                cmd.Dispose();
                 return dt;
             }
             catch (Exception ex)
@@ -76,8 +76,10 @@ namespace DAL
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
+                    cmd.Dispose();
                     return true;
                 }
+                cmd.Dispose();
                 return false;
             }
             catch (Exception ex)
@@ -109,6 +111,7 @@ namespace DAL
                 SqlDataAdapter da = new SqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
+                da.Dispose();
                 return dt;
 
             }
@@ -134,6 +137,7 @@ namespace DAL
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(sqlCommand, conn);
                 da.Fill(dt);
+                da.Dispose();
                 return dt;
             }
             catch (SqlException)

@@ -32,10 +32,13 @@ namespace GUI
                 SharedResources.MaPIC = maPIC;
                 if (bUS_TaiKhoan.TimChucVu(ref SharedResources.ChucVu, SharedResources.MaPIC))
                 {
-                    this.Hide();
-                    frmDanhSachKH FRMfrmDanhSachKH = new frmDanhSachKH();
-                    FRMfrmDanhSachKH.Closed += (s, args) => this.Close();
-                    FRMfrmDanhSachKH.Show();
+                    if (bUS_TaiKhoan.TimTenPIC(ref SharedResources.TenPIC, SharedResources.MaPIC))
+                    {
+                        this.Hide();
+                        frmDSYeuCauTuVan FRMfrmDanhSacYCTV = new frmDSYeuCauTuVan();
+                        FRMfrmDanhSacYCTV.Closed += (s, args) => this.Close();
+                        FRMfrmDanhSacYCTV.Show();
+                    }
                 }
                 else
                 {

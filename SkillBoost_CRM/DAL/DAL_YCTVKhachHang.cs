@@ -33,8 +33,10 @@ namespace DAL
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
+                    cmd.Dispose();
                     return true;
                 }
+                cmd.Dispose();
                 return false;
             }
             catch (Exception)

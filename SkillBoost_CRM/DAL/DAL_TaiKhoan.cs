@@ -47,7 +47,7 @@ namespace DAL
 
 
                     dTO_TaiKhoan.MaHashTK = (byte[])cmd.ExecuteScalar();
-
+                    cmd.Dispose();
                     var MaHashTK = dt.Rows[0][4];
 
                     if (dTO_TaiKhoan.MaHashTK.SequenceEqual((byte[])MaHashTK))
@@ -80,6 +80,7 @@ namespace DAL
                 cmd.Parameters.Add("@MaPIC", SqlDbType.VarChar);
                 cmd.Parameters["@MaPIC"].Value = maPIC;
                 chucVu = (string)cmd.ExecuteScalar();
+                cmd.Dispose();
                 return true;
             }
             catch (Exception)
@@ -92,6 +93,28 @@ namespace DAL
                 conn.Close(); 
             }   
         }
-       
+        public bool TimTenPIC(ref string tenPIC, string maPIC)
+        {
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT HoTenNV FROM NhanVien WHERE MaNV = @MaPIC", conn);
+                cmd.Parameters.Add("@MaPIC", SqlDbType.VarChar);
+                cmd.Parameters["@MaPIC"].Value = maPIC;
+                tenPIC = (string)cmd.ExecuteScalar();
+                cmd.Dispose();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
     }
 }

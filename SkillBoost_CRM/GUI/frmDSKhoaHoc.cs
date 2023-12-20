@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class frmDanhSachKhoaHoc : Form
+    public partial class frmDSKhoaHoc : Form
     {
         BUS_KhoaHoc bUSKhoaHoc = new BUS_KhoaHoc();
 
-        public frmDanhSachKhoaHoc()
+        public frmDSKhoaHoc()
         {
             InitializeComponent();
         }
@@ -128,6 +128,30 @@ namespace GUI
         private void btnHuyLoc_Click(object sender, EventArgs e)
         {
             LoadDataKhoaHoc();
+        }
+
+        private void yêuCầuTưVấnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new frmDSYeuCauTuVan();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
+        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new frmDSKhachHang();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
+        private void quyĐịnhGiảmGiáToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new frmDSQuyDinhGiamGia();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
         }
     }
 }

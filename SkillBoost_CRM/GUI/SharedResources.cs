@@ -10,6 +10,8 @@ namespace GUI
     {
         public static string MaPIC;
         public static string ChucVu;
+        public static string TenPIC;
+        public static string MaLead;
     }
 
 }

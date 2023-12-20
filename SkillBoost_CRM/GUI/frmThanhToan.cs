@@ -1,4 +1,4 @@
-using DTO;
+﻿using DTO;
 using BUS;
 using System;
 using System.Collections.Generic;
@@ -11,22 +11,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-
 namespace GUI
 {
     public partial class frmThanhToan : Form
     {
-
         BUS_ThanhToan bUS_ThanhToan = new BUS_ThanhToan();
         BUS_HoatDongLead bUS_HoatDongLead = new BUS_HoatDongLead();
         DTO_ThanhToan tt = new DTO_ThanhToan();
-
 
         public frmThanhToan()
         {
             InitializeComponent();
         }
-
 
         private void frmThanhToan_Load(object sender, EventArgs e)
         {
@@ -36,11 +32,11 @@ namespace GUI
         }
         private void btnTim_Click(object sender, EventArgs e)
         {
-            
+
             tt.MaBaoGia = txtMadonhang.Text;
             if (bUS_ThanhToan.TimThongTinThanhToan(ref tt))
             {
-                txtMadonhang.Text= tt.MaBaoGia;
+                txtMadonhang.Text = tt.MaBaoGia;
                 txtMagiamgia.Text = tt.MaGiamGia;
                 txtNoidungchuyenkhoan.Text = tt.MaBaoGia;
                 txtTongtien.Text = tt.TongTien;
@@ -52,7 +48,7 @@ namespace GUI
 
         }
 
-        
+
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
@@ -77,7 +73,7 @@ namespace GUI
                 hoatDongLead.MaNVPhuTrachHDLead = bUS_Lead.LayMaPIC(tt.MaLead);
                 hoatDongLead.TenNVPhuTrachHDLead = bUS_Lead.LayTenPIC(tt.MaLead);
                 hoatDongLead.MaEmailDenLead = null;
-                if(bUS_HoatDongLead.ThemHoatDongLead(hoatDongLead))
+                if (bUS_HoatDongLead.ThemHoatDongLead(hoatDongLead))
                 {
                     MessageBox.Show("Tạo hoạt động thanh toán thành công");
                 }
@@ -106,7 +102,6 @@ namespace GUI
             {
                 MessageBox.Show("Thanh toán thất bại");
             }
-
         }
     }
 }

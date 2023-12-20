@@ -100,6 +100,10 @@ namespace GUI
                     txtEmail.Text = "";
                     txtGhichu.Text = "";
                     txtSdt.Text = "";
+                    this.Hide();
+                    var form2 = new frmDangNhap();
+                    form2.Closed += (s, args) => this.Close();
+                    form2.Show();
                 }
                 else MessageBox.Show("Tạo Hoạt động Lead thất bại");
                

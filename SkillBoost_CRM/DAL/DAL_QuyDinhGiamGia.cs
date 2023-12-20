@@ -88,8 +88,10 @@ namespace DAL
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
+                    cmd.Dispose();
                     return "Success";
                 }
+                cmd.Dispose();
                 return "Fail";
             }
             catch (Exception ex)
@@ -150,8 +152,10 @@ namespace DAL
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
+                    cmd.Dispose();
                     return "Success";
                 }
+                cmd.Dispose();
                 return "Fail";
 
             }
@@ -186,12 +190,15 @@ namespace DAL
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
+                    cmd.Dispose();
                     return "Success";
                 }
+                cmd.Dispose();
                 return "Fail";
 
             }
-            catch (Exception ex)
+            catch (Exception ex) 
+            { 
                 return "Exception";
             }
             finally
