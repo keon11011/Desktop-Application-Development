@@ -53,6 +53,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -82,17 +83,29 @@
     <Compile Include="frmDanhSachKH.Designer.cs">
       <DependentUpon>frmDanhSachKH.cs</DependentUpon>
     </Compile>
+    <Compile Include="old_frmDanhSachQuyDinhGiamGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDanhSachKhoaHoc.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDanhSachKhoaHoc.Designer.cs">
       <DependentUpon>frmDanhSachKhoaHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDanhSachQuyDinhGiamGia.cs">
+    <Compile Include="old_frmDanhSachQuyDinhGiamGia.Designer.cs">
+      <DependentUpon>old_frmDanhSachQuyDinhGiamGia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDSQuyDinhGiamGia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDanhSachQuyDinhGiamGia.Designer.cs">
-      <DependentUpon>frmDanhSachQuyDinhGiamGia.cs</DependentUpon>
+    <Compile Include="frmDSQuyDinhGiamGia.Designer.cs">
+      <DependentUpon>frmDSQuyDinhGiamGia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSoLieuBaoCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSoLieuBaoCao.Designer.cs">
+      <DependentUpon>frmSoLieuBaoCao.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTaoHoatDongLead.cs">
       <SubType>Form</SubType>
@@ -101,10 +114,31 @@
       <DependentUpon>frmTaoHoatDongLead.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTaoQuyDinhGiamGia.cs">
+      <DependentUpon>frmTaoQuyDinhGiamGia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTaoQuyDinhGiamGia.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmTaoQuyDinhGiamGia.Designer.cs">
       <DependentUpon>frmTaoQuyDinhGiamGia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThanhToan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThanhToan.Designer.cs">
+      <DependentUpon>frmThanhToan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmYCTV_KhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmYCTV_KhachHang.Designer.cs">
+      <DependentUpon>frmYCTV_KhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmYeuCauTuVan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmYeuCauTuVan.Designer.cs">
+      <DependentUpon>frmYeuCauTuVan.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,11 +155,11 @@
     <Compile Include="frmYCTVKhachHang.Designer.cs">
       <DependentUpon>frmYCTVKhachHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSuaLead.cs">
+    <Compile Include="frmThongTinLead.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSuaLead.Designer.cs">
-      <DependentUpon>frmSuaLead.cs</DependentUpon>
+    <Compile Include="frmThongTinLead.Designer.cs">
+      <DependentUpon>frmThongTinLead.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
@@ -136,17 +170,29 @@
     <EmbeddedResource Include="frmDanhSachKH.resx">
       <DependentUpon>frmDanhSachKH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDanhSachKhoaHoc.resx">
-      <DependentUpon>frmDanhSachKhoaHoc.cs</DependentUpon>
+    <EmbeddedResource Include="old_frmDanhSachQuyDinhGiamGia.resx">
+      <DependentUpon>old_frmDanhSachQuyDinhGiamGia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDanhSachQuyDinhGiamGia.resx">
-      <DependentUpon>frmDanhSachQuyDinhGiamGia.cs</DependentUpon>
+    <EmbeddedResource Include="frmDSQuyDinhGiamGia.resx">
+      <DependentUpon>frmDSQuyDinhGiamGia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSoLieuBaoCao.resx">
+      <DependentUpon>frmSoLieuBaoCao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmYCTV_KhachHang.resx">
+      <DependentUpon>frmYCTV_KhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTaoHoatDongLead.resx">
       <DependentUpon>frmTaoHoatDongLead.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTaoQuyDinhGiamGia.resx">
       <DependentUpon>frmTaoQuyDinhGiamGia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThanhToan.resx">
+      <DependentUpon>frmThanhToan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmYeuCauTuVan.resx">
+      <DependentUpon>frmYeuCauTuVan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -158,14 +204,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+
     <EmbeddedResource Include="frmThanhToan.resx">
       <DependentUpon>frmThanhToan.cs</DependentUpon>
     </EmbeddedResource>
+    
     <EmbeddedResource Include="frmYCTVKhachHang.resx">
       <DependentUpon>frmYCTVKhachHang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSuaLead.resx">
-      <DependentUpon>frmSuaLead.cs</DependentUpon>
+
+
+    <EmbeddedResource Include="frmThongTinLead.resx">
+      <DependentUpon>frmThongTinLead.cs</DependentUpon>
+
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

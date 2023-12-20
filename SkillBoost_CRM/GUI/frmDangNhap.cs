@@ -36,7 +36,6 @@ namespace GUI
                     frmDanhSachKH FRMfrmDanhSachKH = new frmDanhSachKH();
                     FRMfrmDanhSachKH.Closed += (s, args) => this.Close();
                     FRMfrmDanhSachKH.Show();
-                    Hide();
                 }
                 else
                 {

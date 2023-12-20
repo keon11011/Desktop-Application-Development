@@ -1,4 +1,4 @@
-﻿using DTO;
+using DTO;
 using BUS;
 using System;
 using System.Collections.Generic;
@@ -11,18 +11,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
+
 namespace GUI
 {
     public partial class frmThanhToan : Form
     {
+
         BUS_ThanhToan bUS_ThanhToan = new BUS_ThanhToan();
         BUS_HoatDongLead bUS_HoatDongLead = new BUS_HoatDongLead();
         DTO_ThanhToan tt = new DTO_ThanhToan();
+
 
         public frmThanhToan()
         {
             InitializeComponent();
         }
+
 
         private void frmThanhToan_Load(object sender, EventArgs e)
         {
@@ -102,6 +106,7 @@ namespace GUI
             {
                 MessageBox.Show("Thanh toán thất bại");
             }
+
         }
     }
 }

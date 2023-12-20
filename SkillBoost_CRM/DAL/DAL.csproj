@@ -50,6 +50,8 @@
     <Compile Include="DAL_TaiKhoan.cs" />
     <Compile Include="DAL_ThanhToan.cs" />
     <Compile Include="DAL_YCTVKhachHang.cs" />
+
+    <Compile Include="DAL_YeuCauTuVan.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

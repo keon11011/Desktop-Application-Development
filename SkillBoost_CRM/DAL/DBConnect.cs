@@ -4,7 +4,7 @@ namespace DAL
 {
     public class DBConnect
     {
-        private string connString = "Data Source=PEPO-PC;Initial Catalog=SkillBoost;Integrated Security=True";
+        private string connString = "Data Source=VIS-LAPTOP;Initial Catalog=Skillboost;Integrated Security=True;Encrypt=False";
         protected SqlConnection conn;
         public DBConnect()
         {

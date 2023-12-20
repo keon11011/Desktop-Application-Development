@@ -62,7 +62,7 @@ namespace DAL
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -93,71 +93,5 @@ namespace DAL
             }   
         }
        
-        //public DataTable SelectSanPham()
-        //{
-        //    try
-        //    {
-        //        conn.Open();
-        //        SqlDataAdapter da = new SqlDataAdapter("Select * from SanPham", conn);
-        //        DataTable dt = new DataTable();
-        //        da.Fill(dt);
-
-        //        da.Dispose();
-
-        //        return dt;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return null;
-        //    }
-        //    finally
-        //    {
-        //        conn.Close();
-        //    }
-        //}
-        //public bool InsertSanPham(SanPham sanPham)
-        //{
-        //    try
-        //    {
-        //        conn.Open();
-        //        SqlCommand cmd = new SqlCommand("INSERT INTO SANPHAM VALUES(@MaSP, @TenSP, @DvTinh, @DonGia, @MaLoai)", conn);
-        //        AddParameter(cmd, sanPham);
-        //        if (cmd.ExecuteNonQuery() > 0)
-        //        {
-        //            return true;
-        //        }
-        //        return false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return false;
-        //    }
-        //    finally
-        //    {
-        //        conn.Close();
-        //    }
-        //}
-        //public bool UpdatetSanPham(SanPham sanPham)
-        //{
-        //    try
-        //    {
-        //        conn.Open();
-        //        SqlCommand cmd = new SqlCommand("UPDATE SANPHAM SET MaSP = @MaSP, TenSP = @TenSP, DvTinh = @DvTinh, DonGia = @DonGia, MaLoai = @MaLoai WHERE MaSP = @MaSP)", conn);
-        //        AddParameter(cmd, sanPham);
-        //        if (cmd.ExecuteNonQuery() > 0)
-        //        {
-        //            return true;
-        //        }
-        //        return false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return false;
-        //    }
-        //    finally
-        //    {
-        //        conn.Close();
-        //    }
-        //}
     }
 }
