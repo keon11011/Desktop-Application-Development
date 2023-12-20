@@ -256,7 +256,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmYeuCauTuVan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Yêu Cầu Tư Vấn";
+            this.Text = "Danh Sách Yêu Cầu Tư Vấn";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmYeuCauTuVan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -62,7 +62,7 @@ namespace GUI
             {
                 errorProvider2.SetError(txtSdt, "Bạn chưa nhập Số điện thoại"); return;
                 }
-            if (txtSdt.ToString().Length < 10 || txtSdt.ToString().Substring(0,0) != "0")
+            if (txtSdt.ToString().Length < 10)
             {
                 errorProvider2.SetError(txtSdt, "Số điện thoại bạn nhập không hợp lệ"); return;
             }
@@ -80,33 +80,29 @@ namespace GUI
 
             HoatDongLead HDLead = new HoatDongLead();
 
-            if (bUS_YeuCauTuVan.InsertLeadcuaYCTV(ref yctv)) //--> Insert YCTV + HDLead
-                {
-                if (bUS_YeuCauTuVan.InsertChiTietKhoaHoc(yctv))
-                {
+            if (bUS_YeuCauTuVan.InsertLeadcuaYCTV(ref yctv)) //--> Insert YCTV ( + Chi tiet khoa hoc) + HDLead
+            {
+                MessageBox.Show($"Gửi Yêu cầu tư vấn thành công!");
+                HDLead.MaLead = yctv.TaoBoiLead;
+                HDLead.TenHDLead = "Yêu cầu tư vấn";
+                HDLead.LoaiHDLead = "Yêu cầu";
+                HDLead.HDLeadDuocTaoBoi = "Lead";
+                HDLead.MaNVPhuTrachHDLead = "STA0";
+                HDLead.TenNVPhuTrachHDLead = "Chưa tiếp nhận";
+                HDLead.MaEmailDenLead = null;
+                BUS_HoatDongLead bUS_HoatDongLead = new BUS_HoatDongLead();
                     
-                    MessageBox.Show($"Gửi Yêu cầu tư vấn thành công!");
-                    HDLead.MaLead = yctv.TaoBoiLead;
-                    HDLead.TenHDLead = "Yêu cầu tư vấn";
-                    HDLead.LoaiHDLead = "Yêu cầu";
-                    HDLead.HDLeadDuocTaoBoi = "Lead";
-                    HDLead.MaNVPhuTrachHDLead = "STA0";
-                    HDLead.TenNVPhuTrachHDLead = "Chưa tiếp nhận";
-                    HDLead.MaEmailDenLead = null;
-                    BUS_HoatDongLead bUS_HoatDongLead = new BUS_HoatDongLead();
-                    
-                    if (bUS_HoatDongLead.ThemHoatDongLead(HDLead))
-                    {
-                        MessageBox.Show("Tạo Hoạt động Lead thành công");
-                        txtHoten.Text = "";
-                        dtpNgaySinh.Value = DateTime.Now;
-                        txtEmail.Text = "";
-                        txtGhichu.Text = "";
-                        txtSdt.Text = "";
-                    }
-                    else MessageBox.Show("Tạo Hoạt động Lead thất bại");
+                if (bUS_HoatDongLead.ThemHoatDongLead(HDLead))
+                {
+                    MessageBox.Show("Tạo Hoạt động Lead thành công");
+                    txtHoten.Text = "";
+                    dtpNgaySinh.Value = DateTime.Now;
+                    txtEmail.Text = "";
+                    txtGhichu.Text = "";
+                    txtSdt.Text = "";
                 }
-                else MessageBox.Show($"Gửi yêu cầu tư vấn thất bại");
+                else MessageBox.Show("Tạo Hoạt động Lead thất bại");
+               
             }
             else MessageBox.Show($"Gửi Yêu cầu tư vấn thất bại!");
             

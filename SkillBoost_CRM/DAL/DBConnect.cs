@@ -6,7 +6,7 @@ namespace DAL
     {
         //private string connString = "Data Source=DESKTOP-K5P9KUP;Initial Catalog=SkillBoost;Integrated Security=True";
         // tnha's Connection string
-        private string connString = "Data Source=VIS-LAPTOP;Initial Catalog=SkillBoost;Integrated Security=True;Encrypt=False";
+        private string connString = "Data Source=VIS-LAPTOP;Initial Catalog=Skillboost;Integrated Security=True;Encrypt=False";
         protected SqlConnection conn;
         public DBConnect()
         {

@@ -65,9 +65,8 @@ namespace DAL
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-
                 da.Dispose();
-
+                cmd.Dispose();
                 return dt;
             }
             catch (Exception)
@@ -91,9 +90,8 @@ namespace DAL
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-
                 da.Dispose();
-
+                cmd.Dispose();
                 return dt;
             }
             catch (Exception)
@@ -109,12 +107,13 @@ namespace DAL
         {
 
             try
-            { 
+            {
                 DAL_YeuCauTuVan dAL_YeuCauTuVan = new DAL_YeuCauTuVan();
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("Select MaLead from Lead where SoDienThoaiLead = @SDT", conn);
                 cmd.Parameters.Add("@SDT", SqlDbType.VarChar).Value = tt_yctv.SDTLeadYeuCau;
                 tt_yctv.TaoBoiLead = cmd.ExecuteScalar().ToString();
+                cmd.Dispose();
 
                 SqlCommand cmdYCTV = new SqlCommand("Insert into YeuCauTuVan (TenLeadYeuCau,NgaySinhLeadYeuCau,EmailLeadYeuCau,SDTLeadYeuCau,GhiChuYCTV,TrangThaiYCTV,TaoVaoLuc,TaoBoiLead) " +
                     "values " +
@@ -144,13 +143,14 @@ namespace DAL
                 cmdYCTV.Parameters.Add("@TaoBoiLead", SqlDbType.NVarChar);
                 cmdYCTV.Parameters["@TaoBoiLead"].Value = tt_yctv.TaoBoiLead;
 
-                SqlCommand cmdChiTietKhoaHoc = new SqlCommand("Insert Into ChiTietKhoaHocThuocYeuCauTuVan values (@MaTuVan, @MaKhoaHoc, @TenKhoaHoc, @GiangVien,@GiaTien");
+
                 if (cmdYCTV.ExecuteNonQuery() > 0)
                 {
-
+                    cmdYCTV.Dispose();
                     dAL_YeuCauTuVan.InsertChiTietKhoaHoc(tt_yctv);
                     return true;
                 }
+                cmdYCTV.Dispose();
                 return false;
             }
             catch (Exception)
@@ -168,20 +168,22 @@ namespace DAL
             {
                 DAL_YeuCauTuVan dAL_YeuCauTuVan = new DAL_YeuCauTuVan();
                 DAL_HoatDongLead dAL_HDLead = new DAL_HoatDongLead();
-                
+
                 //Check if a new or already had a Lead code or not ?
                 conn.Open();
                 SqlCommand cmdCheckLead = new SqlCommand("Select MaLead from Lead where SoDienThoaiLead = @SoDienThoaiLead", conn);
                 cmdCheckLead.Parameters.Add("@SoDienThoaiLead", SqlDbType.NVarChar).Value = yctv.SDTLeadYeuCau;
                 SqlDataReader reader = cmdCheckLead.ExecuteReader();
-                
+                cmdCheckLead.Dispose();
                 if (reader.HasRows)
                 {
-                   
+                    
+                    cmdCheckLead.Dispose();
                     return dAL_YeuCauTuVan.InsertYCTV(ref yctv);
                 }
                 else
                 {
+                    
                     DTO_Lead lead = new DTO_Lead();
                     DAL_Lead dAL_Lead = new DAL_Lead();
                     lead.HoTenLead = yctv.TenLeadYeuCau;
@@ -202,17 +204,18 @@ namespace DAL
                     lead.TaoBoi = "Hệ thống";
                     lead.ChinhSuaLanCuoiVaoLuc = yctv.TaoVaoLuc;
                     lead.ChinhSuaLanCuoiBoi = "Hệ thống";
-                    
+
                     reader.Close();
 
                     if (dAL_Lead.InsertLead(lead))
                     {
-                       
+
                         dAL_YeuCauTuVan.InsertYCTV(ref yctv);
-                        return true; 
+                        return true;
                     }
                     else return false;
-                } 
+                }
+                
             }
             catch (Exception)
             {
@@ -220,6 +223,7 @@ namespace DAL
             }
             finally
             {
+
                 conn.Close();
             }
         }
@@ -257,8 +261,8 @@ namespace DAL
                 SqlCommand cmd3 = new SqlCommand("select GiaTien from KhoaHoc where MaKhoaHoc = @MaKhoaHoc", conn);
                 cmd3.Parameters.Add("@MaKhoaHoc", SqlDbType.VarChar).Value = khoahoc_yctv.MaKhoaHoc;
                 khoahoc_yctv.GiaTien = cmd3.ExecuteScalar().ToString();
-                SqlCommand cm4 = new SqlCommand("select top 1 MaTuVan from YeuCauTuVan order by STT DESC", conn);
-                khoahoc_yctv.MaTuVan = cm4.ExecuteScalar().ToString();
+                SqlCommand cmd4 = new SqlCommand("select top 1 MaTuVan from YeuCauTuVan order by STT DESC", conn);
+                khoahoc_yctv.MaTuVan = cmd4.ExecuteScalar().ToString();
 
                 SqlCommand cmdChiTietKhoaHoc = new SqlCommand("Insert into ChiTietKhoaHocThuocYeuCauTuVan values (@MaTuVan, @MaKhoaHoc, @TenKhoaHoc, @GiangVien, @GiaTien) ", conn);
 
@@ -279,6 +283,11 @@ namespace DAL
 
                 if (cmdChiTietKhoaHoc.ExecuteNonQuery() > 0)
                 {
+                    cmd1.Dispose();
+                    cmd2.Dispose();
+                    cmd3.Dispose();
+                    cmd4.Dispose();
+                    cmdChiTietKhoaHoc.Dispose();
                     return true;
                 }
                 return false;
@@ -289,6 +298,7 @@ namespace DAL
             }
             finally
             {
+                
                 conn.Close();
             }
         }

@@ -47,7 +47,7 @@ namespace GUI
 
         private void yêuCầuTưVấnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void báoCáoToolStripMenuItem_Click(object sender, EventArgs e)
