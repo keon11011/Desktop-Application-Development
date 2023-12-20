@@ -18,6 +18,7 @@ namespace GUI
         BUS_ThanhToan bUS_ThanhToan = new BUS_ThanhToan();
         BUS_HoatDongLead bUS_HoatDongLead = new BUS_HoatDongLead();
         DTO_ThanhToan tt = new DTO_ThanhToan();
+
         public frmThanhToan()
         {
             InitializeComponent();
@@ -62,14 +63,24 @@ namespace GUI
             {
                 MessageBox.Show("Thanh toán thành công");
                 bUS_ThanhToan.UpdateTrangThaiLead(tt);
+                BUS_Lead bUS_Lead = new BUS_Lead();
                 HoatDongLead hoatDongLead = new HoatDongLead();
 
                 hoatDongLead.MaLead = tt.MaLead;
                 hoatDongLead.TenHDLead = "Thanh toán thành công các khóa học";
                 hoatDongLead.LoaiHDLead = "Thanh toán";
                 hoatDongLead.HDLeadDuocTaoBoi = "Lead";
-                hoatDongLead.MaNVPhuTrachHDLead = 
-                bUS_HoatDongLead.ThemHoatDongLead
+                hoatDongLead.MaNVPhuTrachHDLead = bUS_Lead.LayMaPIC(tt.MaLead);
+                hoatDongLead.TenNVPhuTrachHDLead = bUS_Lead.LayTenPIC(tt.MaLead);
+                hoatDongLead.MaEmailDenLead = null;
+                if(bUS_HoatDongLead.ThemHoatDongLead(hoatDongLead))
+                {
+                    MessageBox.Show("Tạo hoạt động thanh toán thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Tạo hoạt động thanh toán thất bại");
+                }
 
             }
             else
