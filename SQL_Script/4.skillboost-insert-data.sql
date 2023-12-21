@@ -17,7 +17,7 @@ VALUES
 (N'Trần Thúy Hằng', N'Nữ', '1984-06-30', N'Nhân viên', '0948123456', 'hangthuytran@gmail.com', N'Đang hoạt động', '2022-01-07 19:30:00', 'STA1', '2022-01-07 20:00:00', 'STA1'),
 (N'Bùi Bích Trâm', N'Nữ', '1999-12-05', N'Nhân viên', '0938123456', 'trambichbui@gmail.com', N'Đang hoạt động', '2022-01-08 21:45:00', 'STA1', '2022-01-08 14:15:00', 'STA1'),
 (N'Trần Thanh Mai', N'Nữ', '1986-04-18', N'Nhân viên', '0928123456', 'maithanhtran@gmail.com', N'Đang hoạt động', '2022-01-09 23:59:00', 'STA1', '2022-02-09 08:50:00', 'STA1'),
-(N'Huỳnh Nhã Thy', N'Nữ', '1991-08-08', N'Nhân viên', '0998123456', 'nhathythuynh@gmail.com', N'Đang hoạt động', '2022-01-10 02:30:00', 'STA1', '2022-01-10 16:30:00', 'STA1');
+(N'Huỳnh Nhã Thy', N'Nữ', '1991-08-08', N'Quản lý', '0998123456', 'nhathythuynh@gmail.com', N'Đang hoạt động', '2022-01-10 02:30:00', 'STA1', '2022-01-10 16:30:00', 'STA1');
 GO
 --SELECT * FROM NhanVien
 

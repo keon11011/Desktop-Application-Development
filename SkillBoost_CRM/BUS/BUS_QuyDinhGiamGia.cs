@@ -21,17 +21,21 @@ namespace BUS
         {
             return dalNgheNghiep.SelectNgheNghiep();
         }
-        public string ThemQuyDinhGiamGia(DTO_QuyDinhGiamGia qdGiamGia)
+        public string ThemQuyDinhGiamGia(DTO_QuyDinhGiamGia qdGiamGia, string MaPIC, string tenPIC)
         {   
-            return dalQuyDinhGiamGia.ThemQuyDinhGiamGia(qdGiamGia);
+            return dalQuyDinhGiamGia.ThemQuyDinhGiamGia(qdGiamGia, MaPIC, tenPIC);
         }
-        public string SuaQuyDinhGiamGia(DTO_QuyDinhGiamGia qdGiamGia)
+        public string SuaQuyDinhGiamGia(DTO_QuyDinhGiamGia qdGiamGia, string MaPIC)
         {
-            return dalQuyDinhGiamGia.SuaQuyDinhGiamGia(qdGiamGia);
+            return dalQuyDinhGiamGia.SuaQuyDinhGiamGia(qdGiamGia, MaPIC);
         }
-        public string XoaQuyDinhGiamGia(DTO_QuyDinhGiamGia qdGiamGia)
+        public string XoaQuyDinhGiamGia(DTO_QuyDinhGiamGia qdGiamGia, string MaPIC)
         {
-            return dalQuyDinhGiamGia.XoaQuyDinhGiamGia(qdGiamGia);
+            return dalQuyDinhGiamGia.XoaQuyDinhGiamGia(qdGiamGia, MaPIC);
+        }
+        public bool SelectQuyDinhGiamGiaAfterClick(ref DTO_QuyDinhGiamGia dTO_QuyDinhGiamGia)
+        {
+            return dalQuyDinhGiamGia.SelectQuyDinhGiamGiaAfterClick(ref dTO_QuyDinhGiamGia);
         }
     }
 }

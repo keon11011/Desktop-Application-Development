@@ -46,13 +46,11 @@
     <Compile Include="BUS_Lead.cs" />
     <Compile Include="BUS_QuyDinhGiamGia.cs" />
     <Compile Include="BUS_KhachHang.cs" />
+    <Compile Include="BUS_SoLieu.cs" />
     <Compile Include="BUS_TaiKhoan.cs" />
-
     <Compile Include="BUS_ThanhToan.cs" />
     <Compile Include="BUS_YCTVKhachHang.cs" />
-
     <Compile Include="BUS_YeuCauTuVan.cs" />
-
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

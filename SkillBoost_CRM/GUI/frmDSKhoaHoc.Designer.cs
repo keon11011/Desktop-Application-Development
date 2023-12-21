@@ -232,6 +232,7 @@
             this.thôngTinKhóaHọcToolStripMenuItem.Name = "thôngTinKhóaHọcToolStripMenuItem";
             this.thôngTinKhóaHọcToolStripMenuItem.Size = new System.Drawing.Size(182, 29);
             this.thôngTinKhóaHọcToolStripMenuItem.Text = "Thông tin khóa học";
+            this.thôngTinKhóaHọcToolStripMenuItem.Click += new System.EventHandler(this.thôngTinKhóaHọcToolStripMenuItem_Click);
             // 
             // báoCáoToolStripMenuItem
             // 

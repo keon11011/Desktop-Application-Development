@@ -38,13 +38,14 @@
             this.txtTimKH = new System.Windows.Forms.TextBox();
             this.btnTimKH = new System.Windows.Forms.Button();
             this.btnThemKH = new System.Windows.Forms.Button();
-            this.dtgvKhachHang = new System.Windows.Forms.DataGridView();
+            this.dtgvQuyDinhGiamGia = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lb_PIC_Name = new System.Windows.Forms.Label();
             this.lb_ChucVuPIC = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvKhachHang)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvQuyDinhGiamGia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,17 +138,19 @@
             this.btnThemKH.TabIndex = 90;
             this.btnThemKH.Text = "Thêm Khách hàng";
             this.btnThemKH.UseVisualStyleBackColor = true;
+            this.btnThemKH.Click += new System.EventHandler(this.btnThemKH_Click);
             // 
-            // dtgvKhachHang
+            // dtgvQuyDinhGiamGia
             // 
-            this.dtgvKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvKhachHang.Location = new System.Drawing.Point(88, 219);
-            this.dtgvKhachHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtgvKhachHang.Name = "dtgvKhachHang";
-            this.dtgvKhachHang.RowHeadersWidth = 62;
-            this.dtgvKhachHang.RowTemplate.Height = 28;
-            this.dtgvKhachHang.Size = new System.Drawing.Size(2169, 1085);
-            this.dtgvKhachHang.TabIndex = 89;
+            this.dtgvQuyDinhGiamGia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvQuyDinhGiamGia.Location = new System.Drawing.Point(88, 219);
+            this.dtgvQuyDinhGiamGia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtgvQuyDinhGiamGia.Name = "dtgvQuyDinhGiamGia";
+            this.dtgvQuyDinhGiamGia.RowHeadersWidth = 62;
+            this.dtgvQuyDinhGiamGia.RowTemplate.Height = 28;
+            this.dtgvQuyDinhGiamGia.Size = new System.Drawing.Size(2169, 1085);
+            this.dtgvQuyDinhGiamGia.TabIndex = 89;
+            this.dtgvQuyDinhGiamGia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvQuyDinhGiamGia_CellClick);
             // 
             // label1
             // 
@@ -162,7 +165,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::GUI.Properties.Resources.Avatars;
-            this.pictureBox1.Location = new System.Drawing.Point(2336, 46);
+            this.pictureBox1.Location = new System.Drawing.Point(2187, 39);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(70, 70);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -173,7 +176,7 @@
             // 
             this.lb_PIC_Name.AutoSize = true;
             this.lb_PIC_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_PIC_Name.Location = new System.Drawing.Point(2166, 52);
+            this.lb_PIC_Name.Location = new System.Drawing.Point(2017, 45);
             this.lb_PIC_Name.Name = "lb_PIC_Name";
             this.lb_PIC_Name.Size = new System.Drawing.Size(136, 25);
             this.lb_PIC_Name.TabIndex = 96;
@@ -183,17 +186,28 @@
             // 
             this.lb_ChucVuPIC.AutoSize = true;
             this.lb_ChucVuPIC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_ChucVuPIC.Location = new System.Drawing.Point(2222, 77);
+            this.lb_ChucVuPIC.Location = new System.Drawing.Point(2073, 70);
             this.lb_ChucVuPIC.Name = "lb_ChucVuPIC";
             this.lb_ChucVuPIC.Size = new System.Drawing.Size(80, 25);
             this.lb_ChucVuPIC.TabIndex = 97;
             this.lb_ChucVuPIC.Text = "Quản lý";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(82, 70);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(294, 37);
+            this.label2.TabIndex = 98;
+            this.label2.Text = "Quy định giảm giá";
             // 
             // frmDSQuyDinhGiamGia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2451, 1301);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.lb_ChucVuPIC);
             this.Controls.Add(this.lb_PIC_Name);
             this.Controls.Add(this.pictureBox1);
@@ -201,7 +215,7 @@
             this.Controls.Add(this.txtTimKH);
             this.Controls.Add(this.btnTimKH);
             this.Controls.Add(this.btnThemKH);
-            this.Controls.Add(this.dtgvKhachHang);
+            this.Controls.Add(this.dtgvQuyDinhGiamGia);
             this.Controls.Add(this.label1);
             this.Name = "frmDSQuyDinhGiamGia";
             this.Text = "Danh sách Quy định giảm giá";
@@ -209,7 +223,7 @@
             this.Load += new System.EventHandler(this.frmDSQuyDinhGiamGia_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvKhachHang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvQuyDinhGiamGia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -228,10 +242,11 @@
         private System.Windows.Forms.TextBox txtTimKH;
         private System.Windows.Forms.Button btnTimKH;
         private System.Windows.Forms.Button btnThemKH;
-        private System.Windows.Forms.DataGridView dtgvKhachHang;
+        private System.Windows.Forms.DataGridView dtgvQuyDinhGiamGia;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lb_PIC_Name;
         private System.Windows.Forms.Label lb_ChucVuPIC;
+        private System.Windows.Forms.Label label2;
     }
 }

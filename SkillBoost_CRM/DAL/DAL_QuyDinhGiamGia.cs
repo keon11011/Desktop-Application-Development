@@ -35,7 +35,59 @@ namespace DAL
                 conn.Close();
             }
         }
-        public string ThemQuyDinhGiamGia(DTO_QuyDinhGiamGia qdGiamGia)
+        public bool SelectQuyDinhGiamGiaAfterClick(ref DTO_QuyDinhGiamGia dTO_QuyDinhGiamGia)
+        {
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT MoTaLoaiGiamGia, SoLuongKhoaHocDangKy, TenNgheNghiep, NgayBatDau, NgayKetThuc, PhanTramGiamGiaMacDinh, PhanTramGiamGiaToiDa, TrangThaiQuyDinhGiamGia FROM QuyDinhGiamGia "
+                                                       + "WHERE MaQuyDinhGiamGia = @MaQuyDinhGiamGia", conn);
+                cmd.Parameters.Add("@MaQuyDinhGiamGia", SqlDbType.VarChar);
+                cmd.Parameters["@MaQuyDinhGiamGia"].Value = dTO_QuyDinhGiamGia.MaQuyDinhGiamGia;
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+
+                da.Dispose();
+                cmd.Dispose();
+                
+                dTO_QuyDinhGiamGia.MoTaLoaiGiamGia = dt.Rows[0][0].ToString();
+                dTO_QuyDinhGiamGia.SoLuongKhoaHocDangKy = (int)dt.Rows[0][1];
+                dTO_QuyDinhGiamGia.TenNgheNghiep = dt.Rows[0][2].ToString();
+                if (dt.Rows[0][3] != DBNull.Value)
+                {
+                    dTO_QuyDinhGiamGia.NgayBatDau = (DateTime?)dt.Rows[0][3];
+                }
+                else
+                {
+                    dTO_QuyDinhGiamGia.NgayBatDau = null;
+                }
+
+                if (dt.Rows[0][4] != DBNull.Value)
+                {
+                    dTO_QuyDinhGiamGia.NgayKetThuc = (DateTime?)dt.Rows[0][4];
+                }
+                else
+                {
+                    dTO_QuyDinhGiamGia.NgayKetThuc = null;
+
+                }
+                dTO_QuyDinhGiamGia.PhanTramGiamGiaMacDinh = (int)dt.Rows[0][5];
+                dTO_QuyDinhGiamGia.PhanTramGiamGiaToiDa = (int)dt.Rows[0][6];
+                dTO_QuyDinhGiamGia.TrangThaiQuyDinhGiamGia = dt.Rows[0][7].ToString();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public string ThemQuyDinhGiamGia(DTO_QuyDinhGiamGia qdGiamGia, string MaPIC, string tenPIC)
         {
             try
             {
@@ -71,17 +123,17 @@ namespace DAL
                 cmd.Parameters.Add("@TaoVaoLuc", SqlDbType.DateTime);
                 cmd.Parameters["@TaoVaoLuc"].Value = DateTime.Now;
 
-                cmd.Parameters.Add("@TaoBoi", SqlDbType.NVarChar);
-                cmd.Parameters["@TaoBoi"].Value = "STA1";
+                cmd.Parameters.Add("@TaoBoi", SqlDbType.VarChar);
+                cmd.Parameters["@TaoBoi"].Value = MaPIC;
 
                 cmd.Parameters.Add("@TaoBoiNV", SqlDbType.NVarChar);
-                cmd.Parameters["@TaoBoiNV"].Value = "Nguyễn Phương Thanh";
+                cmd.Parameters["@TaoBoiNV"].Value = tenPIC;
 
                 cmd.Parameters.Add("@ChinhSuaLanCuoiVaoLuc", SqlDbType.DateTime);
                 cmd.Parameters["@ChinhSuaLanCuoiVaoLuc"].Value = DateTime.Now;
 
-                cmd.Parameters.Add("@ChinhSuaLanCuoiBoi", SqlDbType.NVarChar);
-                cmd.Parameters["@ChinhSuaLanCuoiBoi"].Value = "STA1";
+                cmd.Parameters.Add("@ChinhSuaLanCuoiBoi", SqlDbType.VarChar);
+                cmd.Parameters["@ChinhSuaLanCuoiBoi"].Value = MaPIC;
 
                 cmd.Parameters.Add("@TrangThaiQuyDinhGiamGia", SqlDbType.NVarChar);
                 cmd.Parameters["@TrangThaiQuyDinhGiamGia"].Value = qdGiamGia.TrangThaiQuyDinhGiamGia;
@@ -103,7 +155,7 @@ namespace DAL
                 conn.Close();
             }
         }
-        public string SuaQuyDinhGiamGia(DTO_QuyDinhGiamGia qdGiamGia)
+        public string SuaQuyDinhGiamGia(DTO_QuyDinhGiamGia qdGiamGia, string MaPIC)
         {
             try
             {
@@ -114,7 +166,8 @@ namespace DAL
                                                 + "MaNgheNghiep = @MaNgheNghiep, TenNgheNghiep = @TenNgheNghiep, "
                                                 + "NgayBatDau = @NgayBatDau, NgayKetThuc = @NgayKetThuc, "
                                                 + "PhanTramGiamGiaMacDinh = @PhanTramGiamGiaMacDinh, PhanTramGiamGiaToiDa = @PhanTramGiamGiaToiDa, "
-                                                + "ChinhSuaLanCuoiVaoLuc = @ChinhSuaLanCuoiVaoLuc, TrangThaiQuyDinhGiamGia = @TrangThaiQuyDinhGiamGia "
+                                                + "ChinhSuaLanCuoiVaoLuc = @ChinhSuaLanCuoiVaoLuc, TrangThaiQuyDinhGiamGia = @TrangThaiQuyDinhGiamGia, " +
+                                                " ChinhSuaLanCuoiBoi = @ChinhSuaLanCuoiBoi "
                                                 + "WHERE MaQuyDinhGiamGia = @MaQuyDinhGiamGia", conn);
 
                 cmd.Parameters.Add("@MaQuyDinhGiamGia", SqlDbType.VarChar);
@@ -147,6 +200,9 @@ namespace DAL
                 cmd.Parameters.Add("@ChinhSuaLanCuoiVaoLuc", SqlDbType.DateTime);
                 cmd.Parameters["@ChinhSuaLanCuoiVaoLuc"].Value = DateTime.Now;
 
+                cmd.Parameters.Add("@ChinhSuaLanCuoiBoi", SqlDbType.VarChar);
+                cmd.Parameters["@ChinhSuaLanCuoiBoi"].Value = MaPIC;
+
                 cmd.Parameters.Add("@TrangThaiQuyDinhGiamGia", SqlDbType.NVarChar);
                 cmd.Parameters["@TrangThaiQuyDinhGiamGia"].Value = qdGiamGia.TrangThaiQuyDinhGiamGia;
 
@@ -168,7 +224,7 @@ namespace DAL
                 conn.Close();
             }
         }
-        public string XoaQuyDinhGiamGia(DTO_QuyDinhGiamGia qdGiamGia)
+        public string XoaQuyDinhGiamGia(DTO_QuyDinhGiamGia qdGiamGia, string MaPIC)
         {
             try
             {
@@ -176,7 +232,7 @@ namespace DAL
 
                 SqlCommand cmd = new SqlCommand("UPDATE QuyDinhGiamGia "
                                                 + "SET TrangThaiQuyDinhGiamGia = @TrangThaiQuyDinhGiamGia, "
-                                                + "ChinhSuaLanCuoiVaoLuc = @ChinhSuaLanCuoiVaoLuc "
+                                                + "ChinhSuaLanCuoiVaoLuc = @ChinhSuaLanCuoiVaoLuc, ChinhSuaLanCuoiBoi = @ChinhSuaLanCuoiBoi "
                                                 + "WHERE MaQuyDinhGiamGia = @MaQuyDinhGiamGia", conn);
 
                 cmd.Parameters.Add("@MaQuyDinhGiamGia", SqlDbType.VarChar);
@@ -187,6 +243,9 @@ namespace DAL
 
                 cmd.Parameters.Add("@ChinhSuaLanCuoiVaoLuc", SqlDbType.DateTime);
                 cmd.Parameters["@ChinhSuaLanCuoiVaoLuc"].Value = DateTime.Now;
+
+                cmd.Parameters.Add("@ChinhSuaLanCuoiBoi", SqlDbType.VarChar);
+                cmd.Parameters["@ChinhSuaLanCuoiBoi"].Value = MaPIC;
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {

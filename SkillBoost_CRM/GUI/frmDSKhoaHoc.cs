@@ -153,5 +153,13 @@ namespace GUI
             form2.Closed += (s, args) => this.Close();
             form2.Show();
         }
+
+        private void thôngTinKhóaHọcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new frmDSKhoaHoc();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
     }
 }

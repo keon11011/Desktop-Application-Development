@@ -59,12 +59,12 @@ namespace GUI
                 newQuyDinhGiamGia.PhanTramGiamGiaToiDa = int.Parse(numUpDownPhanTramGiamGiaToiDa.Value.ToString());
                 newQuyDinhGiamGia.TrangThaiQuyDinhGiamGia = "Đang hoạt động";
 
-                switch (busQuyDinhGiamGia.ThemQuyDinhGiamGia(newQuyDinhGiamGia))
+                switch (busQuyDinhGiamGia.ThemQuyDinhGiamGia(newQuyDinhGiamGia, SharedResources.MaPIC,SharedResources.TenPIC))
                 {
                     case "Success":
                         MessageBox.Show("Thêm Quy định giảm giá thành công");
                         this.Hide();
-                        frmChiTietQuyDinhGiamGia frmDSqdGiamGia = new frmChiTietQuyDinhGiamGia();
+                        frmDSQuyDinhGiamGia frmDSqdGiamGia = new frmDSQuyDinhGiamGia();
                         frmDSqdGiamGia.Closed += (s, args) => this.Close();
                         frmDSqdGiamGia.Show();
                         break;
@@ -90,12 +90,12 @@ namespace GUI
                 newQuyDinhGiamGia.PhanTramGiamGiaToiDa = int.Parse(numUpDownPhanTramGiamGiaToiDa.Value.ToString());
                 newQuyDinhGiamGia.TrangThaiQuyDinhGiamGia = "Đang hoạt động";
 
-                switch (busQuyDinhGiamGia.ThemQuyDinhGiamGia(newQuyDinhGiamGia))
+                switch (busQuyDinhGiamGia.ThemQuyDinhGiamGia(newQuyDinhGiamGia, SharedResources.MaPIC, SharedResources.TenPIC))
                 {
                     case "Success":
                         MessageBox.Show("Tạo Quy định giảm giá mới thành công");
                         this.Hide();
-                        frmChiTietQuyDinhGiamGia frmDSqdGiamGia = new frmChiTietQuyDinhGiamGia();
+                        frmDSQuyDinhGiamGia frmDSqdGiamGia = new frmDSQuyDinhGiamGia();
                         frmDSqdGiamGia.Closed += (s, args) => this.Close();
                         frmDSqdGiamGia.Show();
                         break;

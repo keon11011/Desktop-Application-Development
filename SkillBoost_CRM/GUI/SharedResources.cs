@@ -12,6 +12,7 @@ namespace GUI
         public static string ChucVu;
         public static string TenPIC;
         public static string MaLead;
+        public static string MaQuyDinhGiamGia;
     }
 
 }

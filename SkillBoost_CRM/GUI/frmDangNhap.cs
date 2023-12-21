@@ -30,6 +30,7 @@ namespace GUI
             {
                 MessageBox.Show("Đăng nhập thành công");
                 SharedResources.MaPIC = maPIC;
+                MessageBox.Show(SharedResources.MaPIC);
                 if (bUS_TaiKhoan.TimChucVu(ref SharedResources.ChucVu, SharedResources.MaPIC))
                 {
                     if (bUS_TaiKhoan.TimTenPIC(ref SharedResources.TenPIC, SharedResources.MaPIC))

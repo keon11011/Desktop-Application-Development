@@ -23,23 +23,23 @@ namespace GUI
         {
             InitializeComponent();
         }
-        void LoadDSachQuyDinhGiamGia()
-        {
-            dt = busQuyDinhGiamGia.SelectQuyDinhGiamGia();
-            dt.Columns[0].ColumnName = "Mã quy định giảm giá";
-            dt.Columns[1].ColumnName = "Mô tả";
-            dt.Columns[2].ColumnName = "Số lượng khóa học đăng ký";
-            dt.Columns[3].ColumnName = "Tên nghề nghiệp";
-            dt.Columns[4].ColumnName = "Ngày bắt đầu";
-            dt.Columns[5].ColumnName = "Ngày kết thúc";
-            dt.Columns[6].ColumnName = "Phần trăm giảm giá mặc định";
-            dt.Columns[7].ColumnName = "Phần trăm giảm giá tối đa";
-            dt.Columns[8].ColumnName = "Trạng thái";
-            dt.Columns[9].ColumnName = "Thời điểm tạo";
-            dt.Columns[10].ColumnName = "Người tạo";
+        //void LoadDSachQuyDinhGiamGia()
+        //{
+        //    dt = busQuyDinhGiamGia.SelectQuyDinhGiamGia();
+        //    dt.Columns[0].ColumnName = "Mã quy định giảm giá";
+        //    dt.Columns[1].ColumnName = "Mô tả";
+        //    dt.Columns[2].ColumnName = "Số lượng khóa học đăng ký";
+        //    dt.Columns[3].ColumnName = "Tên nghề nghiệp";
+        //    dt.Columns[4].ColumnName = "Ngày bắt đầu";
+        //    dt.Columns[5].ColumnName = "Ngày kết thúc";
+        //    dt.Columns[6].ColumnName = "Phần trăm giảm giá mặc định";
+        //    dt.Columns[7].ColumnName = "Phần trăm giảm giá tối đa";
+        //    dt.Columns[8].ColumnName = "Trạng thái";
+        //    dt.Columns[9].ColumnName = "Thời điểm tạo";
+        //    dt.Columns[10].ColumnName = "Người tạo";
 
-            dataGridView1.DataSource = dt;
-        }
+        //    dataGridView1.DataSource = dt;
+        //}
         void LoadNgheNghiep()
         {
             DataTable dt = busQuyDinhGiamGia.SelectNgheNghiep();
@@ -52,31 +52,58 @@ namespace GUI
             cboTrangThai.Items.Add("Đang hoạt động");
             cboTrangThai.Items.Add("Vô hiệu hóa");
         }
+        void LoadTextbox()
+        {
+            if (busQuyDinhGiamGia.SelectQuyDinhGiamGiaAfterClick(ref newQuyDinhGiamGia))
+            {
+                txtMaQuyDinhGiamGia.Text = newQuyDinhGiamGia.MaQuyDinhGiamGia;
+                txtMoTaLoaiGiamGia.Text = newQuyDinhGiamGia.MoTaLoaiGiamGia;
+                numUpDownSoLuongKhoaHocDangKy.Text = newQuyDinhGiamGia.SoLuongKhoaHocDangKy.ToString();
+                cboNgheNghiep.Text = newQuyDinhGiamGia.TenNgheNghiep;
+                dateTimePickerNgayBatDau.Text = newQuyDinhGiamGia.NgayBatDau.ToString();
+                dateTimePickerNgayKetThuc.Text = newQuyDinhGiamGia.NgayKetThuc.ToString();
+                numUpDownPhanTramGiamGiaMacDinh.Text = newQuyDinhGiamGia.PhanTramGiamGiaMacDinh.ToString();
+                numUpDownPhanTramGiamGiaToiDa.Text = newQuyDinhGiamGia.PhanTramGiamGiaToiDa.ToString();
+                cboTrangThai.Text = newQuyDinhGiamGia.TrangThaiQuyDinhGiamGia;
+                txtMaQuyDinhGiamGia.Enabled = false;
+                txtMoTaLoaiGiamGia.Enabled = false;
+                numUpDownSoLuongKhoaHocDangKy.Enabled = false;
+                cboNgheNghiep.Enabled = false;
+                numUpDownPhanTramGiamGiaMacDinh.Enabled = false;
+                numUpDownPhanTramGiamGiaToiDa.Enabled = false;
+                dateTimePickerNgayBatDau.Enabled = false;
+                dateTimePickerNgayKetThuc.Enabled = false;
+                cboTrangThai.Enabled = false;
+
+                btnSuaQuyDinhGiamGia.Visible = false;
+                btnHuySua.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Lỗi khi lấy dữ liệu quy định giảm giá");
+            }
+            if (newQuyDinhGiamGia.NgayBatDau.HasValue)
+            {
+                rbtnYesDate.Checked = true;
+            }
+            else
+            {
+                rbtnNoDate.Checked = true;
+            }
+        }
         void LoadForm()
         {
-            LoadDSachQuyDinhGiamGia();
+            //LoadDSachQuyDinhGiamGia();
             LoadNgheNghiep();
             LoadTrangThai();
 
-            dataGridView1.ReadOnly = true;
-            txtMaQuyDinhGiamGia.Enabled = false;
-            txtMoTaLoaiGiamGia.Enabled = false;
-            numUpDownSoLuongKhoaHocDangKy.Enabled = false;
-            cboNgheNghiep.Enabled = false;
-            numUpDownPhanTramGiamGiaMacDinh.Enabled = false;
-            numUpDownPhanTramGiamGiaToiDa.Enabled = false;
-            dateTimePickerNgayBatDau.Enabled = false;
-            dateTimePickerNgayKetThuc.Enabled = false;
-            cboTrangThai.Enabled = false;
+            newQuyDinhGiamGia.MaQuyDinhGiamGia = SharedResources.MaQuyDinhGiamGia;
 
-            btnSuaQuyDinhGiamGia.Visible = false;
-            btnHuySua.Visible = false;
+            LoadTextbox();
+
+           
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
         // Đã đổi tên thành frmDSQuyDinhGiamGia
         // Form SuaXoaQuyDinhGiamGia chỉ được thao tác trên các dòng chưa bị xóa mềm (TrangThaiQuyDinhGiamGia != N'Xóa mềm')
         private void frmSuaXoaQuyDinhGiamGia_Load(object sender, EventArgs e)
@@ -100,7 +127,6 @@ namespace GUI
             */
             cboTrangThai.Enabled = true;
 
-            btnSelectedTao.Visible = false;
             btnSelectedSua.Visible = false;
             btnSelectedXoa.Visible = false;
 
@@ -126,7 +152,6 @@ namespace GUI
             dateTimePickerNgayKetThuc.Enabled = false;
             cboTrangThai.Enabled = false;
 
-            btnSelectedTao.Visible = false;
             btnSelectedSua.Visible = false;
             btnSelectedXoa.Visible = false;
 
@@ -140,16 +165,21 @@ namespace GUI
                         newQuyDinhGiamGia.MaQuyDinhGiamGia = txtMaQuyDinhGiamGia.Text;
                         newQuyDinhGiamGia.TrangThaiQuyDinhGiamGia = "Xóa mềm";
 
-                        switch (busQuyDinhGiamGia.XoaQuyDinhGiamGia(newQuyDinhGiamGia))
+                        switch (busQuyDinhGiamGia.XoaQuyDinhGiamGia(newQuyDinhGiamGia, SharedResources.MaPIC))
                         {
                             case "Success":
                                 MessageBox.Show("Xóa Quy định giảm giá thành công");
-                                LoadDSachQuyDinhGiamGia();
+
+                                this.Hide();
+                                var form2 = new frmDSQuyDinhGiamGia();
+                                form2.Closed += (s, args) => this.Close();
+                                form2.Show();
+
                                 break;
 
                             case "Fail":
                                 MessageBox.Show("Xóa Quy định giảm giá thất bại");
-                                LoadDSachQuyDinhGiamGia();
+                                LoadTextbox();
                                 break;
 
                             case "Exception":
@@ -163,7 +193,6 @@ namespace GUI
                     this.TopMost = true;
                     break;
             }
-            btnSelectedTao.Visible = true;
             btnSelectedSua.Visible = true;
             btnSelectedXoa.Visible = true;
         }
@@ -187,11 +216,16 @@ namespace GUI
                 newQuyDinhGiamGia.PhanTramGiamGiaToiDa = int.Parse(numUpDownPhanTramGiamGiaToiDa.Value.ToString());
                 newQuyDinhGiamGia.TrangThaiQuyDinhGiamGia = cboTrangThai.Text;
 
-                switch (busQuyDinhGiamGia.SuaQuyDinhGiamGia(newQuyDinhGiamGia))
+                switch (busQuyDinhGiamGia.SuaQuyDinhGiamGia(newQuyDinhGiamGia,SharedResources.MaPIC))
                 {
                     case "Success":
                         MessageBox.Show("Sửa Quy định giảm giá thành công");
-                        LoadDSachQuyDinhGiamGia();
+                        LoadTextbox();
+                        btnSelectedSua.Visible = true;
+                        btnSelectedXoa.Visible = true;
+
+                        btnSuaQuyDinhGiamGia.Visible = false;
+                        btnHuySua.Visible = false;
                         break;
 
                     case "Fail":
@@ -216,11 +250,16 @@ namespace GUI
                 newQuyDinhGiamGia.PhanTramGiamGiaToiDa = int.Parse(numUpDownPhanTramGiamGiaToiDa.Value.ToString());
                 newQuyDinhGiamGia.TrangThaiQuyDinhGiamGia = (string)cboTrangThai.Text;
 
-                switch (busQuyDinhGiamGia.SuaQuyDinhGiamGia(newQuyDinhGiamGia))
+                switch (busQuyDinhGiamGia.SuaQuyDinhGiamGia(newQuyDinhGiamGia,SharedResources.MaPIC))
                 {
                     case "Success":
                         MessageBox.Show("Sửa Quy định giảm giá thành công");
-                        LoadDSachQuyDinhGiamGia();
+                        LoadTextbox();
+                        btnSelectedSua.Visible = true;
+                        btnSelectedXoa.Visible = true;
+
+                        btnSuaQuyDinhGiamGia.Visible = false;
+                        btnHuySua.Visible = false;
                         break;
 
                     case "Fail":
@@ -232,40 +271,43 @@ namespace GUI
                         break;
                 }
             }
-            btnSelectedTao.Visible = true;
-            btnSelectedSua.Visible = true;
-            btnSelectedXoa.Visible = true;
-
-            btnSuaQuyDinhGiamGia.Visible = false;
-            btnHuySua.Visible = false;
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView1.RowCount > 0)
-            {
-                txtMaQuyDinhGiamGia.Text = dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString();
-                txtMoTaLoaiGiamGia.Text = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
-                numUpDownSoLuongKhoaHocDangKy.Text = dataGridView1[2, dataGridView1.CurrentRow.Index].Value.ToString();
-                cboNgheNghiep.Text = dataGridView1[3, dataGridView1.CurrentRow.Index].Value.ToString();
-                dateTimePickerNgayBatDau.Text = dataGridView1[4, dataGridView1.CurrentRow.Index].Value.ToString();
-                dateTimePickerNgayKetThuc.Text = dataGridView1[5, dataGridView1.CurrentRow.Index].Value.ToString();
-                numUpDownPhanTramGiamGiaMacDinh.Text = dataGridView1[6, dataGridView1.CurrentRow.Index].Value.ToString();
-                numUpDownPhanTramGiamGiaToiDa.Text = dataGridView1[7, dataGridView1.CurrentRow.Index].Value.ToString();
-                cboTrangThai.Text = dataGridView1[8, dataGridView1.CurrentRow.Index].Value.ToString();
-
-                idx = dataGridView1.CurrentRow.Index;
-            }
-
-            if((dataGridView1[4, dataGridView1.CurrentRow.Index].Value.ToString() == "") && (dataGridView1[5, dataGridView1.CurrentRow.Index].Value.ToString() == ""))
-            {
-                rbtnNoDate.Checked = true;
-            }
-            else
+            
+            if (newQuyDinhGiamGia.NgayBatDau.HasValue)
             {
                 rbtnYesDate.Checked = true;
             }
+            else
+            {
+                rbtnNoDate.Checked = true;
+            }
         }
+
+        //private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (dataGridView1.RowCount > 0)
+        //    {
+        //        txtMaQuyDinhGiamGia.Text = dataGridView1[0, SharedResources.MaQuyDinhGiamGia].Value.ToString();
+        //        txtMoTaLoaiGiamGia.Text = dataGridView1[1, SharedResources.MaQuyDinhGiamGia].Value.ToString();
+        //        numUpDownSoLuongKhoaHocDangKy.Text = dataGridView1[2, SharedResources.MaQuyDinhGiamGia].Value.ToString();
+        //        cboNgheNghiep.Text = dataGridView1[3, SharedResources.MaQuyDinhGiamGia].Value.ToString();
+        //        dateTimePickerNgayBatDau.Text = dataGridView1[4, SharedResources.MaQuyDinhGiamGia].Value.ToString();
+        //        dateTimePickerNgayKetThuc.Text = dataGridView1[5, SharedResources.MaQuyDinhGiamGia].Value.ToString();
+        //        numUpDownPhanTramGiamGiaMacDinh.Text = dataGridView1[6, SharedResources.MaQuyDinhGiamGia].Value.ToString();
+        //        numUpDownPhanTramGiamGiaToiDa.Text = dataGridView1[7, SharedResources.MaQuyDinhGiamGia].Value.ToString();
+        //        cboTrangThai.Text = dataGridView1[8, SharedResources.MaQuyDinhGiamGia].Value.ToString();
+
+        //        idx = dataGridView1.CurrentRow.Index;
+        //    }
+
+        //    if((dataGridView1[4, dataGridView1.CurrentRow.Index].Value.ToString() == "") && (dataGridView1[5, dataGridView1.CurrentRow.Index].Value.ToString() == ""))
+        //    {
+        //        rbtnNoDate.Checked = true;
+        //    }
+        //    else
+        //    {
+        //        rbtnYesDate.Checked = true;
+        //    }
+        //}
 
         private void btnXoaQuyDinhGiamGIa_Click(object sender, EventArgs e)
         {
@@ -314,16 +356,6 @@ namespace GUI
             */
         }
 
-        private void btnTaoQuyDinhGiamGia_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmTaoQuyDinhGiamGia frmTao = new frmTaoQuyDinhGiamGia();
-            frmTao.ShowDialog();
-            frmTao = null;
-            this.Show();
-            LoadDSachQuyDinhGiamGia();
-        }
-
         private void rbtnYesDate_CheckedChanged(object sender, EventArgs e)
         {
             if(editStatus)
@@ -351,21 +383,12 @@ namespace GUI
         private void btnHuySua_Click(object sender, EventArgs e)
         {
             LoadForm();
-            btnSelectedTao.Visible = true;
             btnSelectedSua.Visible = true;
             btnSelectedXoa.Visible = true;
 
             editStatus = false;
 
-            txtMaQuyDinhGiamGia.Text = dataGridView1[0, idx].Value.ToString();
-            txtMoTaLoaiGiamGia.Text = dataGridView1[1, idx].Value.ToString();
-            numUpDownSoLuongKhoaHocDangKy.Text = dataGridView1[2, idx].Value.ToString();
-            cboNgheNghiep.Text = dataGridView1[3, idx].Value.ToString();
-            dateTimePickerNgayBatDau.Text = dataGridView1[4, idx].Value.ToString();
-            dateTimePickerNgayKetThuc.Text = dataGridView1[5, idx].Value.ToString();
-            numUpDownPhanTramGiamGiaMacDinh.Text = dataGridView1[6, idx].Value.ToString();
-            numUpDownPhanTramGiamGiaToiDa.Text = dataGridView1[7, idx].Value.ToString();
-            cboTrangThai.Text = dataGridView1[8, idx].Value.ToString();
+            LoadTextbox();
         }
 
         private void yêuCầuTưVấnToolStripMenuItem_Click(object sender, EventArgs e)
@@ -396,6 +419,29 @@ namespace GUI
         {
             this.Hide();
             var form2 = new frmDSKhoaHoc();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
+        private void lbPhanTramGiamGiaToiDa_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numUpDownPhanTramGiamGiaToiDa_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new frmDSQuyDinhGiamGia();
             form2.Closed += (s, args) => this.Close();
             form2.Show();
         }
