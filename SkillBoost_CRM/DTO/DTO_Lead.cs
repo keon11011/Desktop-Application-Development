@@ -13,7 +13,7 @@ namespace DTO
         private string _maLead;
         private string _hoTenLead;
         private string _gioiTinhLead;
-        private DateTime _ngaySinhLead;
+        private DateTime? _ngaySinhLead;
         private string _soDienThoaiLead;
         private string _emailLead;
         private string _maNgheNghiep;
@@ -33,7 +33,7 @@ namespace DTO
         public string MaLead { get => _maLead; set => _maLead = value; }
         public string HoTenLead { get => _hoTenLead; set => _hoTenLead = value; }
         public string GioiTinhLead { get => _gioiTinhLead; set => _gioiTinhLead = value; }
-        public DateTime NgaySinhLead { get => _ngaySinhLead; set => _ngaySinhLead = value; }
+        public DateTime? NgaySinhLead { get => _ngaySinhLead; set => _ngaySinhLead = value; }
         public string SoDienThoaiLead { get => _soDienThoaiLead; set => _soDienThoaiLead = value; }
         public string EmailLead { get => _emailLead; set => _emailLead = value; }
         public string MaNgheNghiep { get => _maNgheNghiep; set => _maNgheNghiep = value; }
@@ -55,7 +55,7 @@ namespace DTO
         {
 
         }
-        public DTO_Lead( string maLead, string hoTenLead, string gioiTinhLead, DateTime ngaySinhLead, string soDienThoaiLead, string emailLead, string maNgheNghiep, string tenNgheNghiep, string maNVPhuTrachLead, string tenNVPhuTrachLead, string trangThaiLead, string lyDoTrangThaiLead, string nguonLead, string ghiChuLead, string leadTuKHCu, DateTime taoVaoLuc, string taoBoi, DateTime chinhSuaLanCuoiVaoLuc, string chinhSuaLanCuoiBoi)
+        public DTO_Lead( string maLead, string hoTenLead, string gioiTinhLead, DateTime? ngaySinhLead, string soDienThoaiLead, string emailLead, string maNgheNghiep, string tenNgheNghiep, string maNVPhuTrachLead, string tenNVPhuTrachLead, string trangThaiLead, string lyDoTrangThaiLead, string nguonLead, string ghiChuLead, string leadTuKHCu, DateTime taoVaoLuc, string taoBoi, DateTime chinhSuaLanCuoiVaoLuc, string chinhSuaLanCuoiBoi)
         { 
             MaLead = maLead;
             HoTenLead = hoTenLead;

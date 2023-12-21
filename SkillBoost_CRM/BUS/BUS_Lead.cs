@@ -51,5 +51,9 @@ namespace BUS
         {
             return dAL_Lead.SelectKhoaHoc();
         }
+        public string XoaMemLead(DTO_Lead dTO_Lead)                      // Xóa mềm Lead
+        {
+            return dAL_Lead.XoaMemLead(dTO_Lead);
+        }
     }
 }

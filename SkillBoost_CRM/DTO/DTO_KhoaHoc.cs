@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class KhoaHoc
+    public class DTO_KhoaHoc
     {
         private string _maKhoaHoc;
         private string _tenKhoaHoc;
@@ -45,12 +45,12 @@ namespace DTO
         public DateTime ChinhSuaLanCuoiVaoLuc { get => _chinhSuaLanCuoiVaoLuc; set => _chinhSuaLanCuoiVaoLuc = value; }
         public string ChinhSuaLanCuoiBoi { get => _chinhSuaLanCuoiBoi; set => _chinhSuaLanCuoiBoi = value; }
 
-        public KhoaHoc()
+        public DTO_KhoaHoc()
         {
 
         }
 
-        public KhoaHoc(string maKhoaHoc, string tenKhoaHoc, string motaKhoaHoc, string thoiLuongKhoaHoc, string giangVien, string mucDoKhoaHoc, Int32 soLuongHocVienToiDa, double giaTien, DateTime ngayKhaiGiang, DateTime ngayBeGiang, double danhGiaKhoaHoc, string trangThaiKhoaHoc, string maLoaiKhoaHoc, DateTime taoVaoLuc, string taoBoi, DateTime chinhSuaLanCuoiVaoLuc, string chinhSuaLanCuoiBoi)
+        public DTO_KhoaHoc(string maKhoaHoc, string tenKhoaHoc, string motaKhoaHoc, string thoiLuongKhoaHoc, string giangVien, string mucDoKhoaHoc, Int32 soLuongHocVienToiDa, double giaTien, DateTime ngayKhaiGiang, DateTime ngayBeGiang, double danhGiaKhoaHoc, string trangThaiKhoaHoc, string maLoaiKhoaHoc, DateTime taoVaoLuc, string taoBoi, DateTime chinhSuaLanCuoiVaoLuc, string chinhSuaLanCuoiBoi)
         {
             MaKhoaHoc = maKhoaHoc;
             TenKhoaHoc = tenKhoaHoc;

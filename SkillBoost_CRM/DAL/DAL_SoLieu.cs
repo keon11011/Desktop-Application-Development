@@ -62,11 +62,12 @@ namespace DAL
                 SqlDataReader reader = cmdKhoaHocBanChay.ExecuteReader();
                 if (reader.HasRows)
                 {
+                    reader.Close();
                     solieu.KhoaHocBanChay = cmdKhoaHocBanChay.ExecuteScalar().ToString();
                 }
-                else solieu.KhoaHocBanChay = "_";
+                else { solieu.KhoaHocBanChay = "_"; reader.Close(); }
                 cmdKhoaHocBanChay.Dispose();
-                reader.Close();
+
 
                 SqlCommand cmdMaGiamGiaNhieu = new SqlCommand("SELECT top 1 MaGiamGia.MoTaMaGiamGia, COUNT(ChiTietDoiTuongUuDai.DaApDung) AS SoLanApDung FROM ChiTietDoiTuongUuDai JOIN MaGiamGia ON ChiTietDoiTuongUuDai.MaGiamGia = MaGiamGia.MaGiamGia WHERE (ChiTietDoiTuongUuDai.DaApDung = N'Có') and (MaGiamGia.TaoVaoLuc between @NgayBatDau and @NgayKetThuc) GROUP BY MaGiamGia.MoTaMaGiamGia ORDER BY SoLanApDung DESC", conn);
                 cmdMaGiamGiaNhieu.Parameters.Add("@NgayBatDau", SqlDbType.DateTime).Value = solieu.NgayBatDau;
@@ -74,11 +75,13 @@ namespace DAL
                 SqlDataReader reader1 = cmdMaGiamGiaNhieu.ExecuteReader();
                 if (reader1.HasRows)
                 {
+                    reader1.Close();
                     solieu.MaGiamGiaNhieu = cmdMaGiamGiaNhieu.ExecuteScalar().ToString();
                 }
-                else solieu.MaGiamGiaNhieu = "_";
+                else { solieu.MaGiamGiaNhieu = "_"; reader1.Close(); }
                 cmdMaGiamGiaNhieu.Dispose();
-                reader1.Close();
+
+
 
                 SqlCommand cmdNhanVienTuVanNhieu = new SqlCommand("SELECT top 1 NhanVien.HoTenNV, COUNT(*) AS SoLuongTuVan FROM Lead JOIN NhanVien ON NhanVien.MaNV = Lead.MaNVPhuTrachLead where NhanVien.TaoVaoLuc between @NgayBatDau and @NgayKetThuc GROUP BY Lead.MaNVPhuTrachLead,NhanVien.HoTenNV ORDER BY SoLuongTuVan DESC", conn);
                 cmdNhanVienTuVanNhieu.Parameters.Add("@NgayBatDau", SqlDbType.DateTime).Value = solieu.NgayBatDau;
@@ -86,11 +89,12 @@ namespace DAL
                 SqlDataReader reader2 = cmdNhanVienTuVanNhieu.ExecuteReader();
                 if (reader2.HasRows)
                 {
+                    reader2.Close();
                     solieu.NhanVienTuVanNhieu = cmdNhanVienTuVanNhieu.ExecuteScalar().ToString();
                 }
-                else solieu.NhanVienTuVanNhieu = "_";
+                else { solieu.NhanVienTuVanNhieu = "_"; reader2.Close(); }
                 cmdNhanVienTuVanNhieu.Dispose();
-                reader2.Close();
+
 
                 return true;
             }
@@ -103,7 +107,5 @@ namespace DAL
                 conn.Close();
             }
         }
-
-
     }
 }

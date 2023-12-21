@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
+using DTO;
 
 namespace BUS
 {
@@ -25,6 +26,10 @@ namespace BUS
         public DataTable LocKhoaHoc(string GiangVien, string TrangThaiKhoaHoc)
         {
             return dalKhoaHoc.LocKhoaHoc(GiangVien, TrangThaiKhoaHoc);
+        }
+        public bool LayThongTinKhoaHocChonThem(ref DTO_KhoaHoc dTO_KhoaHoc)
+        {
+            return dalKhoaHoc.LayThongTinKhoaHocChonThem(ref dTO_KhoaHoc);
         }
     }
 }

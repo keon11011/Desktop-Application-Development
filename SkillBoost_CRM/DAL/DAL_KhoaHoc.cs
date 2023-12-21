@@ -92,5 +92,41 @@ namespace DAL
                 conn.Close();
             }
         }
+        public bool LayThongTinKhoaHocChonThem(ref DTO_KhoaHoc dTO_KhoaHoc)
+        {
+            try
+            {
+                conn.Open();
+                string cmdText = "select * from KhoaHoc where MaKhoaHoc = @MaKhoaHoc";
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+
+                cmd.Parameters.Add("@MaKhoaHoc", SqlDbType.VarChar);
+                cmd.Parameters["@MaKhoaHoc"].Value = dTO_KhoaHoc.MaKhoaHoc;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                da.Dispose();
+                cmd.Dispose();
+
+                dTO_KhoaHoc.TenKhoaHoc = dt.Rows[0][1].ToString();
+                dTO_KhoaHoc.MoTaKhoaHoc = dt.Rows[0][2].ToString();
+                dTO_KhoaHoc.ThoiLuongKhoaHoc = dt.Rows[0][3].ToString();
+                dTO_KhoaHoc.GiangVien = dt.Rows[0][4].ToString();
+                dTO_KhoaHoc.MucDoKhoaHoc = dt.Rows[0][5].ToString();
+                dTO_KhoaHoc.SoLuongHocVienToiDa = (int)dt.Rows[0][6];
+                dTO_KhoaHoc.GiaTien = (double)dt.Rows[0][7];
+                dTO_KhoaHoc.NgayKhaiGiang = (DateTime)dt.Rows[0][8];
+
+                return true;
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }
