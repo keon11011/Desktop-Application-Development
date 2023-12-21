@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class HoatDongLead
+    public class DTO_HoatDongLead
     {
         private string _maHDLead;
         private string _maLead;
@@ -28,12 +28,12 @@ namespace DTO
         public string MaEmailDenLead { get => _maEmailDenLead; set => _maEmailDenLead = value; }
         public DateTime TaoVaoLuc { get => _taoVaoLuc; set => _taoVaoLuc = value; }
 
-        public HoatDongLead()
+        public DTO_HoatDongLead()
         {
 
         }
 
-        public HoatDongLead(string hoatDongLead, string maLead, string tenHDLead, string loaiHDLead, string hdLeadDuocTaoBoi, string maNVPhuTrachHDLead, string tenNVPhuTrachHDLead, string maEmailDenLead, DateTime taoVaoLuc)
+        public DTO_HoatDongLead(string hoatDongLead, string maLead, string tenHDLead, string loaiHDLead, string hdLeadDuocTaoBoi, string maNVPhuTrachHDLead, string tenNVPhuTrachHDLead, string maEmailDenLead, DateTime taoVaoLuc)
         {
             MaHDLead = hoatDongLead;
             MaLead = maLead;

@@ -78,7 +78,7 @@ namespace GUI
             yctv.TaoBoiLead = "";   
             yctv.MaKhoaHoc = cbKhoaHoc.SelectedValue.ToString();
 
-            HoatDongLead HDLead = new HoatDongLead();
+            DTO_HoatDongLead HDLead = new DTO_HoatDongLead();
 
             if (bUS_YeuCauTuVan.InsertLeadcuaYCTV(ref yctv)) //--> Insert YCTV ( + Chi tiet khoa hoc) + HDLead
             {

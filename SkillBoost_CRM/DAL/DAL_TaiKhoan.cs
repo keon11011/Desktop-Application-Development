@@ -26,7 +26,7 @@ namespace DAL
 
                 dTO_TaiKhoan.TrangThaiTK = dt.Rows[0][6].ToString();
 
-                if (dt.Rows.Count == 0 || dTO_TaiKhoan.TrangThaiTK == "Dừng hoạt động")
+                if (dt.Rows.Count == 0 || dTO_TaiKhoan.TrangThaiTK == "Vô hiệu hóa")
                 {
                     return false;
                 }

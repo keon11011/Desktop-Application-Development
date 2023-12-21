@@ -1,6 +1,4 @@
-﻿using BUS;
-using DTO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,30 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DTO;
+using BUS;
+using System.Runtime.CompilerServices;
+using System.Data.SqlClient;
+
 
 namespace GUI
 {
     public partial class frmThongTinLead : Form
     {
-        DTO_KhoaHoc dTO_KhoaHoc = new DTO_KhoaHoc();
         DTO_Lead dTO_Lead = new DTO_Lead();
-        DataTable dtNgheNghiep = new DataTable();
+        DTO_ChiTietKhoaHocThuocYCTV khThuocYCTV = new DTO_ChiTietKhoaHocThuocYCTV();
         BUS_Lead bUS_Lead = new BUS_Lead();
-        BUS_KhoaHoc bUS_KhoaHoc = new BUS_KhoaHoc();
+        DTO_KhoaHoc dTO_KhoaHoc = new DTO_KhoaHoc();
+
+        DataTable dt1KhoaHoc = new DataTable();
+        DataTable dtYCTVMoiTao = new DataTable();
         DataTable dtKhoaHoc = new DataTable();
+
+        string maTuVanMoiTao;
         public frmThongTinLead()
         {
             InitializeComponent();
         }
-
-        private void frmThongTinLead_Load(object sender, EventArgs e)
-        {
-            LoadLaiThongTinLead();
-        }
         public void LoadNgheNghiep()
         {
-            dtNgheNghiep = bUS_Lead.SelectNgheNghiep().Tables["NgheNghiep"];
-            cbNgheNghiep.DataSource = dtNgheNghiep;
+            cbNgheNghiep.DataSource = bUS_Lead.SelectNgheNghiep().Tables["NgheNghiep"];
             cbNgheNghiep.DisplayMember = "TenNgheNghiep";
             cbNgheNghiep.ValueMember = "MaNgheNghiep";
         }
@@ -45,25 +46,74 @@ namespace GUI
         public void LoadDanhSachKhoaHoc()
         {
             dtKhoaHoc = bUS_Lead.DanhSachKhoaHoc(dTO_Lead).Tables["KhoaHoc"];
+            dtKhoaHoc.Columns[1].ColumnName = "Mã khóa học";
+            dtKhoaHoc.Columns[2].ColumnName = "Tên khóa học";
+            dtKhoaHoc.Columns[3].ColumnName = "Mô tả khóa học";
+            dtKhoaHoc.Columns[4].ColumnName = "Thời lượng khóa học";
+            dtKhoaHoc.Columns[5].ColumnName = "Giảng viên";
+            dtKhoaHoc.Columns[6].ColumnName = "Mức độ khóa học";
+            dtKhoaHoc.Columns[7].ColumnName = "Số lượng học viên tối đa";
+            dtKhoaHoc.Columns[8].ColumnName = "Giá tiền";
+            dtKhoaHoc.Columns[9].ColumnName = "Ngày khai giảng";
+            dtKhoaHoc.Columns[10].ColumnName = "Ngày bế giảng";
+            dtKhoaHoc.Columns[11].ColumnName = "Đánh giá khóa học";
+            dtKhoaHoc.Columns[12].ColumnName = "Trạng thái khóa học";
+            dtKhoaHoc.Columns[13].ColumnName = "Mã loại khóa học";
+            dtKhoaHoc.Columns[14].ColumnName = "Tạo vào lúc";
+            dtKhoaHoc.Columns[15].ColumnName = "Tạo bởi";
+            dtKhoaHoc.Columns[16].ColumnName = "Chỉnh sửa lần cuối vào lúc";
+            dtKhoaHoc.Columns[17].ColumnName = "Chỉnh sửa lần cuối bởi";
             dataGridViewKhoaHocKHQuanTam.DataSource = dtKhoaHoc;
-            dataGridViewKhoaHocKHQuanTam.Columns[0].HeaderText = "Mã khóa học";
-            dataGridViewKhoaHocKHQuanTam.Columns[1].HeaderText = "Tên khóa học";
-            dataGridViewKhoaHocKHQuanTam.Columns[2].HeaderText = "Mô tả khóa học";
-            dataGridViewKhoaHocKHQuanTam.Columns[3].HeaderText = "Thời lượng khóa học";
-            dataGridViewKhoaHocKHQuanTam.Columns[4].HeaderText = "Giảng viên";
-            dataGridViewKhoaHocKHQuanTam.Columns[5].HeaderText = "Mức độ khóa học";
-            dataGridViewKhoaHocKHQuanTam.Columns[6].HeaderText = "Số lượng học viên tối đa";
-            dataGridViewKhoaHocKHQuanTam.Columns[7].HeaderText = "Giá tiền";
-            dataGridViewKhoaHocKHQuanTam.Columns[8].HeaderText = "Ngày khai giảng";
-            dataGridViewKhoaHocKHQuanTam.Columns[9].Visible = false;
-            dataGridViewKhoaHocKHQuanTam.Columns[10].Visible = false;
-            dataGridViewKhoaHocKHQuanTam.Columns[11].Visible = false;
-            dataGridViewKhoaHocKHQuanTam.Columns[12].Visible = false;
-            dataGridViewKhoaHocKHQuanTam.Columns[13].Visible = false;
-            dataGridViewKhoaHocKHQuanTam.Columns[14].Visible = false;
-            dataGridViewKhoaHocKHQuanTam.Columns[15].Visible = false;
-            dataGridViewKhoaHocKHQuanTam.Columns[16].Visible = false;
 
+            //dataGridViewKhoaHocKHQuanTam.Columns[0].HeaderText = "Mã khóa học";
+            //dataGridViewKhoaHocKHQuanTam.Columns[1].HeaderText = "Tên khóa học";
+            //dataGridViewKhoaHocKHQuanTam.Columns[2].HeaderText = "Mô tả khóa học";
+            //dataGridViewKhoaHocKHQuanTam.Columns[3].HeaderText = "Thời lượng khóa học";
+            //dataGridViewKhoaHocKHQuanTam.Columns[4].HeaderText = "Giảng viên";
+            //dataGridViewKhoaHocKHQuanTam.Columns[5].HeaderText = "Mức độ khóa học";
+            //dataGridViewKhoaHocKHQuanTam.Columns[6].HeaderText = "Số lượng học viên tối đa";
+            //dataGridViewKhoaHocKHQuanTam.Columns[7].HeaderText = "Giá tiền";
+            //// dataGridViewKhoaHocKHQuanTam.Columns[8].HeaderText = "Ngày khai giảng";
+            // dataGridViewKhoaHocKHQuanTam.Columns[9].Visible = false;
+            // dataGridViewKhoaHocKHQuanTam.Columns[10].Visible = false;
+            // dataGridViewKhoaHocKHQuanTam.Columns[11].Visible = false;
+            // dataGridViewKhoaHocKHQuanTam.Columns[12].Visible = false;
+            // dataGridViewKhoaHocKHQuanTam.Columns[13].Visible = false;
+            // dataGridViewKhoaHocKHQuanTam.Columns[14].Visible = false;
+            // dataGridViewKhoaHocKHQuanTam.Columns[15].Visible = false;
+            // dataGridViewKhoaHocKHQuanTam.Columns[16].Visible = false;
+
+        }
+
+
+        private void frmThongTinLead_Load(object sender, EventArgs e)
+        {
+            // Add cot cho dtKhoaHoc
+            //dtKhoaHoc.Columns.Add("Mã khóa học", typeof(string));
+            //dtKhoaHoc.Columns.Add("Tên khóa học", typeof(string));
+            //dtKhoaHoc.Columns.Add("Mô tả khóa học", typeof(string));
+            //dtKhoaHoc.Columns.Add("Thời lượng khóa học", typeof(string));
+            //dtKhoaHoc.Columns.Add("Giảng viên", typeof(string));
+            //dtKhoaHoc.Columns.Add("Mức độ khóa học", typeof(string));
+            //dtKhoaHoc.Columns.Add("Số lượng học viên tối đa", typeof(string));
+            //dtKhoaHoc.Columns.Add("Giá tiền", typeof(float));
+
+
+            btnHuyChinhSua.Hide();
+            btnLuuThayDoi.Hide();
+            dTO_Lead.MaLead = SharedResources.MaLead;
+            bUS_Lead.SelectLead(ref dTO_Lead);
+            txtLeadID.Text = dTO_Lead.MaLead;
+            txtHoten.Text = dTO_Lead.HoTenLead;
+            dateTimePickerNgaySinh.Text = dTO_Lead.NgaySinhLead.ToString();
+            txtEmail.Text = dTO_Lead.EmailLead;
+            txtSoDienThoai.Text = dTO_Lead.SoDienThoaiLead;
+            txtPIC.Text = dTO_Lead.TenNVPhuTrachLead;
+            cbNgheNghiep.Text = dTO_Lead.TenNgheNghiep;
+            cbNguonLead.Text = dTO_Lead.NguonLead;
+            txtGhiChu.Text = dTO_Lead.GhiChuLead;
+            txtTrangThaiLead.Text = dTO_Lead.TrangThaiLead;
+            LoadDanhSachKhoaHoc();
         }
         void LoadcbNguonLead()
         {
@@ -84,30 +134,14 @@ namespace GUI
             txtSoDienThoai.ReadOnly = false;
             cbNgheNghiep.Enabled = true;
             cbNguonLead.Enabled = true;
-
             txtGhiChu.ReadOnly = false;
             dataGridViewKhoaHocKHQuanTam.ReadOnly = false;
+            cbKhoaHoc.Enabled = true;
+            btnThemKhoaHoc.Enabled = true;
+            btnXoaKhoaHoc.Enabled = true;
             LoadNgheNghiep();
             LoadcbNguonLead();
             LoadKhoaHoc();
-            for (int i = 0; i < cbNguonLead.Items.Count; i++)                               // note thuyết trình
-            {
-                if (cbNguonLead.Items[i].ToString() == dTO_Lead.NguonLead)
-                {
-                    cbNguonLead.SelectedIndex = i;
-                    break;
-                }
-
-            }
-            for (int i = 0; i < cbNgheNghiep.Items.Count; i++)
-            {
-                if (dtNgheNghiep.Rows[i][0].ToString() == dTO_Lead.MaNgheNghiep)
-                {
-                    cbNgheNghiep.SelectedIndex = i;
-                    break;
-                }
-
-            }
         }
 
         private void btnLuuThayDoi_Click(object sender, EventArgs e)
@@ -131,33 +165,152 @@ namespace GUI
                     break;
 
                 case "Exception":
-                    MessageBox.Show("Lỗi khác!");
+                    MessageBox.Show("Lỗi thay đổi thông tin Lead!");
                     break;
+            }
+
+            //code tiếp
+
+            maTuVanMoiTao = bUS_Lead.SelectTuVanMoiTao();
+            khThuocYCTV.MaTuVan = maTuVanMoiTao;
+            // Xóa dô Chi tiết khóa học thuộc báo giá
+            switch (bUS_Lead.XoaChiTietKhoaHocThuocYCTV(khThuocYCTV))
+            {
+                case "Success":
+                    MessageBox.Show("Xóa chi tiết khóa học thuộc yêu cầu tư vấn mới thành công");
+                    break;
+
+                case "Fail":
+                    MessageBox.Show("Xóa chi tiết khóa học thuộc yêu cầu tư vấn mới thất bại");
+                    break;
+
+                case "Exception":
+                    MessageBox.Show("Lỗi xóa khóa học yêu cầu tư vấn mới!");
+                    break;
+            }
+            // Thêm dô Chi tiết khóa học thuộc báo giá
+            foreach (DataRow dr in dtKhoaHoc.Rows)
+            {
+                khThuocYCTV.MaTuVan = maTuVanMoiTao;
+                khThuocYCTV.MaKhoaHoc = dr[1].ToString();
+                khThuocYCTV.TenKhoaHoc = dr[1].ToString();
+                khThuocYCTV.GiangVien = dr[5].ToString();
+                khThuocYCTV.GiaTien = float.Parse(dr[8].ToString());
+
+                switch (bUS_Lead.ThemChiTietKhoaHocThuocYeuCauTuVan(khThuocYCTV))
+                {
+                    case "Success":
+                        MessageBox.Show("Thêm chi tiết khóa học thuộc yêu cầu tư vấn mới thành công");
+                        break;
+
+                    case "Fail":
+                        MessageBox.Show("Thêm chi tiết khóa học thuộc yêu cầu tư vấn mới thất bại");
+                        break;
+
+                    case "Exception":
+                        MessageBox.Show("Lỗi thêm khóa học yêu cầu tư vấn mới!");
+                        break;
+                }
             }
         }
 
         private void btnUnfollow_Click(object sender, EventArgs e)
         {
             this.Hide();
-            SharedResources.MaLead = txtLeadID.Text;
-            frmXacNhanHuyTheoDoi huyTheoDoi = new frmXacNhanHuyTheoDoi();
-            huyTheoDoi.Closed += (s, arg) => this.Close();
-            huyTheoDoi.Show();
+            var form2 = new frmXacNhanHuyTheoDoi();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+            //switch (bUS_Lead.HuyTheoDoiTuVan(dTO_Lead))
+            //{
+            //    case "Success":
+            //        MessageBox.Show("Đã ngừng theo dõi Lead");
+            //        break;
+
+            //    case "Fail":
+            //        MessageBox.Show("Thao tác thất bại");
+            //        break;
+
+            //    case "Exception":
+            //        MessageBox.Show("Lỗi khác!");
+            //        break;
+            //}
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
 
         }
-        private void LoadLaiThongTinLead()
+
+        private void btnThemKhoaHoc_Click(object sender, EventArgs e)
         {
-            txtHoten.ReadOnly = true;
-            dateTimePickerNgaySinh.Enabled = false;
-            txtEmail.ReadOnly = true;
-            txtSoDienThoai.ReadOnly = true;
-            cbNgheNghiep.Enabled = false;
-            cbNguonLead.Enabled = false;
-            txtGhiChu.ReadOnly = true;
-            dataGridViewKhoaHocKHQuanTam.ReadOnly = true;
+            string selectedMaKhoaHoc = cbKhoaHoc.SelectedValue.ToString();
+            bool existMaKhoaHoc = false;
+
+            foreach (DataRow dr in dtKhoaHoc.Rows)
+            {
+                if (dr.Field<string>("Mã khóa học") == selectedMaKhoaHoc)
+                {
+                    existMaKhoaHoc = true;
+                    break;
+                }
+            }
+            if (existMaKhoaHoc)
+            {
+                MessageBox.Show("Khóa học này đã được thêm", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                DataRow newRow = dtKhoaHoc.NewRow();
+                newRow["Mã khóa học"] = selectedMaKhoaHoc;
+                newRow["Tên khóa học"] = cbKhoaHoc.Text;
+
+                dTO_KhoaHoc.MaKhoaHoc = cbKhoaHoc.SelectedValue.ToString();
+                //dTO_KhoaHoc.MaKhoaHoc = selectedMaKhoaHoc;
+                dt1KhoaHoc = bUS_Lead.Select1KhoaHoc(dTO_KhoaHoc);
+                newRow["Mô tả khóa học"] = dt1KhoaHoc.Rows[0][2].ToString();
+                newRow["Thời lượng khóa học"] = dt1KhoaHoc.Rows[0][3];
+                newRow["Giảng viên"] = dt1KhoaHoc.Rows[0][4];
+                newRow["Mức độ khóa học"] = dt1KhoaHoc.Rows[0][5];
+                newRow["Số lượng học viên tối đa"] = dt1KhoaHoc.Rows[0][6];
+                newRow["Giá tiền"] = dt1KhoaHoc.Rows[0][7];
+
+                dtKhoaHoc.Rows.Add(newRow);
+
+                dataGridViewKhoaHocKHQuanTam.Refresh();
+            }
+        }
+
+        private void btnXoaKhoaHoc_Click(object sender, EventArgs e)
+        {
+            string selectedMaKhoaHoc = cbKhoaHoc.SelectedValue.ToString();
+            bool existMaKhoaHoc = false;
+            DataRow delRow = dtKhoaHoc.NewRow();
+
+            foreach (DataRow dr in dtKhoaHoc.Rows)
+            {
+                if (dr.Field<string>("Mã khóa học") == selectedMaKhoaHoc)
+                {
+                    existMaKhoaHoc = true;
+                    delRow = dr;
+                    break;
+                }
+            }
+            if (existMaKhoaHoc)
+            {
+                dtKhoaHoc.Rows.Remove(delRow);
+            }
+            else
+            {
+                MessageBox.Show("Khóa học chưa được thêm vào. Không thể xóa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+
+        private void btnHuyChinhSua_Click(object sender, EventArgs e)
+        {
+            dataGridViewKhoaHocKHQuanTam.DataSource = dtKhoaHoc;
             btnHuyChinhSua.Hide();
             btnLuuThayDoi.Hide();
-            SharedResources.MaLead = "LEA3";
             dTO_Lead.MaLead = SharedResources.MaLead;
             bUS_Lead.SelectLead(ref dTO_Lead);
             txtLeadID.Text = dTO_Lead.MaLead;
@@ -171,110 +324,49 @@ namespace GUI
             txtGhiChu.Text = dTO_Lead.GhiChuLead;
             txtTrangThaiLead.Text = dTO_Lead.TrangThaiLead;
             LoadDanhSachKhoaHoc();
-        }
-
-        private void btnHuyChinhSua_Click(object sender, EventArgs e)
-        {
-            LoadLaiThongTinLead();
-        }
-
-
-        private int KhoaHocDaTonTai(string khoaHoc)
-        {
-
-            //foreach (DataGridViewRow row in dataGridViewKhoaHocKHQuanTam.Rows)          
-            //{
-            //    if (row.ToString().IndexOf(khoaHoc) != -1 )                  // Kiểm tra khóa học tồn tại hay chưa?
-            //    {
-            //        return i;           // Khóa học đã tồn tại
-            //        i++;
-            //    }
-            //}
-            //return -1 ; // Khóa học chưa tồn tại
-            for (int i = 0; i < dataGridViewKhoaHocKHQuanTam.Rows.Count; i++)
-            {
-                if (dataGridViewKhoaHocKHQuanTam[1, i].Value.ToString() == khoaHoc)     // Xét tên khóa học so với ComboBoxKhoaHoc
-                {
-                    return i;
-                }
-
-            }
-            return -1;
-        }
-
-
-        private void btnThemKhoaHoc_Click(object sender, EventArgs e)                    // Button Thêm Khóa học vào DataGridView    
-        {
-            string khoaHocDuocChonThem = cbKhoaHoc.Text;
-
-            // Kiểm tra xem khóa học đã tồn tại trong DataTable hay chưa
-            if (KhoaHocDaTonTai(khoaHocDuocChonThem) == -1)
-            {
-                dTO_KhoaHoc.MaKhoaHoc = cbKhoaHoc.SelectedValue.ToString();             // Lấy mã khóa học 
-
-                DataGridViewRow row = (DataGridViewRow)dataGridViewKhoaHocKHQuanTam.Rows[0].Clone();
-                if (bUS_KhoaHoc.LayThongTinKhoaHocChonThem(ref dTO_KhoaHoc))
-                {
-                    DataRow dr = dtKhoaHoc.NewRow();
-
-                    dr[0] = dTO_KhoaHoc.MaKhoaHoc;
-                    dr[1] = dTO_KhoaHoc.TenKhoaHoc;
-                    dr[2] = dTO_KhoaHoc.MoTaKhoaHoc;
-                    dr[3] = dTO_KhoaHoc.ThoiLuongKhoaHoc;
-                    dr[4] = dTO_KhoaHoc.GiangVien;
-                    dr[5] = dTO_KhoaHoc.MucDoKhoaHoc;
-                    dr[6] = dTO_KhoaHoc.SoLuongHocVienToiDa;
-                    dr[7] = dTO_KhoaHoc.GiaTien;
-                    dr[8] = dTO_KhoaHoc.NgayKhaiGiang;
-                    dtKhoaHoc.Rows.Add(dr);
-
-                    dataGridViewKhoaHocKHQuanTam.DataSource = dtKhoaHoc;
-                }
-                else
-                {
-                    MessageBox.Show("Không lấy được dữ liệu của khóa học vừa thêm");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Khóa học không tồn tại trong danh sách.");
-            }
-
-        }
-        private void XoaKhoaHoc(int STTkhoaHoc)
-        {
-            dataGridViewKhoaHocKHQuanTam.Rows.RemoveAt(STTkhoaHoc);
-        }
-        private void btnXoaKhoaHoc_Click(object sender, EventArgs e)                            // Button Xóa Khóa học trong DataGridView 
-        {
-            string khoaHocDuocChonXoa = cbKhoaHoc.Text;
-
-            // Kiểm tra xem khóa học đã tồn tại trong DataGridView hay chưa
-            int STTKhoaHoc = KhoaHocDaTonTai(khoaHocDuocChonXoa);
-            if (STTKhoaHoc != -1)
-            {
-                // Nếu tồn tại, xóa khóa học khỏi DataGridView
-                XoaKhoaHoc(STTKhoaHoc);
-            }
-            else
-            {
-                MessageBox.Show("Khóa học không tồn tại trong danh sách.");
-            }
+            txtEmail.ReadOnly = true;
+            txtHoten.ReadOnly = true;   
+            txtGhiChu.ReadOnly = true;
+            txtSoDienThoai.ReadOnly = true;
+            cbNgheNghiep.Enabled = false;
+            cbNguonLead.Enabled = false;
+            dateTimePickerNgaySinh.Enabled = false;
+            cbKhoaHoc.Enabled = false;
+            btnThemKhoaHoc.Enabled = false;
+            btnXoaKhoaHoc.Enabled = false;
 
         }
 
-        private void btnXoa_Click(object sender, EventArgs e)                                   // Xóa mềm Lead => Hiện form Xác nhận Xóa Lead 
+        private void btnXoa_Click(object sender, EventArgs e)
         {
-            SharedResources.MaLead = txtLeadID.Text;
             this.Hide();
-            frmXacNhanXoaLead xoaLead = new frmXacNhanXoaLead();
-            xoaLead.Closed += (s, arg) => this.Close();
-            xoaLead.Show();
+            var frm1 = new frmXacNhanXoaLead();
+            frm1.Closed += (s, args) => this.Close();
+            frm1.Show();
         }
 
-        private void txtGhiChu_TextChanged(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            var frm1 = new frmDSLead();
+            frm1.Closed += (s, args) => this.Close();
+            frm1.Show();
+        }
 
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var frm1 = new frmDSBaoGiaCuaLead();
+            frm1.Closed += (s, args) => this.Close();
+            frm1.Show();
+        }
+
+        private void toolStripMenuItem3_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            var frm1 = new frmDSHoatDongLead();
+            frm1.Closed += (s, args) => this.Close();
+            frm1.Show();
         }
     }
 }

@@ -17,5 +17,13 @@ namespace BUS
         {
             return dAL_KhachHang.SelectKhachHang(maPIC, ChucVu);
         }
+        public DataTable LocKhachHang(DTO_KhachHang dTO_KhachHang, string ChucVu, string MaPIC)
+        {
+            return dAL_KhachHang.LocKhachHang(dTO_KhachHang, ChucVu, MaPIC);
+        }
+        public DataTable TimKhachHang(string input_TuKhoa, string ChucVu, string MaPIC)
+        {
+            return dAL_KhachHang.TimKhachHang(input_TuKhoa.Trim(), ChucVu, MaPIC);
+        }
     }
 }

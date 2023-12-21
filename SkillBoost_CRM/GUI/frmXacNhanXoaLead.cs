@@ -23,11 +23,11 @@ namespace GUI
 
         private void btnXoaLead_Click(object sender, EventArgs e)
         {
-
             dTO_Lead.LyDoTrangThaiLead = txtLyDoXoaLead.Text;
             dTO_Lead.MaLead = SharedResources.MaLead;
+            dTO_Lead.ChinhSuaLanCuoiBoi = SharedResources.MaPIC;
 
-            switch (bUS_Lead.XoaMemLead(dTO_Lead))                      //Sao nó không đổi trạng thái lead 
+            switch (bUS_Lead.XoaMemLead(dTO_Lead))                      //Sao nó không đổi trạng thái lead  
             {
                 case "Success":
                     MessageBox.Show("Đã xóa Lead");
@@ -41,6 +41,10 @@ namespace GUI
                     MessageBox.Show("Lỗi khác!");
                     break;
             }
+            this.Hide();
+            var form2 = new frmDSLead();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
         }
 
         private void frmXacNhanXoaLead_Load(object sender, EventArgs e)

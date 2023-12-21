@@ -37,5 +37,6 @@ namespace BUS
         {
             return dalQuyDinhGiamGia.SelectQuyDinhGiamGiaAfterClick(ref dTO_QuyDinhGiamGia);
         }
+        
     }
 }

@@ -25,7 +25,10 @@ namespace GUI
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
+            var form2 = new frmDSQuyDinhGiamGia();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
         }
         void LoadNgheNghiep()
         {

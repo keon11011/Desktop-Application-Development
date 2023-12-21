@@ -212,6 +212,7 @@
             this.leadToolStripMenuItem.Name = "leadToolStripMenuItem";
             this.leadToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
             this.leadToolStripMenuItem.Text = "Lead";
+            this.leadToolStripMenuItem.Click += new System.EventHandler(this.leadToolStripMenuItem_Click);
             // 
             // kháchHàngToolStripMenuItem
             // 
@@ -239,6 +240,7 @@
             this.báoCáoToolStripMenuItem.Name = "báoCáoToolStripMenuItem";
             this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(91, 29);
             this.báoCáoToolStripMenuItem.Text = "Báo cáo";
+            this.báoCáoToolStripMenuItem.Click += new System.EventHandler(this.báoCáoToolStripMenuItem_Click);
             // 
             // frmDSKhoaHoc
             // 

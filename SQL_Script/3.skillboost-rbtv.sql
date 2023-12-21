@@ -140,7 +140,7 @@ ADD CONSTRAINT ConstraintDOMHDLeadDuocTaoBoi CHECK (LoaiHDLead IN (N'Hệ thốn
 */
 -- RB35. Thuộc tính TrangThaiBaoGia của bảng BaoGia chỉ luôn có 3 giá trị “Đã thanh toán”, “Chưa thanh toán” và “Đã hết hạn”
 ALTER TABLE BaoGia
-ADD CONSTRAINT ConstraintDOMTrangThaiBaoGia CHECK (TrangThaiBaoGia IN (N'Đã thanh toán', N'Chưa thanh toán', N'Đã hết hạn', N'Xóa mềm'))
+ADD CONSTRAINT ConstraintDOMTrangThaiBaoGia CHECK (TrangThaiBaoGia IN (N'Đã thanh toán', N'Chưa thanh toán', N'Đã gửi mail', N'Đã soạn mail nháp', N'Đã hết hạn', N'Xóa mềm'))
 
 /* Use case 4*/
 /* Bảng QuyDinhGiamGia : Từ RB36 đến RB38 */

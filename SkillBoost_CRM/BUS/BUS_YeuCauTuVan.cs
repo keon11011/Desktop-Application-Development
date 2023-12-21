@@ -39,7 +39,10 @@ namespace BUS
             return dAL_YeuCauTuVan.InsertChiTietKhoaHoc(khoahoc_yctv);
         }
 
-
+        public string TiepNhanYCTV(string MaTuVan)
+        {
+            return dAL_YeuCauTuVan.TiepNhanYCTV(MaTuVan);
+        }
 
 
     }

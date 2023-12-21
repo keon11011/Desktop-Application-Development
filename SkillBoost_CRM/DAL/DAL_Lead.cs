@@ -173,7 +173,10 @@ namespace DAL
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("Update Lead set HoTenLead = @HoTenLead, GioiTinhLead = @GioiTinhLead, NgaySinhLead = @NgaySinhLead, SoDienThoaiLead = @SoDienThoaiLead, EmailLead = @Email, MaNgheNghiep = @MaNgheNghiep, TenNgheNghiep = @TenNgheNghiep, NguonLead = @NguonLead, GhiChuLead = @GhiChuLead, ChinhSuaLanCuoiVaoLuc = GETDATE(), ChinhSuaLanCuoiBoi = @MaPIC where MaLead = @MaLead", conn);
+                SqlCommand cmd = new SqlCommand("Update Lead set HoTenLead = @HoTenLead, GioiTinhLead = @GioiTinhLead, NgaySinhLead = @NgaySinhLead, " +
+                    "SoDienThoaiLead = @SoDienThoaiLead, EmailLead = @Email, MaNgheNghiep = @MaNgheNghiep, TenNgheNghiep = @TenNgheNghiep, " +
+                    "NguonLead = @NguonLead, GhiChuLead = @GhiChuLead, ChinhSuaLanCuoiVaoLuc = GETDATE(), " +
+                    "ChinhSuaLanCuoiBoi = @MaPIC where MaLead = @MaLead", conn);
 
                 cmd.Parameters.Add("@HoTenLead", SqlDbType.NVarChar);
                 cmd.Parameters["@HoTenLead"].Value = dTO_Lead.HoTenLead;
@@ -202,11 +205,8 @@ namespace DAL
                 cmd.Parameters.Add("@GhiChuLead", SqlDbType.NVarChar);
                 cmd.Parameters["@GhiChuLead"].Value = dTO_Lead.GhiChuLead;
 
-                cmd.Parameters.Add("@ChinhSuaLanCuoiVaoLuc", SqlDbType.DateTime);
-                cmd.Parameters["@ChinhSuaLanCuoiVaoLuc"].Value = dTO_Lead.ChinhSuaLanCuoiVaoLuc;
-
-                cmd.Parameters.Add("@MaPIC", SqlDbType.NVarChar);
-                cmd.Parameters["@MaPIC"].Value =  "STA0";
+                cmd.Parameters.Add("@MaPIC", SqlDbType.VarChar);
+                cmd.Parameters["@MaPIC"].Value =  dTO_Lead.MaNVPhuTrachLead;
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
@@ -330,9 +330,16 @@ namespace DAL
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("Update Lead set TrangThaiLead = N'Ngừng theo dõi' where MaLead = @MaLead", conn);
+                SqlCommand cmd = new SqlCommand("Update Lead set TrangThaiLead = N'Ngừng theo dõi', LyDoTrangThaiLead = @LyDoTrangThaiLead, ChinhSuaLanCuoiBoi = @ChinhSuaLanCuoiBoi" +
+                    " where MaLead = @MaLead", conn);
                 cmd.Parameters.Add("@MaLead", SqlDbType.VarChar);
                 cmd.Parameters["@MaLead"].Value = dTO_Lead.MaLead;
+
+                cmd.Parameters.Add("@LyDoTrangThaiLead", SqlDbType.VarChar);
+                cmd.Parameters["@LyDoTrangThaiLead"].Value = dTO_Lead.LyDoTrangThaiLead;
+
+                cmd.Parameters.Add("@ChinhSuaLanCuoiBoi", SqlDbType.VarChar);
+                cmd.Parameters["@ChinhSuaLanCuoiBoi"].Value = dTO_Lead.ChinhSuaLanCuoiBoi;
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
@@ -357,17 +364,23 @@ namespace DAL
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("Update Lead set TrangThaiLead = N'Xóa mềm', LyDoTrangThaiLead = @LyDoTrangThaiLead  where MaLead = @MaLead", conn);
+                SqlCommand cmd = new SqlCommand("Update Lead set TrangThaiLead = N'Xóa mềm', LyDoTrangThaiLead = @LyDoTrangThaiLead, ChinhSuaLanCuoiBoi = @ChinhSuaLanCuoiBoi" +
+                    " where MaLead = @MaLead", conn);
                 cmd.Parameters.Add("@MaLead", SqlDbType.VarChar);
                 cmd.Parameters["@MaLead"].Value = dTO_Lead.MaLead;
 
                 cmd.Parameters.Add("@LyDoTrangThaiLead", SqlDbType.NVarChar);
                 cmd.Parameters["@LyDoTrangThaiLead"].Value = dTO_Lead.LyDoTrangThaiLead;
 
+                cmd.Parameters.Add("@ChinhSuaLanCuoiBoi", SqlDbType.VarChar);
+                cmd.Parameters["@ChinhSuaLanCuoiBoi"].Value = dTO_Lead.ChinhSuaLanCuoiBoi;
+
                 if (cmd.ExecuteNonQuery() > 0)
                 {
+                    cmd.Dispose();
                     return "Success";
                 }
+                cmd.Dispose();
                 return "Fail";
             }
             catch (Exception ex)
@@ -379,5 +392,333 @@ namespace DAL
                 conn.Close();
             }
         }
+        public string TiepNhanLead(DTO_Lead dTO_Lead)
+        {
+            try
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("UPDATE Lead SET MaNVPhuTrachLead = @MaNVPhuTrachLead, TenNVPhuTrachLead = @TenNVPhuTrachLead, " +
+                    "TrangThaiLead = N'Đang tư vấn', ChinhSuaLanCuoiVaoLuc = GETDATE(), LyDoTrangThaiLead = @LyDoTrangThaiLead, ChinhSuaLanCuoiBoi = @MaNVPhuTrachLead WHERE MaLead = @MaLead", conn);
+                cmd.Parameters.Add("@MaLead", SqlDbType.VarChar);
+                cmd.Parameters["@MaLead"].Value = dTO_Lead.MaLead;
+
+                cmd.Parameters.Add("@MaNVPhuTrachLead", SqlDbType.VarChar);
+                cmd.Parameters["@MaNVPhuTrachLead"].Value = dTO_Lead.MaNVPhuTrachLead;
+
+                cmd.Parameters.Add("@TenNVPhuTrachLead", SqlDbType.NVarChar);
+                cmd.Parameters["@TenNVPhuTrachLead"].Value = dTO_Lead.TenNVPhuTrachLead;
+
+                cmd.Parameters.Add("@ChinhSuaLanCuoiBoi", SqlDbType.VarChar);
+                cmd.Parameters["@ChinhSuaLanCuoiBoi"].Value = dTO_Lead.MaNVPhuTrachLead;
+
+                cmd.Parameters.Add("@LyDoTrangThaiLead", SqlDbType.NVarChar);
+                cmd.Parameters["@LyDoTrangThaiLead"].Value = "Yêu cầu tư vấn được tiếp nhận";
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    cmd.Dispose();
+                    return "Success";
+                }
+                cmd.Dispose();
+                return "Fail";
+            }
+            catch (Exception ex)
+            {
+                return "Exception";
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public DataTable DanhSachLead(DTO_Lead dTO_Lead)
+        {
+            try
+            {
+                conn.Open();
+                string cmdText = "Select * from Lead where TrangThaiLead not like N'Xóa mềm'";
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable db = new DataTable();
+                da.Fill(db);
+                da.Dispose();
+                cmd.Dispose();
+                return db;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public string Themlead(DTO_Lead dTO_Lead)
+        {
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO Lead(HoTenLead, GioiTinhLead, NgaySinhLead, SoDienThoaiLead, EmailLead, MaNgheNghiep, TenNgheNghiep, MaNVPhuTrachLead, TenNVPhuTrachLead, TrangThaiLead, LyDoTrangThaiLead, NguonLead, GhiChuLead, LeadTuKHCu, TaoVaoLuc, TaoBoi, ChinhSuaLanCuoiVaoLuc, ChinhSuaLanCuoiBoi) " +
+                    "VALUES ( @HoTenLead, @GioiTinhLead ,@NgaySinhLead , @SoDienThoaiLead, @EmailLead, @MaNgheNghiep, @TenNgheNghiep, @MaNVPhuTrachLead, @TenNVPhuTrachLead, @TrangThaiLead, @LyDoTrangThaiLead, @NguonLead, @GhiChuLead, @LeadTuKHCu, GETDATE(), @TaoBoi, GETDATE(), @ChinhSuaLanCuoiBoi)", conn);
+
+                cmd.Parameters.Add("@HoTenLead", SqlDbType.NVarChar);
+                cmd.Parameters["@HoTenLead"].Value = dTO_Lead.HoTenLead;
+
+                cmd.Parameters.Add("@GioiTinhLead", SqlDbType.NVarChar);
+                cmd.Parameters["@GioiTinhLead"].Value = dTO_Lead.GioiTinhLead;
+
+                cmd.Parameters.Add("@NgaySinhLead", SqlDbType.Date);
+                cmd.Parameters["@NgaySinhLead"].Value = dTO_Lead.NgaySinhLead;
+
+                cmd.Parameters.Add("@SoDienThoaiLead", SqlDbType.Char);
+                cmd.Parameters["@SoDienThoaiLead"].Value = dTO_Lead.SoDienThoaiLead;
+
+                cmd.Parameters.Add("@MaNVPhuTrachLead", SqlDbType.VarChar);
+                cmd.Parameters["@MaNVPhuTrachLead"].Value = dTO_Lead.MaNVPhuTrachLead;
+
+                cmd.Parameters.Add("@TenNVPhuTrachLead", SqlDbType.NVarChar);
+                cmd.Parameters["@TenNVPhuTrachLead"].Value = dTO_Lead.TenNVPhuTrachLead;
+
+                cmd.Parameters.Add("@TrangThaiLead", SqlDbType.NVarChar);
+                cmd.Parameters["@TrangThaiLead"].Value = dTO_Lead.TrangThaiLead;
+
+                cmd.Parameters.Add("@LyDoTrangThaiLead", SqlDbType.NVarChar);
+                cmd.Parameters["@LyDoTrangThaiLead"].Value = dTO_Lead.LyDoTrangThaiLead;
+
+                cmd.Parameters.Add("@EmailLead", SqlDbType.VarChar);
+                cmd.Parameters["@EmailLead"].Value = dTO_Lead.EmailLead;
+
+                cmd.Parameters.Add("@MaNgheNghiep", SqlDbType.VarChar);
+                cmd.Parameters["@MaNgheNghiep"].Value = dTO_Lead.MaNgheNghiep;
+
+                cmd.Parameters.Add("@TenNgheNghiep", SqlDbType.NVarChar);
+                cmd.Parameters["@TenNgheNghiep"].Value = dTO_Lead.TenNgheNghiep;
+
+                cmd.Parameters.Add("@NguonLead", SqlDbType.NVarChar);
+                cmd.Parameters["@NguonLead"].Value = dTO_Lead.NguonLead;
+
+                cmd.Parameters.Add("@GhiChuLead", SqlDbType.NVarChar);
+                cmd.Parameters["@GhiChuLead"].Value = dTO_Lead.GhiChuLead;
+
+                cmd.Parameters.Add("@LeadTuKHCu", SqlDbType.VarChar, 15).IsNullable = true;
+                cmd.Parameters["@LeadTuKHCU"].Value = (object)dTO_Lead.LeadTuKHCu ?? DBNull.Value;
+
+                cmd.Parameters.Add("@TaoBoi", SqlDbType.NVarChar);
+                cmd.Parameters["@TaoBoi"].Value = dTO_Lead.TaoBoi;
+
+                cmd.Parameters.Add("@ChinhSuaLanCuoiBoi", SqlDbType.NVarChar);
+                cmd.Parameters["@ChinhSuaLanCuoiBoi"].Value = dTO_Lead.ChinhSuaLanCuoiBoi;
+
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    cmd.Dispose();
+                    return "Success";
+                }
+                cmd.Dispose();
+                return "Fail";
+            }
+            catch (Exception ex)
+            {
+                return "Exception";
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public string SelectLead()
+        {
+            try
+            {
+                conn.Open();
+                string cmd = "Select Top 1 MaLead from Lead order by STT desc";
+                SqlCommand cmd1 = new SqlCommand(cmd, conn);
+                string s = cmd1.ExecuteScalar().ToString();
+                cmd1.Dispose();
+                return s;
+            }
+            catch (Exception ex)
+            {
+                return "Exception";
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public string SelectTuVanMoiTao()
+        {
+            try
+            {
+                conn.Open();
+
+                string cmdText = "SELECT top 1 MaTuVan FROM YeuCauTuVan order by STT desc";
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+
+                string s = cmd.ExecuteScalar().ToString();
+                cmd.Dispose();
+                return s;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public string ThemChiTietKhoaHocThuocYeuCauTuVan(DTO_ChiTietKhoaHocThuocYCTV khThuocYCTV)
+        {
+            try
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("INSERT INTO ChiTietKhoaHocThuocYeuCauTuVan " +
+                                                "VALUES (@MaTuVan, @MaKhoaHoc, @TenKhoaHoc, @GiangVien, @GiaTien)", conn);
+
+                cmd.Parameters.Add("@MaTuVan", SqlDbType.VarChar);
+                cmd.Parameters["@MaTuVan"].Value = khThuocYCTV.MaTuVan;
+
+                cmd.Parameters.Add("@MaKhoaHoc", SqlDbType.VarChar);
+                cmd.Parameters["@MaKhoaHoc"].Value = khThuocYCTV.MaKhoaHoc;
+
+                cmd.Parameters.Add("@TenKhoaHoc", SqlDbType.NVarChar);
+                cmd.Parameters["@TenKhoaHoc"].Value = khThuocYCTV.TenKhoaHoc;
+
+                cmd.Parameters.Add("@GiangVien", SqlDbType.NVarChar);
+                cmd.Parameters["@GiangVien"].Value = khThuocYCTV.GiangVien;
+
+                cmd.Parameters.Add("@GiaTien", SqlDbType.Float);
+                cmd.Parameters["@GiaTien"].Value = khThuocYCTV.GiaTien;
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    cmd.Dispose();
+                    return "Success";
+                }
+                cmd.Dispose();
+                return "Fail";
+            }
+            catch (Exception ex)
+            {
+                return "Exception";
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public string TaoTuVanMoi(DTO_YeuCauTuVan dTO_YeuCauTuVan)
+        {
+            try
+            {
+                conn.Open();
+                string cmd = "INSERT INTO YeuCauTuVan(TenLeadYeuCau, NgaySinhLeadYeuCau, EmailLeadYeuCau, SDTLeadYeuCau, GhiChuYCTV, TrangThaiYCTV, TaoVaoLuc, TaoBoiLead)\r\nVALUES \r\n(" +
+                    "@TenLeadYeuCau, @NgaySinhLeadYeuCau, @EmailLeadYeuCau, @SDTLeadYeuCau, @GhiChuYCTV, @TrangThaiYCTV, GETDATE(), @TaoBoiLead)";
+                SqlCommand cmdText = new SqlCommand(cmd, conn);
+
+                cmdText.Parameters.Add("@TenLeadYeuCau", SqlDbType.NVarChar);
+                cmdText.Parameters["@TenLeadYeuCau"].Value = dTO_YeuCauTuVan.TenLeadYeuCau;
+
+                cmdText.Parameters.Add("@NgaySinhLeadYeuCau", SqlDbType.DateTime);
+                cmdText.Parameters["@NgaySinhLeadYeuCau"].Value = dTO_YeuCauTuVan.NgaySinhLeadYeuCau;
+
+                cmdText.Parameters.Add("@EmailLeadYeuCau", SqlDbType.NVarChar);
+                cmdText.Parameters["@EmailLeadYeuCau"].Value = dTO_YeuCauTuVan.EmailLeadYeuCau;
+
+                cmdText.Parameters.Add("@SDTLeadYeuCau", SqlDbType.Char);
+                cmdText.Parameters["@SDTLeadYeuCau"].Value = dTO_YeuCauTuVan.SDTLeadYeuCau;
+
+                cmdText.Parameters.Add("@GhiChuYCTV", SqlDbType.NVarChar);
+                cmdText.Parameters["@GhiChuYCTV"].Value = dTO_YeuCauTuVan.GhiChuYCTV;
+
+                cmdText.Parameters.Add("@TrangThaiYCTV", SqlDbType.NVarChar);
+                cmdText.Parameters["@TrangThaiYCTV"].Value = "Đã tiếp nhận";
+
+                cmdText.Parameters.Add("@TaoBoiLead", SqlDbType.VarChar);
+                cmdText.Parameters["@TaoBoiLead"].Value = dTO_YeuCauTuVan.TaoBoiLead;
+
+                if (cmdText.ExecuteNonQuery() > 0)
+                {
+                    cmdText.Dispose();
+                    return "Success";
+                }
+                cmdText.Dispose();
+                return "Fail";
+
+            }
+            catch (Exception ex)
+            {
+                return "Exception";
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public DataTable Select1KhoaHoc(DTO_KhoaHoc khoaHoc)
+        {
+            try
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT MaKhoaHoc, TenKhoaHoc, MoTaKhoaHoc, ThoiLuongKhoaHoc, GiangVien, MucDoKhoaHoc, SoLuongHocVienToiDa, GiaTien FROM KhoaHoc "
+                                                + "WHERE MaKhoaHoc = @MaKhoaHoc", conn);
+                cmd.Parameters.Add("@MaKhoaHoc", SqlDbType.VarChar);
+                cmd.Parameters["@MaKhoaHoc"].Value = khoaHoc.MaKhoaHoc;
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                cmd.Dispose();
+                da.Dispose();
+                
+                return dt;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public string XoaChiTietKhoaHocThuocYCTV(DTO_ChiTietKhoaHocThuocYCTV khThuocYCTV)
+        {
+            try
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("DELETE FROM ChiTietKhoaHocThuocYeuCauTuVan "
+                                                + "WHERE MaTuVan = @MaTuVan", conn);
+
+                cmd.Parameters.Add("@MaTuVan", SqlDbType.VarChar);
+                cmd.Parameters["@MaTuVan"].Value = khThuocYCTV.MaTuVan;
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    cmd.Dispose();
+                    return "Success";
+                }
+                cmd.Dispose();
+                return "Fail";
+            }
+            catch
+            {
+                return "Exception";
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
     }
 }

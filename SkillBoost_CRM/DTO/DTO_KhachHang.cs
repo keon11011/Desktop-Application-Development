@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    internal class DTO_KhachHang
+    public class DTO_KhachHang
     {
         private string _maKH;
         private string _hoTenKH;
@@ -44,6 +44,10 @@ namespace DTO
         public DateTime ChinhSuaLanCuoiVaoLuc { get => _chinhSuaLanCuoiVaoLuc; set => _chinhSuaLanCuoiVaoLuc = value; }
         public string ChinhSuaLanCuoiBoi { get => _chinhSuaLanCuoiBoi; set => _chinhSuaLanCuoiBoi = value; }
 
+        public DTO_KhachHang()
+        {
+
+        }
         public DTO_KhachHang(string maKH, string hoTenKH, string gioiTinhKH, DateTime ngaySinhKH, string soDienThoaiKH, string emailKH, string maNgheNghiep, string tenNgheNghiep, string maNVPhuTrachKH, string trangThaiKH, string lyDoTrangThaiKH, string ghiChuKH, string chuyenDoiTuMaLeadKH, DateTime taoVaoLuc, string taoBoi, DateTime chinhSuaLanCuoiVaoLuc, string chinhSuaLanCuoiBoi)
         {
             MaKH = maKH;

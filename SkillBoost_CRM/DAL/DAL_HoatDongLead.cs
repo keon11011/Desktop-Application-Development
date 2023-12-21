@@ -44,7 +44,7 @@ namespace DAL
             }
         }
 
-        public bool ThemHoatDongLead(HoatDongLead hoatDongLead)
+        public bool ThemHoatDongLead(DTO_HoatDongLead hoatDongLead)
         {
             try
             {

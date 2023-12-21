@@ -26,9 +26,8 @@ namespace GUI
         private void LoadDataHoatDongLead()
         {
             //Đưa data lên DatagridView
-            string MaLead = "LEA1";
 
-            DataTable dt = bUSHoatDongLead.SelectHoatDongLead(MaLead);
+            DataTable dt = bUSHoatDongLead.SelectHoatDongLead(SharedResources.MaLead);
             dt.Columns[1].ColumnName = "Mã hoạt động";
             dt.Columns[2].ColumnName = "Mã Lead";
             dt.Columns[3].ColumnName = "Tên hoạt động";
@@ -93,7 +92,7 @@ namespace GUI
             LoadDataHoatDongLead();
 
             LoadDataCombobox();
-            lb_LeadName.Text = "Lê Minh Quân";
+            lb_LeadName.Text = SharedResources.TenLead;
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -107,7 +106,7 @@ namespace GUI
 
 
         {
-            string MaLead = "LEA1";
+            string MaLead = SharedResources.MaLead;
 
             if (cbLoaiHoatDong.SelectedIndex < 0 && cbDuocTaoBoi.SelectedIndex < 0)
             {
@@ -136,27 +135,20 @@ namespace GUI
             taoHoatDongLead.Show();
         }
 
-        private void yêuCầuTưVấnToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ThongTinChungToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var form2 = new frmDSYeuCauTuVan();
+            var form2 = new frmThongTinLead();
             form2.Closed += (s, args) => this.Close();
             form2.Show();
         }
 
-        private void ThongTinChungToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnBackDSLead_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnBack_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var form2 = new frmDSLead();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
         }
 
         private void cbDuocTaoBoi_SelectedIndexChanged(object sender, EventArgs e)
@@ -170,6 +162,24 @@ namespace GUI
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HoạtđộngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form2 = new frmDSHoatDongLead();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
+        private void BaoGiaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridDanhSachHoatDong_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

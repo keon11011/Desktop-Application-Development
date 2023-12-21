@@ -35,8 +35,6 @@
             this.quyĐịnhGiảmGiáToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinKhóaHọcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.báoCáoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtTimKH = new System.Windows.Forms.TextBox();
-            this.btnTimKH = new System.Windows.Forms.Button();
             this.btnThemKH = new System.Windows.Forms.Button();
             this.dtgvQuyDinhGiamGia = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -93,6 +91,7 @@
             this.quyĐịnhGiảmGiáToolStripMenuItem.Name = "quyĐịnhGiảmGiáToolStripMenuItem";
             this.quyĐịnhGiảmGiáToolStripMenuItem.Size = new System.Drawing.Size(175, 29);
             this.quyĐịnhGiảmGiáToolStripMenuItem.Text = "Quy định giảm giá";
+            this.quyĐịnhGiảmGiáToolStripMenuItem.Click += new System.EventHandler(this.quyĐịnhGiảmGiáToolStripMenuItem_Click);
             // 
             // thôngTinKhóaHọcToolStripMenuItem
             // 
@@ -106,27 +105,7 @@
             this.báoCáoToolStripMenuItem.Name = "báoCáoToolStripMenuItem";
             this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(91, 29);
             this.báoCáoToolStripMenuItem.Text = "Báo cáo";
-            // 
-            // txtTimKH
-            // 
-            this.txtTimKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKH.Location = new System.Drawing.Point(1412, 149);
-            this.txtTimKH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTimKH.Multiline = true;
-            this.txtTimKH.Name = "txtTimKH";
-            this.txtTimKH.Size = new System.Drawing.Size(613, 37);
-            this.txtTimKH.TabIndex = 92;
-            // 
-            // btnTimKH
-            // 
-            this.btnTimKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimKH.Location = new System.Drawing.Point(2041, 142);
-            this.btnTimKH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTimKH.Name = "btnTimKH";
-            this.btnTimKH.Size = new System.Drawing.Size(101, 44);
-            this.btnTimKH.TabIndex = 91;
-            this.btnTimKH.Text = "Tìm kiếm";
-            this.btnTimKH.UseVisualStyleBackColor = true;
+            this.báoCáoToolStripMenuItem.Click += new System.EventHandler(this.báoCáoToolStripMenuItem_Click);
             // 
             // btnThemKH
             // 
@@ -150,7 +129,7 @@
             this.dtgvQuyDinhGiamGia.RowTemplate.Height = 28;
             this.dtgvQuyDinhGiamGia.Size = new System.Drawing.Size(2169, 1085);
             this.dtgvQuyDinhGiamGia.TabIndex = 89;
-            this.dtgvQuyDinhGiamGia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvQuyDinhGiamGia_CellClick);
+            this.dtgvQuyDinhGiamGia.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvQuyDinhGiamGia_CellClick);
             // 
             // label1
             // 
@@ -165,7 +144,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::GUI.Properties.Resources.Avatars;
-            this.pictureBox1.Location = new System.Drawing.Point(2187, 39);
+            this.pictureBox1.Location = new System.Drawing.Point(2187, 37);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(70, 70);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -176,7 +155,7 @@
             // 
             this.lb_PIC_Name.AutoSize = true;
             this.lb_PIC_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_PIC_Name.Location = new System.Drawing.Point(2017, 45);
+            this.lb_PIC_Name.Location = new System.Drawing.Point(1960, 51);
             this.lb_PIC_Name.Name = "lb_PIC_Name";
             this.lb_PIC_Name.Size = new System.Drawing.Size(136, 25);
             this.lb_PIC_Name.TabIndex = 96;
@@ -186,7 +165,7 @@
             // 
             this.lb_ChucVuPIC.AutoSize = true;
             this.lb_ChucVuPIC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_ChucVuPIC.Location = new System.Drawing.Point(2073, 70);
+            this.lb_ChucVuPIC.Location = new System.Drawing.Point(2016, 79);
             this.lb_ChucVuPIC.Name = "lb_ChucVuPIC";
             this.lb_ChucVuPIC.Size = new System.Drawing.Size(80, 25);
             this.lb_ChucVuPIC.TabIndex = 97;
@@ -212,8 +191,6 @@
             this.Controls.Add(this.lb_PIC_Name);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.txtTimKH);
-            this.Controls.Add(this.btnTimKH);
             this.Controls.Add(this.btnThemKH);
             this.Controls.Add(this.dtgvQuyDinhGiamGia);
             this.Controls.Add(this.label1);
@@ -239,8 +216,6 @@
         private System.Windows.Forms.ToolStripMenuItem quyĐịnhGiảmGiáToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thôngTinKhóaHọcToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem báoCáoToolStripMenuItem;
-        private System.Windows.Forms.TextBox txtTimKH;
-        private System.Windows.Forms.Button btnTimKH;
         private System.Windows.Forms.Button btnThemKH;
         private System.Windows.Forms.DataGridView dtgvQuyDinhGiamGia;
         private System.Windows.Forms.Label label1;

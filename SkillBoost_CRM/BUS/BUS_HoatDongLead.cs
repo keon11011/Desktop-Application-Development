@@ -16,7 +16,7 @@ namespace BUS
         {
             return dalHoatDongLead.SelectHoatDongLead(MaLead);
         }
-        public bool ThemHoatDongLead(HoatDongLead hoatDongLead)
+        public bool ThemHoatDongLead(DTO_HoatDongLead hoatDongLead)
         {
             return dalHoatDongLead.ThemHoatDongLead(hoatDongLead);
         }

@@ -19,8 +19,10 @@ namespace DAL
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("Select YeuCauTuVan.MaTuVan as 'Mã Tư Vấn',YeuCauTuVan.TenLeadYeuCau as 'Tên Lead', YeuCauTuVan.TaoVaoLuc as 'Thời gian ghi nhận yêu cầu', YeuCauTuVan.TrangThaiYCTV as 'Trạng thái' from YeuCauTuVan"
-                                                , conn);
+                SqlCommand cmd = new SqlCommand("Select MaTuVan as 'Mã Tư Vấn',TenLeadYeuCau as 'Tên Lead', " +
+                    "TaoVaoLuc as 'Ghi nhận vào lúc', TrangThaiYCTV as 'Trạng thái', GhiChuYCTV as 'Ghi chú', TaoBoiLead as 'Tạo bởi Lead' " +
+                    "from YeuCauTuVan " +
+                    "order by TrangThaiYCTV asc, TaoVaoLuc desc", conn);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -30,25 +32,30 @@ namespace DAL
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     SqlCommand cmd1 = new SqlCommand("SELECT * FROM ChiTietKhoaHocThuocYeuCauTuVan WHERE MaTuVan = \'" + dt.Rows[i][0] + "\'", conn);
-
-                    DataTable dt2 = new DataTable();
-                    SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
-                    da1.Fill(dt2);
-                    da1.Dispose();
-                    cmd1.Dispose(); 
-                    string s = dt2.Rows[0][2].ToString();
-                    for (int j = 1; j < dt2.Rows.Count; j++)
+                    SqlDataReader reader = cmd1.ExecuteReader();
+                    if (reader.HasRows)
                     {
-                        s = s + ", " + dt2.Rows[j][2].ToString();
+                        reader.Close();
+                        DataTable dt2 = new DataTable();
+                        SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
+                        da1.Fill(dt2);
+                        da1.Dispose();
+                        cmd1.Dispose(); 
+                        string s = dt2.Rows[0][2].ToString();
+                        for (int j = 1; j < dt2.Rows.Count; j++)
+                        {
+                            s = s + ", " + dt2.Rows[j][2].ToString();
 
+                        }
+                        dt.Rows[i][6] = s;
                     }
-                    dt.Rows[i][4] = s;
+                    cmd1.Dispose();
                 }
 
 
                 return dt;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return null;
             }
@@ -63,8 +70,9 @@ namespace DAL
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("Select YeuCauTuVan.TenLeadYeuCau as 'Tên Lead', YeuCauTuVan.TaoVaoLuc as 'Thời gian ghi nhận yêu cầu', YeuCauTuVan.TrangThaiYCTV as 'Trạng thái' "
-                                                + "from YeuCauTuVan where TenLeadYeuCau like N'%" + s + "%'", conn);
+                SqlCommand cmd = new SqlCommand("Select TenLeadYeuCau as 'Tên Lead', TaoVaoLuc as 'Thời gian ghi nhận yêu cầu', TrangThaiYCTV as 'Trạng thái', GhiChuYCTV as 'Ghi chú', TaoBoiLead as 'Tạo bởi Lead' "
+                                                + "from YeuCauTuVan where TenLeadYeuCau like N'%" + s + "%' "+
+                                                "order by TrangThaiYCTV asc, TaoVaoLuc desc", conn);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -88,8 +96,9 @@ namespace DAL
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("Select YeuCauTuVan.TenLeadYeuCau as 'Tên Lead', YeuCauTuVan.TaoVaoLuc as 'Thời gian ghi nhận yêu cầu', YeuCauTuVan.TrangThaiYCTV as 'Trạng thái' "
-                                                + "from YeuCauTuVan where TrangThaiYCTV like N'%" + s + "%'", conn);
+                SqlCommand cmd = new SqlCommand("Select TenLeadYeuCau as 'Tên Lead', TaoVaoLuc as 'Thời gian ghi nhận yêu cầu', TrangThaiYCTV as 'Trạng thái', GhiChuYCTV as 'Ghi chú', TaoBoiLead as 'Tạo bởi Lead' "
+                                                + "from YeuCauTuVan where TrangThaiYCTV like N'%" + s + "%' " +
+                                                "order by TrangThaiYCTV asc, TaoVaoLuc desc", conn);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -299,6 +308,31 @@ namespace DAL
             finally
             {
                 
+                conn.Close();
+            }
+        }
+        public string TiepNhanYCTV(string MaTuVan)
+        {
+            try
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("UPDATE YeuCauTuVan SET TrangThaiYCTV = N'Đã tiếp nhận' WHERE MaTuVan = @MaTuVan", conn);
+                cmd.Parameters.Add("@MaTuVan", SqlDbType.VarChar);
+                cmd.Parameters["@MaTuVan"].Value = MaTuVan;
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    return "Success";
+                }
+                return "Fail";
+            }
+            catch (Exception ex)
+            {
+                return "Exception";
+            }
+            finally
+            {
                 conn.Close();
             }
         }

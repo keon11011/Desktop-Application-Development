@@ -91,7 +91,6 @@
             this.Controls.Add(this.label1);
             this.Name = "frmXacNhanHuyTheoDoi";
             this.Text = "frmXacNhanHuyTheoDoi";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmXacNhanHuyTheoDoi_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

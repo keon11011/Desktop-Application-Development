@@ -189,6 +189,7 @@
             this.dataGridDanhSachHoatDong.RowTemplate.Height = 24;
             this.dataGridDanhSachHoatDong.Size = new System.Drawing.Size(1970, 605);
             this.dataGridDanhSachHoatDong.TabIndex = 8;
+            this.dataGridDanhSachHoatDong.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDanhSachHoatDong_CellDoubleClick);
             // 
             // menuStrip1
             // 
@@ -208,21 +209,23 @@
             // ThongTinChungToolStripMenuItem
             // 
             this.ThongTinChungToolStripMenuItem.Name = "ThongTinChungToolStripMenuItem";
-            this.ThongTinChungToolStripMenuItem.Size = new System.Drawing.Size(158, 32);
+            this.ThongTinChungToolStripMenuItem.Size = new System.Drawing.Size(158, 29);
             this.ThongTinChungToolStripMenuItem.Text = "Thông tin chung";
             this.ThongTinChungToolStripMenuItem.Click += new System.EventHandler(this.ThongTinChungToolStripMenuItem_Click);
             // 
             // BaoGiaToolStripMenuItem
             // 
             this.BaoGiaToolStripMenuItem.Name = "BaoGiaToolStripMenuItem";
-            this.BaoGiaToolStripMenuItem.Size = new System.Drawing.Size(87, 32);
+            this.BaoGiaToolStripMenuItem.Size = new System.Drawing.Size(87, 29);
             this.BaoGiaToolStripMenuItem.Text = "Báo giá";
+            this.BaoGiaToolStripMenuItem.Click += new System.EventHandler(this.BaoGiaToolStripMenuItem_Click);
             // 
             // HoạtđộngToolStripMenuItem
             // 
             this.HoạtđộngToolStripMenuItem.Name = "HoạtđộngToolStripMenuItem";
-            this.HoạtđộngToolStripMenuItem.Size = new System.Drawing.Size(115, 32);
+            this.HoạtđộngToolStripMenuItem.Size = new System.Drawing.Size(115, 29);
             this.HoạtđộngToolStripMenuItem.Text = "Hoạt động";
+            this.HoạtđộngToolStripMenuItem.Click += new System.EventHandler(this.HoạtđộngToolStripMenuItem_Click);
             // 
             // btnBack
             // 

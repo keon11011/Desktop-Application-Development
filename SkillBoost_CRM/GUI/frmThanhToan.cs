@@ -64,7 +64,7 @@ namespace GUI
                 MessageBox.Show("Thanh toán thành công");
                 bUS_ThanhToan.UpdateTrangThaiLead(tt);
                 BUS_Lead bUS_Lead = new BUS_Lead();
-                HoatDongLead hoatDongLead = new HoatDongLead();
+                DTO_HoatDongLead hoatDongLead = new DTO_HoatDongLead();
 
                 hoatDongLead.MaLead = tt.MaLead;
                 hoatDongLead.TenHDLead = "Thanh toán thành công các khóa học";

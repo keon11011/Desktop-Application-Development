@@ -12,7 +12,15 @@ namespace GUI
         public static string ChucVu;
         public static string TenPIC;
         public static string MaLead;
+        public static string TenLead;
         public static string MaQuyDinhGiamGia;
+        public static string MaTuVan;
+        public static string MaBaoGia;
+        public static string TenBaoGia;
+        public static string TrangThaiBaoGia;
+        public static string TongTienTrcGiam;
+        public static string SoTienGiamGia;
+        public static string ThanhTien;
     }
 
 }

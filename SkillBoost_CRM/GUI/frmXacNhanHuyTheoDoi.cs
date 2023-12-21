@@ -16,6 +16,7 @@ namespace GUI
     {
         DTO_Lead dTO_Lead = new DTO_Lead();
         BUS_Lead bUS_Lead = new BUS_Lead();
+        frmThongTinLead thongtinLead = new frmThongTinLead();
         public frmXacNhanHuyTheoDoi()
         {
             InitializeComponent();
@@ -25,11 +26,13 @@ namespace GUI
         {
             dTO_Lead.LyDoTrangThaiLead = txtLyDoHuyTheoDoi.Text;
             dTO_Lead.MaLead = SharedResources.MaLead;
+            dTO_Lead.ChinhSuaLanCuoiBoi = SharedResources.MaPIC;
 
             switch (bUS_Lead.HuyTheoDoiTuVan(dTO_Lead))
             {
                 case "Success":
                     MessageBox.Show("Đã ngừng theo dõi Lead");
+                  
                     break;
 
                 case "Fail":
@@ -40,21 +43,16 @@ namespace GUI
                     MessageBox.Show("Lỗi khác!");
                     break;
             }
+            this.Hide();
+            var form2 = new frmDSLead();
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
         }
 
         private void frmXacNhanHuyTheoDoi_Load(object sender, EventArgs e)
         {
 
         }
-        // private bool isOpenedFormXacNhanHuyTheoDoi = false;
-        //private void frmXacNhanHuyTheoDoi_FormClosed(object sender, FormClosedEventArgs e)
-        //{
-        //    this.Hide();
-        //    frmThongTinLead thongTinLead = new frmThongTinLead();                // Sao nó show rồi tự động mất??
-        //    thongTinLead.Closed += (s, arg) => this.Close();
-
-        //    thongTinLead.Show();
-        //}
 
         // Hàm này để mở frmThongTinLead từ frmXacNhanHuyTheoDoi
         //public void OpenThongTinLeadFromXacNhanHuyTheoDoi()

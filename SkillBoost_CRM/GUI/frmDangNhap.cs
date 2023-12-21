@@ -30,13 +30,13 @@ namespace GUI
             {
                 MessageBox.Show("Đăng nhập thành công");
                 SharedResources.MaPIC = maPIC;
-                MessageBox.Show(SharedResources.MaPIC);
                 if (bUS_TaiKhoan.TimChucVu(ref SharedResources.ChucVu, SharedResources.MaPIC))
                 {
                     if (bUS_TaiKhoan.TimTenPIC(ref SharedResources.TenPIC, SharedResources.MaPIC))
                     {
+                        MessageBox.Show("Chào mừng "+ SharedResources.TenPIC + " đang nhập hệ thống CRM. \n Mã nhân viên: "+ SharedResources.MaPIC + " \n Chức vụ: " + SharedResources.ChucVu);
                         this.Hide();
-                        frmDSYeuCauTuVan FRMfrmDanhSacYCTV = new frmDSYeuCauTuVan();
+                        var FRMfrmDanhSacYCTV = new frmDSYeuCauTuVan();
                         FRMfrmDanhSacYCTV.Closed += (s, args) => this.Close();
                         FRMfrmDanhSacYCTV.Show();
                     }

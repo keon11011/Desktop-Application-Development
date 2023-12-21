@@ -55,5 +55,41 @@ namespace BUS
         {
             return dAL_Lead.XoaMemLead(dTO_Lead);
         }
+        public string TiepNhanLead(DTO_Lead dTO_Lead)
+        {
+            return dAL_Lead.TiepNhanLead(dTO_Lead);
+        }
+        public DataTable DanhSachLead(DTO_Lead dTO_Lead)
+        {
+            return dAL_Lead.DanhSachLead(dTO_Lead);
+        }
+        public string ThemLead(DTO_Lead dTO_Lead)
+        {
+            return dAL_Lead.Themlead(dTO_Lead);
+        }
+        public string SelectLead()
+        {
+            return dAL_Lead.SelectLead();
+        }
+        public string SelectTuVanMoiTao()
+        {
+            return dAL_Lead.SelectTuVanMoiTao();
+        }
+        public string ThemChiTietKhoaHocThuocYeuCauTuVan(DTO_ChiTietKhoaHocThuocYCTV khThuocYCTV)
+        {
+            return dAL_Lead.ThemChiTietKhoaHocThuocYeuCauTuVan(khThuocYCTV);
+        }
+        public string TaoTuVanMoi(DTO_YeuCauTuVan dTO_YeuCauTuVan)
+        {
+            return dAL_Lead.TaoTuVanMoi(dTO_YeuCauTuVan);
+        }
+        public DataTable Select1KhoaHoc(DTO_KhoaHoc khoaHoc)                        // Thêm khóa học 
+        {
+            return dAL_Lead.Select1KhoaHoc(khoaHoc);
+        }
+        public string XoaChiTietKhoaHocThuocYCTV(DTO_ChiTietKhoaHocThuocYCTV khThuocYCTV)
+        {
+            return dAL_Lead.XoaChiTietKhoaHocThuocYCTV(khThuocYCTV);
+        }
     }
 }

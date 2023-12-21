@@ -112,8 +112,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1200, 580);
             this.dataGridView1.TabIndex = 11;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             // 
             // label2
             // 
@@ -226,6 +225,7 @@
             this.leadToolStripMenuItem.Name = "leadToolStripMenuItem";
             this.leadToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
             this.leadToolStripMenuItem.Text = "Lead";
+            this.leadToolStripMenuItem.Click += new System.EventHandler(this.leadToolStripMenuItem_Click);
             // 
             // kháchHàngToolStripMenuItem
             // 
@@ -239,6 +239,7 @@
             this.quyĐịnhGiảmGiáToolStripMenuItem.Name = "quyĐịnhGiảmGiáToolStripMenuItem";
             this.quyĐịnhGiảmGiáToolStripMenuItem.Size = new System.Drawing.Size(175, 29);
             this.quyĐịnhGiảmGiáToolStripMenuItem.Text = "Quy định giảm giá";
+            this.quyĐịnhGiảmGiáToolStripMenuItem.Click += new System.EventHandler(this.quyĐịnhGiảmGiáToolStripMenuItem_Click);
             // 
             // thôngTinKhóaHọcToolStripMenuItem
             // 
