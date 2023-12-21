@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmBaoGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBaoGia.Designer.cs">
+      <DependentUpon>frmBaoGia.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,12 @@
     </Compile>
     <Compile Include="frmDanhSachKH.Designer.cs">
       <DependentUpon>frmDanhSachKH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDSBaoGiaCuaLead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDSBaoGiaCuaLead.Designer.cs">
+      <DependentUpon>frmDSBaoGiaCuaLead.cs</DependentUpon>
     </Compile>
     <Compile Include="old_frmDanhSachQuyDinhGiamGia.cs">
       <SubType>Form</SubType>
@@ -121,6 +133,22 @@
     <Compile Include="frmThongTinLead.Designer.cs">
       <DependentUpon>frmThongTinLead.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSuaBaoGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSuaBaoGia.Designer.cs">
+      <DependentUpon>frmSuaBaoGia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="System\Windows\Forms\ControlModifiers.cs" />
+    <Compile Include="TestLinkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestLinkForm.Designer.cs">
+      <DependentUpon>TestLinkForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmBaoGia.resx">
+      <DependentUpon>frmBaoGia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDanhSachKH.resx">
       <DependentUpon>frmDanhSachKH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDSBaoGiaCuaLead.resx">
+      <DependentUpon>frmDSBaoGiaCuaLead.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="old_frmDanhSachQuyDinhGiamGia.resx">
       <DependentUpon>old_frmDanhSachQuyDinhGiamGia.cs</DependentUpon>
@@ -153,6 +184,12 @@
     </Compile>
     <EmbeddedResource Include="frmThongTinLead.resx">
       <DependentUpon>frmThongTinLead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSuaBaoGia.resx">
+      <DependentUpon>frmSuaBaoGia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestLinkForm.resx">
+      <DependentUpon>TestLinkForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

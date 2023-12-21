@@ -18,7 +18,8 @@ namespace GUI
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmDangNhap());
             //Application.Run(new frmThongTinLead());
-            Application.Run(new frmDSQuyDinhGiamGia());
+            //Application.Run(new frmDSQuyDinhGiamGia());
+            Application.Run(new frmDSBaoGiaCuaLead());
         }
     }
 }
