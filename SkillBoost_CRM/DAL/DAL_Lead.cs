@@ -53,7 +53,36 @@ namespace DAL
                 conn.Close();
             }
         }
-         public DataSet DanhSachKhoaHoc(DTO_Lead dTO_Lead)
+        public DataTable Select1KhoaHoc(DTO_KhoaHoc khoaHoc)
+        {
+            try
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT MaKhoaHoc, TenKhoaHoc, MoTaKhoaHoc, ThoiLuongKhoaHoc, GiangVien, MucDoKhoaHoc, SoLuongHocVienToiDa, GiaTien FROM KhoaHoc "
+                                                + "WHERE MaKhoaHoc = @MaKhoaHoc", conn);
+                cmd.Parameters.Add("@MaKhoaHoc", SqlDbType.VarChar);
+                cmd.Parameters["@MaKhoaHoc"].Value = khoaHoc.MaKhoaHoc;
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                da.Dispose();
+
+                return dt;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public DataSet DanhSachKhoaHoc(DTO_Lead dTO_Lead)
           {
               try
               {
@@ -241,5 +270,44 @@ namespace DAL
                 conn.Close();
             }
         }
-     }
+        public string ThemChiTietKhoaHocThuocYeuCauTuvan(DTO_ChiTietKhoaHocThuocYCTV khThuocYCTV)
+        {
+            try
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("INSERT INTO ChiTietKhoaHocThuocYeuCauTuVan " +
+                                                "VALUES (@MaTuVan, @MaKhoaHoc, @TenKhoaHoc, @GiangVien, @GiaTien)", conn);
+
+                cmd.Parameters.Add("@MaTuVan", SqlDbType.VarChar);
+                cmd.Parameters["@MaTuVan"].Value = khThuocYCTV.MaBaoGia;
+
+                cmd.Parameters.Add("@MaKhoaHoc", SqlDbType.VarChar);
+                cmd.Parameters["@MaKhoaHoc"].Value = khThuocYCTV.MaKhoaHoc;
+
+                cmd.Parameters.Add("@TenKhoaHoc", SqlDbType.NVarChar);
+                cmd.Parameters["@TenKhoaHoc"].Value = khThuocYCTV.TenKhoaHoc;
+
+                cmd.Parameters.Add("@GiangVien", SqlDbType.NVarChar);
+                cmd.Parameters["@GiangVien"].Value = khThuocYCTV.GiangVien;
+
+                cmd.Parameters.Add("@GiaTien", SqlDbType.Float);
+                cmd.Parameters["@GiaTien"].Value = khThuocYCTV.GiaTien;
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    return "Success";
+                }
+                return "Fail";
+            }
+            catch (Exception ex)
+            {
+                return "Exception";
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+    }
 }

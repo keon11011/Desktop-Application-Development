@@ -14,7 +14,14 @@ namespace BUS
         DAL_Lead dAL_Lead = new DAL_Lead();
         DAL_KhoaHoc dAL_KhoaHoc = new DAL_KhoaHoc();
         DTO_KhoaHoc dTO_KhoaHoc = new DTO_KhoaHoc();
-        
+        public string ThemChiTietKhoaHocThuocYeuCauTuvan(DTO_ChiTietKhoaHocThuocYCTV khThuocYCTV)               //Insert xuong Database 
+        {
+            return dAL_Lead.ThemChiTietKhoaHocThuocYeuCauTuvan(khThuocYCTV);
+        }
+        public DataTable Select1KhoaHoc(DTO_KhoaHoc khoaHoc)                        // Thêm khóa học 
+        {
+            return dAL_Lead.Select1KhoaHoc(khoaHoc);
+        }
         public bool LayThongTinKhoaHocChonThem(ref DTO_KhoaHoc dTO_KhoaHoc)
         {
             return dAL_KhoaHoc.LayThongTinKhoaHocChonThem(ref dTO_KhoaHoc);
