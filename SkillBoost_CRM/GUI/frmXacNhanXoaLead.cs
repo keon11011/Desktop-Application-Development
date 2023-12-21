@@ -16,6 +16,7 @@ namespace GUI
     {
         DTO_Lead dTO_Lead = new DTO_Lead();
         BUS_Lead bUS_Lead = new BUS_Lead();
+        frmThongTinLead thongtinLead = new frmThongTinLead();
         public frmXacNhanXoaLead()
         {
             InitializeComponent();
@@ -31,6 +32,10 @@ namespace GUI
             {
                 case "Success":
                     MessageBox.Show("Đã xóa Lead");
+                    this.Hide();
+                    thongtinLead.ShowDialog();
+                    thongtinLead = null;
+                    this.Show();
                     break;
 
                 case "Fail":
