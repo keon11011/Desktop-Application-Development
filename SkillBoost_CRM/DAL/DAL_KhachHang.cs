@@ -11,6 +11,75 @@ namespace DAL
 {
     public class DAL_KhachHang : DBConnect
     {
+        public bool ThemKhachHang(DTO_KhachHang dTO_KhachHang)
+        {
+            try
+            {
+                conn.Open();
+                string cmdText = "INSERT INTO KhachHang (HoTenKH, GioiTinhKH, NgaySinhKH, SoDienThoaiKH, EmailKH, MaNgheNghiep, TenNgheNghiep, MaNVPhuTrachKH, TenNVPhuTrachKH, TrangThaiKH, LyDoTrangThaiKH, GhiChuKH, ChuyenDoiTuMaLead, TaoVaoLuc, TaoBoi, ChinhSuaLanCuoiVaoLuc, ChinhSuaLanCuoiBoi) " +
+                    "VALUES (@HoTenKH, @GioiTinhKH,@NgaySinhKH, @SoDienThoaiKH, @EmailKH, @MaNgheNghiep, @TenNgheNghiep, @MaNVPhuTrachKH, @TenNVPhuTrachKH, @TrangThaiKH, @LyDoTrangThaiKH, @GhiChuKH, @ChuyenDoiTuMaLead, GETDATE(), N'Hệ thống', GETDATE(), N'Hệ thống')";
+                SqlCommand cmd = new SqlCommand(cmdText,conn);
+
+                cmd.Parameters.Add("@HoTenKH", SqlDbType.NVarChar);
+                cmd.Parameters["@HoTenKH"].Value = dTO_KhachHang.HoTenKH;
+
+                cmd.Parameters.Add("@GioiTinhKH", SqlDbType.NVarChar);
+                cmd.Parameters["@GioiTinhKH"].Value = DBNull.Value;
+
+                cmd.Parameters.Add("@NgaySinhKH", SqlDbType.Date);
+                cmd.Parameters["@NgaySinhKH"].Value = DBNull.Value;
+
+                cmd.Parameters.Add("@SoDienThoaiKH", SqlDbType.Char);
+                cmd.Parameters["@SoDienThoaiKH"].Value = dTO_KhachHang.SoDienThoaiKH;
+
+                cmd.Parameters.Add("@EmailKH", SqlDbType.VarChar);
+                cmd.Parameters["@EmailKH"].Value = dTO_KhachHang.EmailKH;
+
+                cmd.Parameters.Add("@MaNgheNghiep", SqlDbType.VarChar);
+                cmd.Parameters["@MaNgheNghiep"].Value = DBNull.Value;
+
+                cmd.Parameters.Add("@TenNgheNghiep", SqlDbType.NVarChar);
+                cmd.Parameters["@TenNgheNghiep"].Value = DBNull.Value;
+
+                cmd.Parameters.Add("@MaNVPhuTrachKH", SqlDbType.VarChar);
+                cmd.Parameters["@MaNVPhuTrachKH"].Value = dTO_KhachHang.MaNVPhuTrachKH;
+
+                cmd.Parameters.Add("@TenNVPhuTrachKH", SqlDbType.VarChar);
+                cmd.Parameters["@TenNVPhuTrachKH"].Value = dTO_KhachHang.TenNVPhuTrachKH;
+
+                cmd.Parameters.Add("@TrangThaiKH", SqlDbType.NVarChar);
+                cmd.Parameters["@TrangThaiKH"].Value = "Đang hoạt động";
+
+                cmd.Parameters.Add("@LyDoTrangThaiKH", SqlDbType.NVarChar);
+                cmd.Parameters["@LyDoTrangThaiKH"].Value = "Tạo từ Lead đã thanh toán";
+
+                cmd.Parameters.Add("@GhiChuKH", SqlDbType.NVarChar);
+                cmd.Parameters["@GhiChuKH"].Value = DBNull.Value;
+
+                cmd.Parameters.Add("@ChuyenDoiTuMaLead", SqlDbType.VarChar);
+                cmd.Parameters["@ChuyenDoiTuMaLead"].Value = dTO_KhachHang.ChuyenDoiTuMaLeadKH;
+
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    cmd.Dispose();
+                    return true;
+                }
+                else
+                {
+                    cmd.Dispose();
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
         public DataTable SelectKhachHang(string maPIC, string ChucVu)
         {
             try

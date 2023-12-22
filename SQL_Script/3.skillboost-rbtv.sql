@@ -173,7 +173,7 @@ ADD CONSTRAINT ConstraintDOMTrangThaiMaGiamGia CHECK (TrangThaiMaGiamGia IN (N'K
 */
 -- R45. Thuộc tính GioiTinhKH của bảng KhachHang chỉ luôn có 2 giá trị “Nữ” và “Nam”
 ALTER TABLE KhachHang
-ADD CONSTRAINT ConstraintDOMGioiTinhKH CHECK (GioiTinhKH IN (N'Nam', N'Nữ'))
+ADD CONSTRAINT ConstraintDOMGioiTinhKH CHECK (GioiTinhKH IN (N'Nam', N'Nữ', NULL))
 
 -- RB46. Tuổi của khách hàng phải lớn hơn hoặc bằng 15  
 ALTER TABLE KhachHang

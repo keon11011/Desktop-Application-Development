@@ -29,5 +29,9 @@ namespace BUS
         {
             return dAL_ThanhToan.TimThongTinThanhToan(ref s);
         }
+        public bool ChuyenLeadSangKH(DTO_ThanhToan tt)
+        {
+            return dAL_ThanhToan.ChuyenLeadSangKH(tt);
+        }
     }
 }

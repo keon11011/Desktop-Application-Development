@@ -518,15 +518,15 @@ namespace GUI
             switch (busBaoGia.SuaTrangThaiBaoGia(newBaoGia))
             {
                 case "Success":
-                    MessageBox.Show("Gửi mail báo giá thành công");
+                    MessageBox.Show("Sửa trạng thái mail báo giá thành công");
                     break;
 
                 case "Fail":
-                    MessageBox.Show("Gửi mail báo giá thất bại");
+                    MessageBox.Show("Sửa trạng thái mail báo giá thất bại");
                     break;
 
                 case "Exception":
-                    MessageBox.Show("Lỗi khác khi gửi mail báo giá!");
+                    MessageBox.Show("Lỗi khác khi sửa trạng thái mail báo giá!");
                     break;
             }
 
@@ -550,15 +550,15 @@ namespace GUI
             switch (busBaoGia.SuaTrangThaiBaoGia(newBaoGia))
             {
                 case "Success":
-                    MessageBox.Show("Gửi mail báo giá thành công");
+                    MessageBox.Show("Sửa trạng thái mail báo giá thành công");
                     break;
 
                 case "Fail":
-                    MessageBox.Show("Gửi mail báo giá thất bại");
+                    MessageBox.Show("Sửa trạng thái mail báo giá thất bại");
                     break;
 
                 case "Exception":
-                    MessageBox.Show("Lỗi khác khi gửi mail báo giá!");
+                    MessageBox.Show("Lỗi khác khi sửa trạng thái mail báo giá!");
                     break;
             }
             btnGuiEmailBaoGia.Visible = false;

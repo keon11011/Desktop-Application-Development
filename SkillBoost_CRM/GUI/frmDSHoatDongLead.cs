@@ -122,6 +122,8 @@ namespace GUI
         private void btnHuyLoc_Click(object sender, EventArgs e)
         {
             LoadDataHoatDongLead();
+            cbDuocTaoBoi.Text = "";
+            cbLoaiHoatDong.Text = "";
         }
 
         private void btnThemHoatDongLead_Click(object sender, EventArgs e)

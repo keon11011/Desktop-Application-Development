@@ -358,6 +358,7 @@ namespace GUI
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
+            SharedResources.TenLead = txtHoten.Text;
             this.Hide();
             var frm1 = new frmDSBaoGiaCuaLead();
             frm1.Closed += (s, args) => this.Close();

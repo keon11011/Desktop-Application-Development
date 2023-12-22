@@ -11,12 +11,13 @@ namespace DTO
         private string _maKH;
         private string _hoTenKH;
         private string _gioiTinhKH;
-        private DateTime _ngaySinhKH;
+        private DateTime? _ngaySinhKH;
         private string _soDienThoaiKH;
         private string _emailKH;
         private string _maNgheNghiep;
         private string _tenNgheNghiep;
         private string _maNVPhuTrachKH;
+        private string _tenNVPhuTrachKH;
         private string _trangThaiKH;
         private string _lyDoTrangThaiKH;
         private string _ghiChuKH;
@@ -29,7 +30,7 @@ namespace DTO
         public string MaKH { get => _maKH; set => _maKH = value; }
         public string HoTenKH { get => _hoTenKH; set => _hoTenKH = value; }
         public string GioiTinhKH { get => _gioiTinhKH; set => _gioiTinhKH = value; }
-        public DateTime NgaySinhKH { get => _ngaySinhKH; set => _ngaySinhKH = value; }
+        public DateTime? NgaySinhKH { get => _ngaySinhKH; set => _ngaySinhKH = value; }
         public string SoDienThoaiKH { get => _soDienThoaiKH; set => _soDienThoaiKH = value; }
         public string EmailKH { get => _emailKH; set => _emailKH = value; }
         public string MaNgheNghiep { get => _maNgheNghiep; set => _maNgheNghiep = value; }
@@ -43,12 +44,13 @@ namespace DTO
         public string TaoBoi { get => _taoBoi; set => _taoBoi = value; }
         public DateTime ChinhSuaLanCuoiVaoLuc { get => _chinhSuaLanCuoiVaoLuc; set => _chinhSuaLanCuoiVaoLuc = value; }
         public string ChinhSuaLanCuoiBoi { get => _chinhSuaLanCuoiBoi; set => _chinhSuaLanCuoiBoi = value; }
+        public string TenNVPhuTrachKH { get => _tenNVPhuTrachKH; set => _tenNVPhuTrachKH = value; }
 
         public DTO_KhachHang()
         {
 
         }
-        public DTO_KhachHang(string maKH, string hoTenKH, string gioiTinhKH, DateTime ngaySinhKH, string soDienThoaiKH, string emailKH, string maNgheNghiep, string tenNgheNghiep, string maNVPhuTrachKH, string trangThaiKH, string lyDoTrangThaiKH, string ghiChuKH, string chuyenDoiTuMaLeadKH, DateTime taoVaoLuc, string taoBoi, DateTime chinhSuaLanCuoiVaoLuc, string chinhSuaLanCuoiBoi)
+        public DTO_KhachHang(string maKH, string hoTenKH, string gioiTinhKH, DateTime? ngaySinhKH, string soDienThoaiKH, string emailKH, string maNgheNghiep, string tenNgheNghiep, string maNVPhuTrachKH, string tenNVPhuTrachKH, string trangThaiKH, string lyDoTrangThaiKH, string ghiChuKH, string chuyenDoiTuMaLeadKH, DateTime taoVaoLuc, string taoBoi, DateTime chinhSuaLanCuoiVaoLuc, string chinhSuaLanCuoiBoi)
         {
             MaKH = maKH;
             HoTenKH = hoTenKH;
@@ -59,6 +61,7 @@ namespace DTO
             MaNgheNghiep = maNgheNghiep;
             TenNgheNghiep = tenNgheNghiep;
             MaNVPhuTrachKH = maNVPhuTrachKH;
+            TenNVPhuTrachKH = tenNVPhuTrachKH;
             TrangThaiKH = trangThaiKH;
             LyDoTrangThaiKH = lyDoTrangThaiKH;
             GhiChuKH = ghiChuKH;

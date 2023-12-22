@@ -127,6 +127,8 @@ namespace GUI
 
         private void btnHuyLoc_Click(object sender, EventArgs e)
         {
+            cbGiangVien.Text = "";
+            cbTrangThai.Text = "";
             LoadDataKhoaHoc();
         }
 

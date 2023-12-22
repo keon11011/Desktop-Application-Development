@@ -98,6 +98,14 @@ namespace GUI
                     MessageBox.Show("Gửi email thất bại");
 
                 }
+                if (bUS_ThanhToan.ChuyenLeadSangKH(tt))
+                {
+                    MessageBox.Show("Chuyển đổi Lead thành Khách hàng thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Chuyển đổi Lead thành Khách hàng thất bại");
+                }
 
             }
             else

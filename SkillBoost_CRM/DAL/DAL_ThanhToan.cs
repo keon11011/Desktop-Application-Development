@@ -170,7 +170,57 @@ namespace DAL
                 conn.Close();
             }
         }
-        
-        
+        public bool ChuyenLeadSangKH(DTO_ThanhToan tt)
+        {
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("Select MaLead from BaoGia where MaBaoGia = @MaBaoGia", conn);
+
+                cmd.Parameters.AddWithValue("@MaBaoGia", tt.MaBaoGia);
+                
+                string maLead = cmd.ExecuteScalar().ToString();
+
+                cmd.Dispose();
+
+                DAL_Lead dAL_Lead = new DAL_Lead();
+                DTO_Lead dTO_Lead = new DTO_Lead();
+                dTO_Lead.MaLead = maLead;
+                dAL_Lead.SelectLead(ref dTO_Lead);
+
+                DTO_KhachHang dTO_KhachHang = new DTO_KhachHang();
+
+                dTO_KhachHang.HoTenKH = dTO_Lead.HoTenLead;
+                dTO_KhachHang.GioiTinhKH = dTO_Lead.GioiTinhLead;
+                dTO_KhachHang.NgaySinhKH = dTO_Lead.NgaySinhLead;
+                dTO_KhachHang.SoDienThoaiKH = dTO_Lead.SoDienThoaiLead;
+                dTO_KhachHang.EmailKH = dTO_Lead.EmailLead;
+                dTO_KhachHang.MaNgheNghiep = dTO_Lead.MaNgheNghiep;
+                dTO_KhachHang.TenNgheNghiep = dTO_Lead.TenNgheNghiep;
+                dTO_KhachHang.MaNVPhuTrachKH = dTO_Lead.MaNVPhuTrachLead;
+                dTO_KhachHang.TenNVPhuTrachKH = dTO_Lead.TenNVPhuTrachLead;
+                dTO_KhachHang.ChuyenDoiTuMaLeadKH = dTO_Lead.MaLead;
+
+                DAL_KhachHang dAL_KhachHang = new DAL_KhachHang();
+                if (dAL_KhachHang.ThemKhachHang(dTO_KhachHang))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
     }
 }
