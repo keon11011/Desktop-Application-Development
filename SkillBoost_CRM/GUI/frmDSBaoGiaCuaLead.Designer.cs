@@ -48,7 +48,7 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(130, 270);
+            this.dataGridView1.Location = new System.Drawing.Point(210, 271);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -96,7 +96,7 @@
             // 
             this.btnSua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(1848, 179);
+            this.btnSua.Location = new System.Drawing.Point(1928, 180);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 58);
@@ -109,7 +109,7 @@
             // 
             this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(1963, 179);
+            this.btnXoa.Location = new System.Drawing.Point(2043, 180);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 58);
@@ -122,7 +122,7 @@
             // 
             this.btnTao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTao.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTao.Location = new System.Drawing.Point(1731, 179);
+            this.btnTao.Location = new System.Drawing.Point(1811, 180);
             this.btnTao.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTao.Name = "btnTao";
             this.btnTao.Size = new System.Drawing.Size(75, 58);
@@ -135,7 +135,7 @@
             // 
             this.lbDSBaoGia.AutoSize = true;
             this.lbDSBaoGia.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDSBaoGia.Location = new System.Drawing.Point(212, 179);
+            this.lbDSBaoGia.Location = new System.Drawing.Point(491, 185);
             this.lbDSBaoGia.Name = "lbDSBaoGia";
             this.lbDSBaoGia.Size = new System.Drawing.Size(306, 38);
             this.lbDSBaoGia.TabIndex = 90;
@@ -144,7 +144,7 @@
             // txtHoTenLead
             // 
             this.txtHoTenLead.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHoTenLead.Location = new System.Drawing.Point(130, 81);
+            this.txtHoTenLead.Location = new System.Drawing.Point(210, 87);
             this.txtHoTenLead.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtHoTenLead.Name = "txtHoTenLead";
             this.txtHoTenLead.Size = new System.Drawing.Size(631, 52);
@@ -154,7 +154,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 188);
+            this.button1.Location = new System.Drawing.Point(210, 185);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(62, 49);

@@ -44,7 +44,7 @@ namespace DAL
                 cmd.Parameters.Add("@MaNVPhuTrachKH", SqlDbType.VarChar);
                 cmd.Parameters["@MaNVPhuTrachKH"].Value = dTO_KhachHang.MaNVPhuTrachKH;
 
-                cmd.Parameters.Add("@TenNVPhuTrachKH", SqlDbType.VarChar);
+                cmd.Parameters.Add("@TenNVPhuTrachKH", SqlDbType.NVarChar);
                 cmd.Parameters["@TenNVPhuTrachKH"].Value = dTO_KhachHang.TenNVPhuTrachKH;
 
                 cmd.Parameters.Add("@TrangThaiKH", SqlDbType.NVarChar);
