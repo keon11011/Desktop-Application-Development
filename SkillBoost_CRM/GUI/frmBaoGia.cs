@@ -451,29 +451,30 @@ namespace GUI
                             MessageBox.Show("Lỗi khác!");
                             break;
                     }
-                    // ReadOnly các mọi thứ trừ Email
-                    txtTenBaoGia.ReadOnly = true;
-                    dataGridView1.ReadOnly = true;
-                    cboKhoaHoc.Enabled = false;
-                    btnThemKhoaHoc.Enabled = false;
-                    btnXoaKhoaHoc.Enabled = false;
-                    btnThemKhuyenMai.Enabled = false;
-                    txtSoKhoaHocMuaChung.Visible = true;
-                    txtSoKhoaHocMuaChung.ReadOnly = true;
-                    txtDoiTuongUuTien.Visible = true;
-                    txtDoiTuongUuTien.ReadOnly = true;
-                    txtDipDacBiet.Visible = true;
-                    txtDipDacBiet.ReadOnly = true;
-                    numUpDownPhanTramGiamGia.Visible = true;
-                    numUpDownPhanTramGiamGia.Enabled = false;
-                    btnTaoBaoGia.Enabled = false;
-
-                    // Trừ control Email: Visible
-                    btnTaoEmailBaoGia.Visible = true;
-                    lbTrangThaiEmailBaoGia.Visible = true;
-                    txtTrangThaiEmailBaoGia.Visible = true;
-                    txtTrangThaiEmailBaoGia.ReadOnly = true;
                 }
+                // ReadOnly các mọi thứ trừ Email
+                txtTenBaoGia.ReadOnly = true;
+                dataGridView1.ReadOnly = true;
+                cboKhoaHoc.Enabled = false;
+                btnThemKhoaHoc.Enabled = false;
+                btnXoaKhoaHoc.Enabled = false;
+                btnThemKhuyenMai.Enabled = false;
+                txtSoKhoaHocMuaChung.Visible = true;
+                txtSoKhoaHocMuaChung.ReadOnly = true;
+                txtDoiTuongUuTien.Visible = true;
+                txtDoiTuongUuTien.ReadOnly = true;
+                txtDipDacBiet.Visible = true;
+                txtDipDacBiet.ReadOnly = true;
+                numUpDownPhanTramGiamGia.Visible = true;
+                numUpDownPhanTramGiamGia.Enabled = false;
+                btnTaoBaoGia.Enabled = false;
+
+                // Trừ control Email: Visible
+                btnTaoEmailBaoGia.Visible = true;
+                lbTrangThaiEmailBaoGia.Visible = true;
+                txtTrangThaiEmailBaoGia.Visible = true;
+                txtTrangThaiEmailBaoGia.ReadOnly = true;
+                btnTaoBaoGia.Visible = false;
             }
             /*
             // ReadOnly các mọi thứ trừ Email
@@ -499,7 +500,7 @@ namespace GUI
             txtTrangThaiEmailBaoGia.Visible = true;
             txtTrangThaiEmailBaoGia.ReadOnly = true;
             */
-            btnTaoBaoGia.Visible = false;
+            
         }
 
         private void btnTaoEmailBaoGia_Click(object sender, EventArgs e)

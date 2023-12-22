@@ -108,6 +108,7 @@ namespace GUI
             dateTimePickerNgaySinh.Text = dTO_Lead.NgaySinhLead.ToString();
             txtEmail.Text = dTO_Lead.EmailLead;
             txtSoDienThoai.Text = dTO_Lead.SoDienThoaiLead;
+            
             txtPIC.Text = dTO_Lead.TenNVPhuTrachLead;
             cbNgheNghiep.Text = dTO_Lead.TenNgheNghiep;
             cbNguonLead.Text = dTO_Lead.NguonLead;
@@ -193,7 +194,7 @@ namespace GUI
             {
                 khThuocYCTV.MaTuVan = maTuVanMoiTao;
                 khThuocYCTV.MaKhoaHoc = dr[1].ToString();
-                khThuocYCTV.TenKhoaHoc = dr[1].ToString();
+                khThuocYCTV.TenKhoaHoc = dr[2].ToString();
                 khThuocYCTV.GiangVien = dr[5].ToString();
                 khThuocYCTV.GiaTien = float.Parse(dr[8].ToString());
 
@@ -212,6 +213,8 @@ namespace GUI
                         break;
                 }
             }
+            btnHuyChinhSua.Visible = false;
+            btnLuuThayDoi.Visible = false;
         }
 
         private void btnUnfollow_Click(object sender, EventArgs e)

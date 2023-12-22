@@ -174,7 +174,7 @@ namespace DAL
                 conn.Open();
 
                 SqlCommand cmd = new SqlCommand("Update Lead set HoTenLead = @HoTenLead, GioiTinhLead = @GioiTinhLead, NgaySinhLead = @NgaySinhLead, " +
-                    "SoDienThoaiLead = @SoDienThoaiLead, EmailLead = @Email, MaNgheNghiep = @MaNgheNghiep, TenNgheNghiep = @TenNgheNghiep, " +
+                    "SoDienThoaiLead = @SoDienThoaiLead, EmailLead = @EmailLead, MaNgheNghiep = @MaNgheNghiep, TenNgheNghiep = @TenNgheNghiep, " +
                     "NguonLead = @NguonLead, GhiChuLead = @GhiChuLead, ChinhSuaLanCuoiVaoLuc = GETDATE(), " +
                     "ChinhSuaLanCuoiBoi = @MaPIC where MaLead = @MaLead", conn);
 
@@ -185,7 +185,7 @@ namespace DAL
                 cmd.Parameters["@GioiTinhLead"].Value = dTO_Lead.GioiTinhLead;
 
                 cmd.Parameters.Add("@NgaySinhLead", SqlDbType.DateTime);
-                cmd.Parameters["@NgaySinhLead"].Value = dTO_Lead.GioiTinhLead;
+                cmd.Parameters["@NgaySinhLead"].Value = dTO_Lead.NgaySinhLead;
 
                 cmd.Parameters.Add("@SoDienThoaiLead", SqlDbType.Char);
                 cmd.Parameters["@SoDienThoaiLead"].Value = dTO_Lead.SoDienThoaiLead;
@@ -207,6 +207,10 @@ namespace DAL
 
                 cmd.Parameters.Add("@MaPIC", SqlDbType.VarChar);
                 cmd.Parameters["@MaPIC"].Value =  dTO_Lead.MaNVPhuTrachLead;
+
+
+                cmd.Parameters.Add("@MaLead", SqlDbType.VarChar);
+                cmd.Parameters["@MaLead"].Value = dTO_Lead.MaLead;
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {

@@ -26,20 +26,22 @@ namespace GUI
 
         private void frmThanhToan_Load(object sender, EventArgs e)
         {
-            txtSotaikhoan.Text = "099054032178";
-            txtTennguoithuhuong.Text = "Nguyễn Thu Việc";
-            txtChinhanh.Text = "Vietcombank-TP.HCM";
+            
         }
         private void btnTim_Click(object sender, EventArgs e)
         {
-
             tt.MaBaoGia = txtMadonhang.Text;
             if (bUS_ThanhToan.TimThongTinThanhToan(ref tt))
             {
+                lb_QR.Visible = true;
+                pictureBox1.Visible = true;
                 txtMadonhang.Text = tt.MaBaoGia;
                 txtMagiamgia.Text = tt.MaGiamGia;
                 txtNoidungchuyenkhoan.Text = tt.MaBaoGia;
                 txtTongtien.Text = tt.TongTien;
+                txtSotaikhoan.Text = "099054032178";
+                txtTennguoithuhuong.Text = "Nguyễn Thu Việc";
+                txtChinhanh.Text = "Vietcombank-TP.HCM";
             }
             else
             {

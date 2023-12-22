@@ -121,8 +121,6 @@ namespace GUI
 
         private void btnTao_Click(object sender, EventArgs e)
         {
-            SharedResources.MaPIC = "STA3";
-            SharedResources.TenPIC = "Võ Anh Thư";
             DTO_Lead newLead = new DTO_Lead();
 
             newLead.HoTenLead = txtHoten.Text;

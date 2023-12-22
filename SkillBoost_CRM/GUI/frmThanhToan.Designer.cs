@@ -42,7 +42,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lb_QR = new System.Windows.Forms.Label();
             this.txtMadonhang = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -170,14 +170,15 @@
             this.label6.TabIndex = 44;
             this.label6.Text = "Tổng tiền:";
             // 
-            // label3
+            // lb_QR
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(72, 130);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(201, 20);
-            this.label3.TabIndex = 42;
-            this.label3.Text = "Quét mã QR để thanh toán";
+            this.lb_QR.AutoSize = true;
+            this.lb_QR.Location = new System.Drawing.Point(72, 130);
+            this.lb_QR.Name = "lb_QR";
+            this.lb_QR.Size = new System.Drawing.Size(201, 20);
+            this.lb_QR.TabIndex = 42;
+            this.lb_QR.Text = "Quét mã QR để thanh toán";
+            this.lb_QR.Visible = false;
             // 
             // txtMadonhang
             // 
@@ -214,6 +215,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 43;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // frmThanhToan
             // 
@@ -235,7 +237,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lb_QR);
             this.Controls.Add(this.txtMadonhang);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -265,7 +267,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lb_QR;
         private System.Windows.Forms.TextBox txtMadonhang;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

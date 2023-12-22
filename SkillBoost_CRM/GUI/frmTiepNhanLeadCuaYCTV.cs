@@ -36,7 +36,6 @@ namespace GUI
             {
                 case "Success":
                     MessageBox.Show("Đổi trạng thái yêu cầu tư vấn thành công");
-                    LoadLaiThongTinLead();
                     switch (bUS_Lead.TiepNhanLead(dTO_Lead))
                     {
                         case "Success":

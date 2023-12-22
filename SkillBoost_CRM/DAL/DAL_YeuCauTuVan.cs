@@ -70,9 +70,7 @@ namespace DAL
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("Select TenLeadYeuCau as 'Tên Lead', TaoVaoLuc as 'Thời gian ghi nhận yêu cầu', TrangThaiYCTV as 'Trạng thái', GhiChuYCTV as 'Ghi chú', TaoBoiLead as 'Tạo bởi Lead' "
-                                                + "from YeuCauTuVan where TenLeadYeuCau like N'%" + s + "%' "+
-                                                "order by TrangThaiYCTV asc, TaoVaoLuc desc", conn);
+                SqlCommand cmd = new SqlCommand("Select YeuCauTuVan.MaTuVan as 'Mã Tư Vấn', YeuCauTuVan.TenLeadYeuCau as 'Tên Lead', YeuCauTuVan.TaoVaoLuc as 'Thời gian ghi nhận yêu cầu', YeuCauTuVan.TrangThaiYCTV as 'Trạng thái', ChiTietKhoaHocThuocYeuCauTuVan.TenKhoaHoc as 'Tên khóa học' from YeuCauTuVan inner join ChiTietKhoaHocThuocYeuCauTuVan on YeuCauTuVan.MaTuVan = ChiTietKhoaHocThuocYeuCauTuVan.MaTuVan  where YeuCauTuVan.TenLeadYeuCau like N'%" + s + "%'", conn);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -90,23 +88,50 @@ namespace DAL
             }
         }
 
-        public DataTable LocYCTV(string s)
+        public DataTable LocYCTV(string s1)
         {
 
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("Select TenLeadYeuCau as 'Tên Lead', TaoVaoLuc as 'Thời gian ghi nhận yêu cầu', TrangThaiYCTV as 'Trạng thái', GhiChuYCTV as 'Ghi chú', TaoBoiLead as 'Tạo bởi Lead' "
-                                                + "from YeuCauTuVan where TrangThaiYCTV like N'%" + s + "%' " +
-                                                "order by TrangThaiYCTV asc, TaoVaoLuc desc", conn);
+
+                SqlCommand cmd = new SqlCommand("Select MaTuVan as 'Mã Tư Vấn',TenLeadYeuCau as 'Tên Lead', " +
+                    "TaoVaoLuc as 'Ghi nhận vào lúc', TrangThaiYCTV as 'Trạng thái', GhiChuYCTV as 'Ghi chú', TaoBoiLead as 'Tạo bởi Lead' " +
+                    "from YeuCauTuVan where YeuCauTuVan.TrangThaiYCTV = N'"+s1 + "' " +
+                    "order by TrangThaiYCTV asc, TaoVaoLuc desc", conn);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 da.Dispose();
                 cmd.Dispose();
+                dt.Columns.Add("Tên Khóa Học");
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    SqlCommand cmd1 = new SqlCommand("SELECT * FROM ChiTietKhoaHocThuocYeuCauTuVan WHERE MaTuVan = \'" + dt.Rows[i][0] + "\'", conn);
+                    SqlDataReader reader = cmd1.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Close();
+                        DataTable dt2 = new DataTable();
+                        SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
+                        da1.Fill(dt2);
+                        da1.Dispose();
+                        cmd1.Dispose();
+                        string s = dt2.Rows[0][2].ToString();
+                        for (int j = 1; j < dt2.Rows.Count; j++)
+                        {
+                            s = s + ", " + dt2.Rows[j][2].ToString();
+
+                        }
+                        dt.Rows[i][6] = s;
+                    }
+                    cmd1.Dispose();
+                }
+
+
                 return dt;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return null;
             }
@@ -114,6 +139,26 @@ namespace DAL
             {
                 conn.Close();
             }
+
+            //try
+            //{
+            //    conn.Open();
+            //    SqlCommand cmd = new SqlCommand("Select YeuCauTuVan.MaTuVan as 'Mã yêu cầu tư vấn', YeuCauTuVan.TenLeadYeuCau as 'Tên Lead', YeuCauTuVan.TaoVaoLuc as 'Thời gian ghi nhận yêu cầu', YeuCauTuVan.TrangThaiYCTV as 'Trạng thái', ChiTietKhoaHocThuocYeuCauTuVan.TenKhoaHoc as 'Tên khóa học' from YeuCauTuVan inner join ChiTietKhoaHocThuocYeuCauTuVan on YeuCauTuVan.MaTuVan = ChiTietKhoaHocThuocYeuCauTuVan.MaTuVan where YeuCauTuVan.TrangThaiYCTV = N'" +s+"'", conn);
+            //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+            //    DataTable dt = new DataTable();
+            //    da.Fill(dt);
+            //    da.Dispose();
+            //    cmd.Dispose();
+            //    return dt;
+            //}
+            //catch (Exception)
+            //{
+            //    return null;
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
         }
         public bool InsertYCTV(ref DTO_YeuCauTuVan tt_yctv)
         {
